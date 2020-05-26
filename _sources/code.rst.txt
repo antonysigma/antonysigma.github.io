@@ -1,0 +1,70 @@
+Code
+=========
+
+Here are my code I wrote for research projects or as a hobby.
+
+.. figure:: attached/starchart.jpg
+
+    Android Star Catalog on E-ink devices
+    
+    I created a "vanilla-flavoured" star map to run on E-ink readers, 
+    so I can focus on the serious scientific details of each star. 
+    The star positions are replicated from the 
+    *Positions and Proper Motion Star Catalog* at NASA. There are plans to add 
+    more deep sky objects (double stars, nebula, galaxies, etc.)
+    from the WDS and NGC database.
+    
+    * `Github <https://github.com/antonysigma/droidstarchart>`_
+
+    * Reference: `Mobile star chart on Nokia phones <http://mobilestarchart.sourceforge.net/>`_, `Stellarium online star map <https://stellarium-web.org/>`_
+    
+.. figure:: attached/abacus.jpg
+
+    "Computerized" Chinese abacus
+    
+    Everybody knew that the abacus is the precursor of modern computer, but not 
+    many realize it can be "programmed" to perform complex arithmetic computation.
+    Based on the 500 year old instruction set, I demonstrate its ability to 
+    perform basic arithmetic (positive or negative) on fixed point decimals 
+    down to 20-digit precision. I have plans to realize long division and square root
+    in the future.
+    
+    * `Github <https://github.com/antonysigma/abacus-emu>`_ 
+    * `Demo <./_static/abacus-bin/>`_
+
+.. figure:: attached/cangjie-logo.png
+
+    Online Cangjie Chinese input engine
+    
+    Chinese language is a logographic writing system, where one composes a sentence by visually "assembling" individual character with shapes, rather then verbally spelling the words with letters as in other languages. Traditionally, Chinese was typed on a computer with Cangjie, a free, open source program called the Cangjie input method. However, in a mandarin dominated world, it is increasing harder to type (or to Google) in Chinese on library workstations, or on my friend's smartphones. So, I created my own online input program and hosted it here:
+
+    * `Demo <./_static/cangjie-bin/>`_
+
+.. figure:: attached/project_euler.png
+
+    Mathematical coding challenge on Project Euler
+
+    
+    Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. Although mathematics will help you arrive at elegant and efficient methods, the use of a computer and programming skills will be required to solve most problems.
+
+    * `Code repository <./_static/euler-doxygen/files.html>`_
+
+Dataset
+---------
+
+.. figure:: attached/pixelsr.jpg
+
+    Pixel super-resolution of optofluidic time-stretch microscopy
+
+    Complete dataset of the imaging flow cytometry of multiple unlabelled living cell lines, acquired by ultrafast optical time-stretch microscopy technique.
+
+    * **Article:** **A.C.S. Chan**, H.C. Ng, S.C.V. Bogaraju, H.K.H. So,  E.Y. Lam, and K.K. Tsia, 
+      `"All-passive pixel super-resolution of time-stretch imaging," <http://dx.doi.org/10.1038/srep44608>`_
+      *Scientific Reports* **7**, 44608 (2017).
+    * Human acute monocytic leukemia (THP-1)
+      `(download) <http://academictorrents.com/details/8464b9f9166c143040fee655f0284085fe251a80>`_
+    * Scendesmus cell colonies
+      `Demo 1 <./deepzoom/>`_
+      `Demo 2 <./scatter_plot/>`_
+      `(download) <http://academictorrents.com/details/338a9fb90e5dccda4106d623768b6d40f3956ab0>`_
+    * Water microemulsion in silicone oil `(download) <http://academictorrents.com/details/a8d14f22c9ce1cc59c9f480df5deb0f7e94861f4>`_

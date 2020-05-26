@@ -1,0 +1,73 @@
+Publications
+===============
+
+See my `Google scholar <https://scholar.google.com/citations?hl=en&user=kW8tyV0AAAAJ>`_ profile.
+
+Peer reviewed paper
+----------------------
+
+#. **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+   `"Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)" <http://dx.doi.org/10.1038/s41598-019-47146-z>`_
+   *Scientific Reports* **9**, 11114 (2019).
+
+#. **A.C.S. Chan**, H.C. Ng, S.C.V. Bogaraju, H.K.H. So,  E.Y. Lam, and K.K. Tsia, 
+   `"All-passive pixel super-resolution of time-stretch imaging," <http://dx.doi.org/10.1038/srep44608>`_
+   *Scientific Reports*, vol. 7, no. 44608, 2017.
+   `Demo 1 <./deepzoom/>`_
+   `Demo 2 <./scatter_plot/>`_
+
+#. J. Wu, Y. Xu, X. Wei, **A.C.S. Chan**, A.H. Tang, A.K. Lau, B.M. Chung, H.C. Shum, E.Y. Lam, and K.K. Tsia,
+   `"Ultrafast laser-scanning time-stretch imaging at visible wavelengths," <http://dx.doi.org/10.1038/lsa.2016.196>`_
+   *Light: Science & Applications*, vol. 6, no. e16196, 2016.
+
+#. **A.C.S. Chan**, K.K. Tsia, E.Y. Lam,
+   `"Subsampled scanning holographic imaging (SuSHI) for fast nonadaptive recording of three-dimensional object." <http://dx.doi.org/10.1364/OPTICA.3.000911>`_
+   *Optica*, vol. 3, no. 8, p. 911--7, 2016.
+#. **A.C.S. Chan**, A. Lau, K.K.Y. Wong, E.Y. Lam and K.K. Tsia, 
+   `"Arbitrary two-dimensional spectrally encoded pattern generation---a new strategy for high-speed patterned illumination imaging," <http://dx.doi.org/10.1364/OPTICA.2.001037>`_
+   *Optica*, vol. 2, no. 12, p. 1037--44, 2015.
+#. **A.C.S. Chan**, T.T.W. Wong, K.K.Y. Wong, E.Y. Lam, and K.K. Tsia, 
+   `"Speed-dependent resolution analysis of ultrafast laser-scanning fluorescence microscopy," <http://dx.doi.org/10.1364/JOSAB.31.000755>`_
+   *Journal of Optical Society of America B*, vol. 31, no. 4, p. 755, Mar. 2014.
+
+#. A.K.S. Lau, T.T.W. Wong, K.K.Y. Ho, M.T.H Tang, **A.C.S. Chan**, X. Wei, E.Y. Lam, H. C. Shum, K.K.Y. Wong, and K.K. Tsia, 
+   `"Interferometric time-stretch microscopy for ultrafast quantitative cellular and tissue imaging at 1 μm," <http://dx.doi.org/10.1117/1.JBO.19.7.076001>`_
+   *Journal of Biomedcal Optics,* vol. 19, no. 7, p. 076001, Jul. 2014.
+
+#. T.T.W. Wong, A.K.S. Lau, K.K.Y. Ho, M.T.H. Tang, J. D. F. Robles, X. Wei, **A.C.S. Chan**, A.H.L. Tang, E.Y. Lam, K.K.Y. Wong, G.C.F. Chan, H.C. Shum, and K.K. Tsia, 
+   `"Asymmetric-detection time-stretch optical microscopy (ATOM) for ultrafast high-contrast cellular imaging in flow," <http://dx.doi.org/10.1038/srep03656>`_
+   *Scientific Reports,* vol. 4, p. 3656, Jan. 2014.
+
+Conference posters and talks
+-----------------------------
+
+#. **A.C.S. Chan**, E.Y. Lam  and K.K. Tsia, 
+   `"Pixel super-resolution in time-stretch microscopy by an equivalent-time sampling concept," <http://dx.doi.org/10.1117/12.2212034>`_
+   in *Photonics West 2016*.
+
+#. **A.C.S. Chan**, E.Y. Lam, and K.K. Tsia, 
+   `"Pixel super-resolution in optical time-stretch microscopy using acousto-optic deflector," <http://dx.doi.org/10.1364/BODA.2015.BW2A.7>`_
+   in *Bio-optics: Design and Application 2015* p. BW2A.7.
+
+#. K. S. Lau, T.T.W. Wong, **A.C.S. Chan**, E.Y. Lam, K.K.Y. Wong, and K.K. Tsia, 
+   `"Interferometric time-stretch microscopy for ultrafast quantitative cellular imaging at 1 μm," <http://dx.doi.org/10.1364/NTM.2013.NW1B.4>`_
+   in *Bio-optics: Design and Application 2015* p. NW1B.4.
+
+#. **A.C.S. Chan**, E.Y. Lam, and K.K. Tsia, 
+   `"Signal reduction in fluorescence imaging using radio frequency-multiplexed excitation by compressed sensing," <http://dx.doi.org/10.1117/12.2072016>`_
+   in *Photonics Asia 2014,* p. 92790U.
+#. **A.C.S. Chan**, K.K.Y. Wong, K.K. Tsia, and E.Y. Lam, 
+   `"Reducing the Acquistion Time of Optical Scanning Holography by Compressed Sensing," <http://dx.doi.org/10.1364/SRS.2014.SM4F.4>`_
+   in *Imaging and Applied Optics 2014,* p. SM4F.4.
+
+#. **A.C.S. Chan**, A. Lau, and K. Wong, 
+   `"Two-dimensional spectral-encoding for high speed arbitrary patterned illumination," <http://dx.doi.org/10.1364/CLEO_SI.2014.STh1H.2>`_
+   in *CLEO 2014,* p. STh1H.2.
+
+#. **A.C.S. Chan**, T.T.W. Wong, K.K.Y. Wong, E.Y. Lam, and K.K. Tsia, 
+   `"Revisit laser scanning fluorescence microscopy performance under fluorescence-lifetime-limited regime," <http://dx.doi.org/10.1117/12.2038766>`_
+   in *Photonics West 2014,* p. 894726.
+
+#. T.T.W. Wong, M. Y. H. Tang, A.K.S. Lau, **A.C.S. Chan**, E.Y. Lam, K.K.Y. Wong, A. H. C. Shum, and K.K. Tsia, 
+   `"Ultrafast flow imaging by 1 µm time-stretch microscopy," <http://dx.doi.org/10.1364/NTM.2013.NW1B.5>`_
+   in *Novel technology in microscopy 2013,* p. NW1B.5.

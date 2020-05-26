@@ -1,0 +1,34 @@
+\form#0:$ N=a\times 10^3 + b\times 10^2 +c \times 10 +d=600851475143 $
+\form#1:\[ N^{1/2}=(x+y)^{1/2}=x^{1/2}(1+\frac{y}{x})^{1/2}=x^{1/2}(1+\frac{y}{2 x}+\ldots) \]
+\form#2:$a=2mn$
+\form#3:$b=m^2+n^2 $
+\form#4:$c=m^2+n^2 $
+\form#5:\[a+b+c=(2mn)+(m^2-n^2)+(m^2+n^2)=2(m^2+2mn)=1000\Rightarrow m^2+mn=500 \]
+\form#6:\[m^2+mn<=m^2+m^2<=1000 \Rightarrow m <= 22 \]
+\form#7:$21\times(21+1)/2=231 $
+\form#8:$(m,n)$
+\form#9:$m^2=500-mn $
+\form#10:$m^2\equiv 0 \textrm{or} 1 (\textrm{mod} 3)$
+\form#11:$mn=1 \textrm{ or } 2 (\textrm{mod} 3)$
+\form#12:$n = (500-m^2)/m = 500/m - m $
+\form#13:\[ 2x<2^64 \Rightarrow x<2^63 \Rightarrow x<= 10^18 \]
+\form#14:$ 2^{32}-1 \sim 10^{9.63} $
+\form#15:$ 2^{64}-1 \sim 10^{19.27}$
+\form#16:\[2^{1000}=256^{125} \]
+\form#17:$2^{1000}\sim 10^{301} $
+\form#18:\[256x<2^{64} \Rightarrow x<=2^{56} \Rightarrow x <= 10^{16} \]
+\form#19:$302/16<=19 $
+\form#20:\[ W = \left [\frac{CC}{4} \right ] -2 CC+YY+\left [\frac{YY}{4} \right ]+\left [\frac{26(MM+1)}{10} \right ]+DD-1 (\textrm{mod }7) \]
+\form#21:\[ W = \left [\frac{20}{4} \right ] -2\times 20+9+\left [\frac{9}{4} \right ]+\left [\frac{26(6+1)}{10} \right ]+13-1 (\textrm{mod }7)=6 \]
+\form#22:\[ W = \left [\frac{CC}{4} \right ] +5 CC+YY+\left [\frac{YY}{4} \right ]+\left [\frac{26(MM+1)}{10} \right ]+DD-1 (\textrm{mod }7) \]
+\form#23:\[ W = YYYY+\left [\frac{YYYY}{4} \right ]+6 \left [\frac{YYYY}{100} \right ]+\left [\frac{YYYY}{400} \right ]+\left [\frac{26(MM+1)}{10} \right ]+DD-1 (\textrm{mod }7) \]
+\form#24:\[ n! \sim \sqrt{2n\pi} \left ( \frac{n}{e} \right )^n \left (1+\frac{1}{12n} \right ) \]
+\form#25:$ 100! \sim 10^{157.97} $
+\form#26:$ 100x<2^{64} \Rightarrow x <= 10^{17} $
+\form#27:$ 158/17<=10 $
+\form#28:\[ f_n = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2} \right)^n - \left(\frac{1-\sqrt{5}}{2} \right)^n \right] \]
+\form#29:\[ \left(\frac{1-\sqrt{5}}{2} \right)^n \sim 0 \]
+\form#30:\[ f_n = \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2} \right)^n \]
+\form#31:\[ f_n >= 10^{999} \Rightarrow n >= 4781.86 \]
+\form#32:$ n = 4782 $
+\form#33:\[C^n_r = \frac{n!}{r!(n−r)!}\]

@@ -1,0 +1,63 @@
+body {
+    font-family: sans;
+}
+
+table {
+font-size:27px;
+line-height:1em;
+background-color: yellow;
+border: solid 10px brown;
+}
+
+td {
+width:48px;
+height:1em;
+background:url(bead.gif) no-repeat center bottom;
+margin:0;
+padding:0;
+}
+
+td.empty {
+background-position:center top;
+}
+td.active {
+background-color:blue;
+}
+
+tbody tr td {
+font-size:12pt;
+background-color:brown;
+background-image:none;
+color:#FFF;
+text-align:center;
+}
+
+span#invalid {
+font-size:10pt;
+color:red;
+display:none;
+}
+
+span#overflow {
+font-size:10pt;
+color:red;
+display:none;
+}
+
+div.instruction-block {
+margin: 20px 20px;
+border: solid 2pt gray;
+}
+
+div.instruction-block p {
+padding-left: 1em;
+}
+
+ol#instruction {
+height: 30em;
+overflow: auto;
+}
+
+input#a,input#b {
+width:10em;
+}

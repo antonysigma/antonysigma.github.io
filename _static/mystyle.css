@@ -1,0 +1,27 @@
+img.profile {
+    padding: 30px 5px 0 5px;
+}
+
+h1#antony-c-s-chan {
+    line-height: 1.5;
+}
+
+div.figure img {
+    padding: 10px 10px 0;
+    float: left;
+}
+
+div.figure p.caption {
+    padding: 10px 0 0 190px;
+    line-height: 100%;
+    font-size: 130%;
+}
+
+div.figure div.legend {
+    padding-left: 190px;
+}
+
+div.figure, div.body h2 {
+    clear: both;
+}
+
