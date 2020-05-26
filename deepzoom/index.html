@@ -1,0 +1,166 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Slide Viewer</title>
+<meta name="viewport" content="user-scalable=no">
+
+<style type="text/css">
+html {
+    overflow: hidden;
+}
+body {
+    margin: 5px;
+    font-family: sans-serif;
+}
+h1 {
+    font-size: 1.2em;
+}
+.notice {
+    font-style: italic;
+}
+div#images {
+    position: absolute;
+    width: 15%;
+}
+div#images h2 {
+    font-size: 1em;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+.associated-images {
+    margin-left: 1.5em;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+div#images li {
+    list-style-type: none;
+}
+.current-slide {
+    background-color: #ccf;
+}
+div#view {
+    position: absolute;
+    left: 15%;
+    width: 75%;
+    height: 98%;
+    background-color: black;
+    border: 1px solid #000;
+    color: white;
+}
+div#view.fullpage {
+    left: 0%;
+    border: 0;
+}
+div#properties {
+    position: absolute;
+    left: 75%;
+    width: 24.5%;
+    height: 98%;
+    overflow: auto;
+}
+div#properties-inner {
+    display: inline-block;
+}
+div#properties dl {
+    font-size: small;
+    margin: 0;
+}
+div#properties dt {
+    font-weight: bold;
+    border-top: 1px solid #000;
+    background-color: #eee;
+}
+div#properties dd {
+    margin-left: 0;
+}
+</style>
+
+<div id="images">
+    <h1>View</h1>
+    <div><a class="load-slide" href="#" data-url="sorted.dzi"
+            data-mpp="0.88775"
+            data-info="Scenedesmus, populations=1368, dimensions=53x53um">Sorted (1368 frames)</a></div>
+    <div><a class="load-slide" href="#" data-url="unsorted.dzi"
+            data-mpp="0.88775"
+            data-info="Scenedesmus, populations=5000, dimensions=53x53um">Unsorted (5000 frames)</a></div>
+    <!-- div class="current-slide"><a class="load-slide" href="#" data-url="glass-brain.dzi"
+            data-mpp="0">Glass brain (9807 x 8469)</a></div-->
+    <h2>Info:</h2>
+    
+        <div class="notice">None</div>
+    
+</div>
+<div id="view"></div>
+<!-- div id="properties">
+    <h1>Slide properties</h1>
+    
+        <span class="notice">None</span>
+    
+</div -->
+
+<script type="text/javascript" src="static/jquery.js"></script>
+<script type="text/javascript" src="static/openseadragon.min.js"></script>
+<script type="text/javascript" src="static/openseadragon-scalebar.js"></script>
+<script type="text/javascript">
+    var dzi_data = {"sorted.dzi": "<?xml version='1.0' encoding='UTF-8'?><Image Format=\"png\" Overlap=\"1\" TileSize=\"254\" xmlns=\"http://schemas.microsoft.com/deepzoom/2008\"><Size Height=\"3120\" Width=\"3240\" /></Image>",
+        "unsorted.dzi": "<?xml version='1.0' encoding='UTF-8'?><Image Format=\"png\" Overlap=\"1\" TileSize=\"254\" xmlns=\"http://schemas.microsoft.com/deepzoom/2008\"><Size Height=\"6000\" Width=\"6000\" /></Image>"};
+    //"glass-brain.dzi": "<?xml version='1.0' encoding='UTF-8'?><Image Format=\"jpeg\" Overlap=\"1\" TileSize=\"254\" xmlns=\"http://schemas.microsoft.com/deepzoom/2008\"><Size Height=\"8469\" Width=\"9807\" /></Image>"};
+    var viewer = new OpenSeadragon.Viewer({
+        id: "view",
+        prefixUrl: "static/images/",
+        timeout: 120000,
+        animationTime: 0.5,
+        blendTime: 0.1,
+        constrainDuringPan: true,
+        maxZoomPixelRatio: 4,
+        minZoomLevel: 1,
+        visibilityRatio: 1,
+        zoomPerScroll: 2,
+    });
+    viewer.addHandler("open", function() {
+        // To improve load times, ignore the lowest-resolution Deep Zoom
+        // levels.  This is a hack: we can't configure the minLevel via
+        // OpenSeadragon configuration options when the viewer is created
+        // from DZI XML.
+        viewer.source.minLevel = 8;
+    });
+    viewer.scalebar({
+        xOffset: 10,
+        yOffset: 10,
+        minWidth: '50px',
+        barThickness: 5,
+        color: '#333333',
+        fontColor: '#333333',
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    });
+
+    function open_slide(url, mpp) {
+        var tile_source;
+        if (dzi_data[url]) {
+            // DZI XML provided as template argument (deepzoom_tile.py)
+            tile_source = new OpenSeadragon.DziTileSource(
+                    OpenSeadragon.DziTileSource.prototype.configure(
+                    OpenSeadragon.parseXml(dzi_data[url]), url));
+        } else {
+            // DZI XML fetched from server (deepzoom_server.py)
+            tile_source = url;
+        }
+        viewer.open(tile_source);
+        viewer.scalebar({
+            pixelsPerMeter: mpp ? (1e6 / mpp) : 0,
+        });
+    }
+
+$(document).ready(function() {
+    $(".load-slide").click(function(ev) {
+        $('div.notice').text($(this).attr('data-info'));
+        $(".current-slide").removeClass("current-slide");
+        $(this).parent().addClass("current-slide");
+
+        open_slide($(this).attr('data-url'),
+                parseFloat($(this).attr('data-mpp')));
+        ev.preventDefault();
+    });
+    $("a:first").trigger('click');
+});
+</script>
