@@ -74,6 +74,7 @@
      * @param {String} options.fontColor The font color. default: black
      * @param {String} options.backgroundColor The background color. default: none
      * @param {String} options.fontSize The font size. default: not set
+     * @param {String} options.fontFamily The font-family. default: not set
      * @param {String} options.barThickness The thickness of the scale bar in px.
      * default: 2
      * @param {function} options.sizeAndTextRenderer A function which will be
@@ -103,6 +104,7 @@
         this.fontColor = options.fontColor || "black";
         this.backgroundColor = options.backgroundColor || "none";
         this.fontSize = options.fontSize || "";
+        this.fontFamily = options.fontFamily || "";
         this.barThickness = options.barThickness || 2;
         this.pixelsPerMeter = options.pixelsPerMeter || null;
         this.referenceItemIdx = options.referenceItemIdx || 0;
@@ -148,6 +150,9 @@
             }
             if (isDefined(options.fontSize)) {
                 this.fontSize = options.fontSize;
+            }
+            if (isDefined(options.fontFamily)) {
+                this.fontFamily = options.fontFamily;
             }
             if (isDefined(options.barThickness)) {
                 this.barThickness = options.barThickness;
@@ -251,6 +256,7 @@
         },
         drawMicroscopyScalebar: function(size, text) {
             this.divElt.style.fontSize = this.fontSize;
+            this.divElt.style.fontFamily = this.fontFamily;
             this.divElt.style.textAlign = "center";
             this.divElt.style.color = this.fontColor;
             this.divElt.style.border = "none";
@@ -261,6 +267,7 @@
         },
         drawMapScalebar: function(size, text) {
             this.divElt.style.fontSize = this.fontSize;
+            this.divElt.style.fontFamily = this.fontFamily;
             this.divElt.style.textAlign = "center";
             this.divElt.style.color = this.fontColor;
             this.divElt.style.border = this.barThickness + "px solid " + this.color;
@@ -418,6 +425,21 @@
             return getScalebarSizeAndText(ppmi, minSize, "mi");
         },
         /**
+         * Astronomy units. Choosing the best unit from arcsec, arcminute, and degree
+         */
+        ASTRONOMY: function(ppa, minSize) {
+	    var maxSize = minSize * 2;
+            if (maxSize < ppa * 60) {
+                return getScalebarSizeAndText(ppa, minSize, "\"", false, '');
+            }
+            var ppminutes = ppa * 60;
+            if (maxSize < ppminutes * 60) {
+                return getScalebarSizeAndText(ppminutes, minSize, "\'", false, '');
+            }
+            var ppd = ppminutes * 60;
+            return getScalebarSizeAndText(ppd, minSize, "&#176", false, '');
+	},
+        /**
          * Standard time. Choosing the best unit from second (and metric divisions),
          * minute, hour, day and year.
          */
@@ -460,14 +482,15 @@
         return ratio * viewportZoom;
     }
 
-    function getScalebarSizeAndText(ppm, minSize, unitSuffix, handlePlural) {
+    function getScalebarSizeAndText(ppm, minSize, unitSuffix, handlePlural, spacer) {
+	spacer = spacer === undefined ? ' ' : spacer;
         var value = normalize(ppm, minSize);
         var factor = roundSignificand(value / ppm * minSize, 3);
         var size = value * minSize;
         var plural = handlePlural && factor > 1 ? "s" : "";
         return {
             size: size,
-            text: factor + " " + unitSuffix + plural
+            text: factor + spacer + unitSuffix + plural
         };
     }
 

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>96-eye microscope interface</title>
+  <link rel="stylesheet" href="../_static/js/jquery-ui.min.css">
+  <script src="../_static/jquery.js"></script>
+  <script src="../_static/js/jquery-ui.min.js"></script>
+<script src="../deepzoom/static/openseadragon.js"></script>
+<script src="../deepzoom/static/openseadragon-scalebar.js"></script>
+<script src="../deepzoom/static/openseadragon-curtain-sync.js"></script>
+<script src="../deepzoom/static/openseadragon-filtering.js"></script>
+<script src="../_static/js/underscore-min.js"></script>
+<script src="../_static/js/backbone-min.js"></script>
+<script src="main_script.js"></script>
+
+  <style>
+  .ui-tabs-vertical { width: 55em; }
+  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+
+  .ui-slider-range, .ui-progressbar-value {background-color: #8ad;}
+
+  .ui-slider {display:block; margin-top:5px}
+
+.ui-progressbar {
+    position: relative;
+  }
+  .progress-label {
+    position: absolute;
+    left: 20%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+  #config-xml {
+      width: 100%;
+      height: 20em;
+      overflow: scroll;
+      display: block;
+  }
+
+  input, .ui-spinner-input, .field {
+      color: #FF5733;
+      font-weight: bold;
+      width: 2.5em;
+  }
+
+  input[type="submit"], button {
+      color: black;
+  }
+
+/*
+  #zrange-slider .ui-slider-handle:first-of-type {
+      visibility: hidden;
+  }
+*/
+  input:read-only {
+      border: 0;
+  }
+  
+  .monospace {
+      font-family: monospace;
+  }
+
+  #acquire-steps span {
+      color: gray;
+  }
+
+  #tabs-3, #tabs-4 {
+      overflow:auto;
+  }
+
+  #plotarea {
+      width: 400px;
+      height:400px;
+          float:left;
+      }
+
+  #yaxis-slider {
+      height: 380px;
+      float:left;
+      margin: 5px;
+  }
+
+  #xaxis-slider {
+      width: 400px;
+      margin-left: 20px;
+  }
+
+  #view, #curtain-view {
+      width: 100%;
+      height: 600px;
+      background-color: black;
+      margin-top: 0.7em;
+      margin-bottom: 0.7em;
+  }
+
+  .system-message {
+      background-color: black;
+      color:white;
+      height: 10em;
+      overflow:scroll;
+  }
+
+  #select-wells .ui-selecting { background: #FECA40; }
+  #select-wells .ui-selected { background: #F39814; color: white; }
+  #select-wells { list-style-type: none; margin: 0; padding: 0; width: 390px; display:inline-block;}
+  #select-wells li { margin: 0px; padding: 0px; float: left; width: 30px; height: 30px; line-height:30px; font-size: 10pt; text-align: center; }
+
+  legend {
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      font-weight: bold;
+  }
+
+  fieldset {
+      margin-bottom: 1em;
+  }
+  
+  ul.ui-menu { max-height: 15em !important; }
+
+  .myui-warning {
+      background-color: yellow;
+  }
+  .myui-error {
+      background-color: orangered;
+  }
+
+  .ui-loading {
+      background:url(../_static/js/images/ui-anim_basic_16x16.gif) no-repeat right center;
+  }
+  </style>
+</head>
+<body>
+    <h2>View image</h2>
+
+    <fieldset>
+        <legend>Plate descriptions</legend>
+    <p><label for="datetime2-value">Acquisition Date (UTC):</label>
+    <input type="text" id="datetime2-value" style="width:25em" value="Current" readonly>
+
+    <p><label for="description2-value">Plate description:</label>
+    <input type="text" id="description2-value" readonly style="width: 50em">
+    </fieldset>
+
+    <fieldset>
+        <legend>Select channel</legend>
+    <p><label for="deepzoom-layer">Channel:</label>
+    <select id="deepzoom-layer">
+        <option value="raw">Raw (1 LED)</option>
+        <option value="brightfield">Widefield (5 LEDs)</option>
+        <option value="phase">Phase</option>
+        <option value="egfp">eGFP @ neutral position</option>
+        <option value="txred">TxRed @ neutral position</option>
+        <option value="fluorescence">eGFP/TxRed @ neutral position</option>
+    </select>
+    <button id="reload-images"
+        title="Reload all images in the web browser.">Reload</button>
+    <img src="../_static/js/images/ui-anim_basic_16x16.gif" id="loading-icon"><br>
+    <input type="checkbox" id="render-phase">
+    <label for="render-phase">Render phase image at maximum zoom level (Experimental)</label></p>
+
+    <p><label for="deepzoom-well">Well:</label>
+    <select id="deepzoom-well" title="Select particular well for multi-channel view. Accept direct typing from the keyboard."></select>
+
+    </fieldset>
+
+    <div id="advanced-settings">
+    <h3>Advanced settings</h3>
+    <div>
+
+        <fieldset>
+            <legend>Image rendering properties</legend>
+
+    <p><label for="deepzoom-angle-value">Orientation:</label>
+    <input type="text" class="myui-value" id="deepzoom-angle-value"> degree
+    <span class="myui-slider"></span></p>
+
+    <p><label for="deepzoom-brightness-value">Brightness:</label>
+    <input type="text" class="myui-value" id="deepzoom-brightness-value">
+    <span class="myui-slider"></span></p>
+
+    <p><label for="deepzoom-contrast-value">Contrast:</label>
+    <input type="text" class="myui-value" id="deepzoom-contrast-value"> 
+    <span class="myui-slider"></span></p>
+
+    <p><label for="deepzoom-gamma-value">Gamma:</label>
+    <input type="text" class="myui-value" id="deepzoom-gamma-value">
+    <span class="myui-slider"></span></p>
+
+    <p><label for="deepzoom-color">Colormap:</label>
+    <select id="deepzoom-color">
+        <option value="{'color':null}">Default</option>
+        <option value="{'color':[255,255,255]}">Gray</option>
+        <option value="{'color':[255,0,0]}">Red</option>
+        <option value="{'color':[0,255,0]}">Green</option>
+        <option value="{'color':[0,0,255]}">Blue</option>
+    </select></p>
+
+        </fieldset>
+
+    <p><button id="deepzoom-filter-reset">Reset advanced settings</button></p>
+    </div>
+    </div>
+
+  <!-- Deepzoom viewer -->
+  <div id="view"></div>
+
+    <!--p><label for="focus-value">Adjust focus:</label>
+    <input type="text" id="focus-value" readonly style="width:2em"> micrometer
+    <div id="focus-slider"></div></p>
+
+    <hr>
+    <div style="overflow:auto">
+      <div id="yaxis-slider"></div>
+      <img id="plotarea">
+    </div>
+  <div id="xaxis-slider"></div-->
+
+
+  <fieldset>
+        <legend>Inspect multiple channels of a single well</legend>
+        <p><label for="toggle-curtain">Display options:</label>
+        <select id="toggle-curtain">
+            <option value="curtain">curtain mode</option>
+            <option value="sync">Sync mode</option>
+        </select></p>
+
+        <p><label for="toggle-curtain-color">Color mode:</label>
+        <select id="toggle-curtain-color">
+            <option value="false">All in grayscale</option>
+            <option value="true">Green / Red / Gray</option>
+        </select></p>
+
+  <!-- Deepzoom viewer -->
+  <div id="curtain-view"></div>
+  </fieldset>
+</body>
+</html>
