@@ -29,7 +29,7 @@
   </style>
   <script type="text/javascript" src="utf8data.min.js">
 </script>
-  <script type="text/javascript" src="../jquery-1.11.1.js">
+  <script type="text/javascript" src="../js/jquery-1.11.0.min.js">
 </script>
   <script type="text/javascript">
 //<![CDATA[
@@ -57,7 +57,7 @@
     fieldObj.val('');
     keysObj.text('');
     flag=0;
-    }  
+    }
     else if(keys.match(/^[1-9]$/i) != null && keys <= flag) //check format
     {
       output_char(code[keys-1]);
@@ -122,7 +122,7 @@
   break;
   default:
   //****************not yet completed*****************
-        
+
     var color = 'green';
     //show keystroke
     var text = '';
@@ -137,11 +137,11 @@
       color='red';
     }
     }
-    
+
     keysObj.html(text).css('backgroundColor',color);
 
   //**************************************************
-  } 
+  }
 }
 
   $(function (){
