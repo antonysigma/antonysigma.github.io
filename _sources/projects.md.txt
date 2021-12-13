@@ -1,16 +1,13 @@
-Projects
-==========
+# Projects
 
 The following lists my current research projects.
 For the exhaustive list of my research, you may refer to my `Google scholar <https://scholar.google.com/citations?hl=en&user=kW8tyV0AAAAJ>`_ profile.
 
-Main projects
----------------
-
-96 minimature microscopes for parallel cell microscopy in fluorescence and quantitative phase
-###############################################################################################
+## Main projects
 
 .. figure:: attached/96eye-logo.png
+
+    96 minimature microscopes for parallel cell microscopy in fluorescence and quantitative phase.
 
 I designed and assembled the 96-in-1 parallel imaging system for high-throughput cell imaging to address the time and image throughput tradeoff of existing technologies.
 By using 96 repeating units of low-cost CMOS image sensors and custom designed plastic-molded objectives, the cell cultures of all wells of the 96-well plate can be imaged simultaneously.
@@ -22,9 +19,7 @@ The system was successfully delivered to `Amgen <https://www.amgen.com/>`_ to ac
 
 * `Product website <https://www.clearbridgebiophotonics.com/technology>`_
 
-Super-resolution for ultrafast optical time-stretch microscopy
-##################################################################
-
+### Super-resolution for ultrafast optical time-stretch microscopy
 .. figure:: attached/pixel_sr.png
 
 
@@ -43,10 +38,10 @@ I also investigate the all-passive pixel super-resolution without beam scanning 
   `Demo 2 <./scatter_plot/>`_
   `Dataset <http://academictorrents.com/collection/pixel-super-resolution-of-optofluidic-time-stretch-microscopy>`_
 
-Fluorescence laser scanning microscopy at ultrahigh speed
-##################################################################
+### Fluorescence laser scanning microscopy at ultrahigh speed
 
 .. figure:: attached/fsteam.png
+
 
 I am interested in applying unconventional imaging technique to fluorescence mircoscopy.
 For instance, optical time-stretch technology has enabled laser traversal speed of beyond 1km/s.
@@ -59,11 +54,9 @@ I developed models to predict the optical performance at such high scanning spee
   `"Speed-dependent resolution analysis of ultrafast laser-scanning fluorescence microscopy," <http://dx.doi.org/10.1364/JOSAB.31.000755>`_
   *JOSA B* **31**, 755--64 (2014).
 
-Signal reduction of laser scanning microscopy with compressed sensing
-#########################################################################
-
 .. figure:: attached/cs_osh.png
 
+    Signal reduction of laser scanning microscopy with compressed sensing
 
 High throughput cellular imaging generates massive number of image frames, which is eventually compressed for long-term archival purpose.
 For some applications, a small subset of spatial features (mass, area, shape, ...) are extracted for statistical analysis.
@@ -76,10 +69,9 @@ Therefore, it suffices to *compress* the raw data on the sensor side to relief t
   `"Signal reduction in fluroescence imaging using radio frequency-multiplexed excitation by compressed sensing," <http://dx.doi.org/10.1117/12.2072016>`_
   *Photonics Asia 2015*.
 
-Arbitrary pattern generation at ultrahigh frame rate (> 10 MHz)
-##################################################################
-
 .. figure:: attached/vipa.png
+
+    Arbitrary pattern generation at ultrahigh frame rate (> 10 MHz)
 
 Patterned illumination is an established technique in industrial optical metrology and biological imaging.
 With the advent of ultrafast imaging technologies, the existing pattern generation mechanism is currently unable to cope with the pressing need for higher frame rate.
@@ -92,8 +84,7 @@ With the assistance of Andy K.S. Lau, I address this challenge with a two-dimens
 Side projects
 ---------------
 
-Phase locking of 10MHz femtosecond mode-locked laser
-######################################################
+### Phase locking of 10MHz femtosecond mode-locked laser
 
 .. figure:: attached/phase_lock.jpg
 
@@ -105,8 +96,7 @@ I designed a phase lock loop (PLL) amplifier to generate a 10 MHz TTL signal syn
 * `Interactive pick-and-place helper </ibom/?pcbdata=data/PhaseLock.json>`_
 * `Order from OSHPark <https://oshpark.com/shared_projects/Gh8VLLjV>`_
 
-Precise spin control of BioDVD imaging platform
-######################################################
+### Precise spin control of BioDVD imaging platform
 
 .. figure:: attached/biodvd.png
 
@@ -117,8 +107,7 @@ With Anson Tang, I built a digital PID controller with ATTiny/AVR chips enabling
   `"Time-stretch microscopy on a DVD for high-throughput imaging cell-based assay," <https://doi.org/10.1364/BOE.8.000640>`_
   *Biomed. Opt. Express* **8**, 640--652 (2017)
 
-74HC logic board for synchronous frequency control of the acousto-optic deflector
-###################################################################################
+### 74HC logic board for synchronous frequency control of the acousto-optic deflector
 
 * :download:`Gerber file <attached/AOD_driver.zip>`
 * `Interactive pick-and-place helper </ibom/?pcbdata=data/aod-deflect.json>`_
