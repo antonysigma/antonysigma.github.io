@@ -7,10 +7,16 @@ For the exhaustive list of my research, you may refer to my `Google scholar <htt
 Main projects
 ---------------
 
+ARM TrustZone security-hardened cameraphone to ensure authentic new photos
+###########################################################################
+
+...
+
+
 96 minimature microscopes for parallel cell microscopy in fluorescence and quantitative phase
 ###############################################################################################
 
-.. figure:: attached/96eye-logo.png
+.. figure:: https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-019-47146-z/MediaObjects/41598_2019_47146_Fig1_HTML.png?as=webp
 
 I designed and assembled the 96-in-1 parallel imaging system for high-throughput cell imaging to address the time and image throughput tradeoff of existing technologies.
 By using 96 repeating units of low-cost CMOS image sensors and custom designed plastic-molded objectives, the cell cultures of all wells of the 96-well plate can be imaged simultaneously.
@@ -25,7 +31,8 @@ The system was successfully delivered to `Amgen <https://www.amgen.com/>`_ to ac
 Super-resolution for ultrafast optical time-stretch microscopy
 ##################################################################
 
-.. figure:: attached/pixel_sr.png
+.. figure:: https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fsrep44608/MediaObjects/41598_2017_Article_BFsrep44608_Fig2_HTML.jpg?as=webp
+    :width: 100%
 
 
 Optical time-stretch microscopy captures high speed dynamics at multi-billion pixels per second, but the image resolution is limited by the Nyquist bandwidth of the digitizer.
@@ -62,7 +69,8 @@ I developed models to predict the optical performance at such high scanning spee
 Signal reduction of laser scanning microscopy with compressed sensing
 #########################################################################
 
-.. figure:: attached/cs_osh.png
+.. figure:: https://opg.optica.org/getimagev2.cfm?img=67SQCJTf12rVc94c%2BhD6uq%2F7UzrWCwJHDx10eeh1eLM%3D&uri=optica-3-8-911-g001
+    :width: 100%
 
 
 High throughput cellular imaging generates massive number of image frames, which is eventually compressed for long-term archival purpose.
@@ -79,7 +87,7 @@ Therefore, it suffices to *compress* the raw data on the sensor side to relief t
 Arbitrary pattern generation at ultrahigh frame rate (> 10 MHz)
 ##################################################################
 
-.. figure:: attached/vipa.png
+.. figure:: https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&uri=optica-2-12-1037-g001
 
 Patterned illumination is an established technique in industrial optical metrology and biological imaging.
 With the advent of ultrafast imaging technologies, the existing pattern generation mechanism is currently unable to cope with the pressing need for higher frame rate.
@@ -91,6 +99,71 @@ With the assistance of Andy K.S. Lau, I address this challenge with a two-dimens
 
 Side projects
 ---------------
+
+4-channel Peltier PID cooler for 3.5Watt laser modules, 30W per channel
+########################################################################
+
+.. figure:: https://github.com/antonysigma/peltier-cooler-4ch/raw/master/preview.jpg
+
+The custom PCB to control up to 4 individual Peliter coolers interfacing the high power laser modules.
+
+Technical specifications:
+
+* Input: 24VDC, max 20A.
+
+* Output per channel: up to 10A, PWM at 5% to 100% duty cycle. 30N06L
+ 
+* Recommended Peltier module: series-parallel modules supporting up to 24VDC
+  input, with up to 50W heat transfer on the cold side.
+ 
+* Temperature sensor: Dallas digital temperature sensor with Onewire interface. DS18B20
+ 
+* Microcontroller (MCU) power supply: 5VDC, max 200mA. Completely separated from the 12DVC supply.
+ 
+* MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.
+ 
+* External set point control: I2C bus to reduce the cabling effort.
+
+* Project website: https://github.com/antonysigma/peltier-cooler-4ch
+
+**Why I made my own board** The board is primarily used to dissipate the waste
+heat from the 3,000mW laser modules. A high laser power is required to
+compensate the coupling loss of the homogenizing liquid light-guide and the TV
+lens, so that I can excite the fluorescence-stained mammalian cells on all 96
+wells of the multi-well plate (area: 180mm x 90mm).
+
+At the time, there was an urgent need to create an evaluation board at less than
+10% of the cost of the OEM laser parts. So, the OEM provided temperature
+controller evaluation kits were a no go.
+
+Piezo-flexure nano-positioning stage control board
+#################################################################
+
+.. figure:: https://github.com/antonysigma/piezo-stage-pid-board/raw/master/preview.jpg
+
+The PCB to implement z-stack focus scanning with a custom piezo-flexure nano-positioning stage.
+
+Technical specifications:
+
+* Power input: 5VDC, max 200mA.
+
+* Output: analog output for the piezo class-A amplifier, bandwidth 250kHz max, dual rail +/- 5V via the 50 Ohm coaxial cable.
+
+* Position sensor: linear encoder with differential quadrature TTL output.
+
+* MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.
+
+* External position control: I2C bus to reduce the cabling effort.
+
+* Project website: https://github.com/antonysigma/piezo-stage-pid-board
+
+**Why I made my own board**
+The board is primarily used to actuate the Piezo-flexure nano-positioning Z-axis
+stage at a step size of 5 micrometer; full travel range of 0~250 micrometer, and
+a close-loop settle time of 50 millisecond. The 50 millisecond settle time
+requirement originates from the need to avoid motion blur in the 96-camera
+imaging light path; the stage must settle completely before the
+flurorescence-excitation flash light can be turned on.
 
 Phase locking of 10MHz femtosecond mode-locked laser
 ######################################################

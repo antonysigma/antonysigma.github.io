@@ -3,37 +3,26 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. image:: attached/profile_pic.jpg
-    :align: left
-    :class: profile
-
-Antony C.S. Chan
+Antony C.S. Chan, PhD
 ==========================================================
 
-| Postdoctoral scholar, `Biophotonics Laboratory <http://www.biophot.caltech.edu/>`_
+| FPGA-accelerated computing | High-thoughput image processing,
+| `Element Biosciences <https://www.elementbiosciences.com/>`_
+| 
+| 2017--2019 Postdoctoral scholar, `Biophotonics Laboratory <http://www.biophot.caltech.edu/>`_
 | `California Institute of Technology <https://www.caltech.edu/>`_
 |
 | PhD, `Applied Life Photonics Laboratory <https://www.eee.hku.hk/~alphahku/>`_ 
 | `Imaging System Laboratory <https://www.eee.hku.hk/isl/>`_
 | `The University of Hong Kong <https://www.hku.hk/>`_
 |
-| **Resume**: `Linkedlin <https://www.linkedin.com/in/antonycschan/>`_
+| **Resume**: `Linkedin <https://www.linkedin.com/in/antonycschan/>`_
 |
-
-I am a postdoctoral scholar at Caltech, supervised by `Prof Changhuei Yang <http://www.biophot.caltech.edu/people/yang.html>`_.
-I am interested in computational microscopy and high-throughput fluoresescence imaging.
-
-.. image:: attached/hku-logo.png
-    :height: 40px
-
-.. image:: attached/caltech-logo.png
-    :height: 30px
 
 Contact
 --------
-| 1200 E California Blvd MC136-93
-| Pasadena, CA 91125
-| antony DOT cschan AT caltech DOT edu
+| Github: @antonysigma
+| Linkedin: https://www.linkedin.com/in/antonycschan/
 
 Contents
 -----------
