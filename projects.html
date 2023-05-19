@@ -158,7 +158,8 @@
   <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Projects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electronics.html">Electronics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code.html#dataset">Dataset</a></li>
 </ul>
 
@@ -279,7 +280,7 @@ Therefore, it suffices to <em>compress</em> the raw data on the sensor side to r
 <section id="arbitrary-pattern-generation-at-ultrahigh-frame-rate-10-mhz">
 <h3>Arbitrary pattern generation at ultrahigh frame rate (&gt; 10 MHz)<a class="headerlink" href="#arbitrary-pattern-generation-at-ultrahigh-frame-rate-10-mhz" title="Permalink to this heading">#</a></h3>
 <figure class="align-default">
-<img alt="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001" src="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001" />
+<a class="reference internal image-reference" href="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001"><img alt="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001" src="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001" style="width: 100%;" /></a>
 </figure>
 <p>Patterned illumination is an established technique in industrial optical metrology and biological imaging.
 With the advent of ultrafast imaging technologies, the existing pattern generation mechanism is currently unable to cope with the pressing need for higher frame rate.
@@ -293,89 +294,7 @@ With the assistance of Andy K.S. Lau, I address this challenge with a two-dimens
 </section>
 <section id="side-projects">
 <h2>Side projects<a class="headerlink" href="#side-projects" title="Permalink to this heading">#</a></h2>
-<section id="channel-peltier-pid-cooler-for-3-5watt-laser-modules-30w-per-channel">
-<h3>4-channel Peltier PID cooler for 3.5Watt laser modules, 30W per channel<a class="headerlink" href="#channel-peltier-pid-cooler-for-3-5watt-laser-modules-30w-per-channel" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="https://github.com/antonysigma/peltier-cooler-4ch/raw/master/preview.jpg" src="https://github.com/antonysigma/peltier-cooler-4ch/raw/master/preview.jpg" />
-</figure>
-<p>The custom PCB to control up to 4 individual Peliter coolers interfacing the high power laser modules.</p>
-<p>Technical specifications:</p>
-<ul class="simple">
-<li><p>Input: 24VDC, max 20A.</p></li>
-<li><p>Output per channel: up to 10A, PWM at 5% to 100% duty cycle. 30N06L</p></li>
-<li><p>Recommended Peltier module: series-parallel modules supporting up to 24VDC
-input, with up to 50W heat transfer on the cold side.</p></li>
-<li><p>Temperature sensor: Dallas digital temperature sensor with Onewire interface. DS18B20</p></li>
-<li><p>Microcontroller (MCU) power supply: 5VDC, max 200mA. Completely separated from the 12DVC supply.</p></li>
-<li><p>MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.</p></li>
-<li><p>External set point control: I2C bus to reduce the cabling effort.</p></li>
-<li><p>Project website: <a class="reference external" href="https://github.com/antonysigma/peltier-cooler-4ch">https://github.com/antonysigma/peltier-cooler-4ch</a></p></li>
-</ul>
-<p><strong>Why I made my own board</strong> The board is primarily used to dissipate the waste
-heat from the 3,000mW laser modules. A high laser power is required to
-compensate the coupling loss of the homogenizing liquid light-guide and the TV
-lens, so that I can excite the fluorescence-stained mammalian cells on all 96
-wells of the multi-well plate (area: 180mm x 90mm).</p>
-<p>At the time, there was an urgent need to create an evaluation board at less than
-10% of the cost of the OEM laser parts. So, the OEM provided temperature
-controller evaluation kits were a no go.</p>
-</section>
-<section id="piezo-flexure-nano-positioning-stage-control-board">
-<h3>Piezo-flexure nano-positioning stage control board<a class="headerlink" href="#piezo-flexure-nano-positioning-stage-control-board" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="https://github.com/antonysigma/piezo-stage-pid-board/raw/master/preview.jpg" src="https://github.com/antonysigma/piezo-stage-pid-board/raw/master/preview.jpg" />
-</figure>
-<p>The PCB to implement z-stack focus scanning with a custom piezo-flexure nano-positioning stage.</p>
-<p>Technical specifications:</p>
-<ul class="simple">
-<li><p>Power input: 5VDC, max 200mA.</p></li>
-<li><p>Output: analog output for the piezo class-A amplifier, bandwidth 250kHz max, dual rail +/- 5V via the 50 Ohm coaxial cable.</p></li>
-<li><p>Position sensor: linear encoder with differential quadrature TTL output.</p></li>
-<li><p>MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.</p></li>
-<li><p>External position control: I2C bus to reduce the cabling effort.</p></li>
-<li><p>Project website: <a class="reference external" href="https://github.com/antonysigma/piezo-stage-pid-board">https://github.com/antonysigma/piezo-stage-pid-board</a></p></li>
-</ul>
-<p><strong>Why I made my own board</strong>
-The board is primarily used to actuate the Piezo-flexure nano-positioning Z-axis
-stage at a step size of 5 micrometer; full travel range of 0~250 micrometer, and
-a close-loop settle time of 50 millisecond. The 50 millisecond settle time
-requirement originates from the need to avoid motion blur in the 96-camera
-imaging light path; the stage must settle completely before the
-flurorescence-excitation flash light can be turned on.</p>
-</section>
-<section id="phase-locking-of-10mhz-femtosecond-mode-locked-laser">
-<h3>Phase locking of 10MHz femtosecond mode-locked laser<a class="headerlink" href="#phase-locking-of-10mhz-femtosecond-mode-locked-laser" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/phase_lock.jpg" src="_images/phase_lock.jpg" />
-</figure>
-<p>I designed a phase lock loop (PLL) amplifier to generate a 10 MHz TTL signal synchronized to the ultrashort pulsed fiber laser at 400 femtosecond pulse width.</p>
-<ul class="simple">
-<li><p>Details of the <a class="reference external" href="https://doi.org/10.1364/OE.14.010095">ANDi laser</a> that we assembled in house.</p></li>
-<li><p><a class="reference download internal" download="" href="_downloads/7f78f4e26fdf73671ef21164043e66bc/phase_lock.zip"><code class="xref download docutils literal notranslate"><span class="pre">Gerber</span> <span class="pre">file</span></code></a></p></li>
-<li><p><a class="reference external" href="/ibom/?pcbdata=data/PhaseLock.json">Interactive pick-and-place helper</a></p></li>
-<li><p><a class="reference external" href="https://oshpark.com/shared_projects/Gh8VLLjV">Order from OSHPark</a></p></li>
-</ul>
-</section>
-<section id="precise-spin-control-of-biodvd-imaging-platform">
-<h3>Precise spin control of BioDVD imaging platform<a class="headerlink" href="#precise-spin-control-of-biodvd-imaging-platform" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/biodvd.png" src="_images/biodvd.png" />
-</figure>
-<p>With Anson Tang, I built a digital PID controller with ATTiny/AVR chips enabling precise speed control of BioDVD platform for microslide digitization within 5 minutes.</p>
-<ul class="simple">
-<li><p>Anson H. L. Tang, P. Yeung, Godfrey C. F. Chan, Barbara P. Chan, Kenneth K. Y. Wong, and Kevin K. Tsia,
-<a class="reference external" href="https://doi.org/10.1364/BOE.8.000640">“Time-stretch microscopy on a DVD for high-throughput imaging cell-based assay,”</a>
-<em>Biomed. Opt. Express</em> <strong>8</strong>, 640–652 (2017)</p></li>
-</ul>
-</section>
-<section id="hc-logic-board-for-synchronous-frequency-control-of-the-acousto-optic-deflector">
-<h3>74HC logic board for synchronous frequency control of the acousto-optic deflector<a class="headerlink" href="#hc-logic-board-for-synchronous-frequency-control-of-the-acousto-optic-deflector" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="_downloads/fbceaa440ac67615af8e2975e7adb9a8/AOD_driver.zip"><code class="xref download docutils literal notranslate"><span class="pre">Gerber</span> <span class="pre">file</span></code></a></p></li>
-<li><p><a class="reference external" href="/ibom/?pcbdata=data/aod-deflect.json">Interactive pick-and-place helper</a></p></li>
-<li><p><a class="reference external" href="https://oshpark.com/shared_projects/FaXqBfp3">Order from OSHPark</a></p></li>
-</ul>
-</section>
+<p>Check out the electronics projects and software projects.</p>
 </section>
 </section>
 
@@ -444,14 +363,7 @@ flurorescence-excitation flash light can be turned on.</p>
 <li><a class="reference internal" href="#arbitrary-pattern-generation-at-ultrahigh-frame-rate-10-mhz">Arbitrary pattern generation at ultrahigh frame rate (&gt; 10 MHz)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#side-projects">Side projects</a><ul>
-<li><a class="reference internal" href="#channel-peltier-pid-cooler-for-3-5watt-laser-modules-30w-per-channel">4-channel Peltier PID cooler for 3.5Watt laser modules, 30W per channel</a></li>
-<li><a class="reference internal" href="#piezo-flexure-nano-positioning-stage-control-board">Piezo-flexure nano-positioning stage control board</a></li>
-<li><a class="reference internal" href="#phase-locking-of-10mhz-femtosecond-mode-locked-laser">Phase locking of 10MHz femtosecond mode-locked laser</a></li>
-<li><a class="reference internal" href="#precise-spin-control-of-biodvd-imaging-platform">Precise spin control of BioDVD imaging platform</a></li>
-<li><a class="reference internal" href="#hc-logic-board-for-synchronous-frequency-control-of-the-acousto-optic-deflector">74HC logic board for synchronous frequency control of the acousto-optic deflector</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#side-projects">Side projects</a></li>
 </ul>
 </li>
 </ul>

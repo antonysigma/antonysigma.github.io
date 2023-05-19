@@ -1,4 +1,4 @@
-Code
+Software
 =========
 
 Here are the coding projects I wrote for research projects or as a hobby.

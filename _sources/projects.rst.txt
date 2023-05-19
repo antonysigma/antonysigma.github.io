@@ -88,6 +88,7 @@ Arbitrary pattern generation at ultrahigh frame rate (> 10 MHz)
 ##################################################################
 
 .. figure:: https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&uri=optica-2-12-1037-g001
+    :width: 100%
 
 Patterned illumination is an established technique in industrial optical metrology and biological imaging.
 With the advent of ultrafast imaging technologies, the existing pattern generation mechanism is currently unable to cope with the pressing need for higher frame rate.
@@ -100,100 +101,4 @@ With the assistance of Andy K.S. Lau, I address this challenge with a two-dimens
 Side projects
 ---------------
 
-4-channel Peltier PID cooler for 3.5Watt laser modules, 30W per channel
-########################################################################
-
-.. figure:: https://github.com/antonysigma/peltier-cooler-4ch/raw/master/preview.jpg
-
-The custom PCB to control up to 4 individual Peliter coolers interfacing the high power laser modules.
-
-Technical specifications:
-
-* Input: 24VDC, max 20A.
-
-* Output per channel: up to 10A, PWM at 5% to 100% duty cycle. 30N06L
- 
-* Recommended Peltier module: series-parallel modules supporting up to 24VDC
-  input, with up to 50W heat transfer on the cold side.
- 
-* Temperature sensor: Dallas digital temperature sensor with Onewire interface. DS18B20
- 
-* Microcontroller (MCU) power supply: 5VDC, max 200mA. Completely separated from the 12DVC supply.
- 
-* MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.
- 
-* External set point control: I2C bus to reduce the cabling effort.
-
-* Project website: https://github.com/antonysigma/peltier-cooler-4ch
-
-**Why I made my own board** The board is primarily used to dissipate the waste
-heat from the 3,000mW laser modules. A high laser power is required to
-compensate the coupling loss of the homogenizing liquid light-guide and the TV
-lens, so that I can excite the fluorescence-stained mammalian cells on all 96
-wells of the multi-well plate (area: 180mm x 90mm).
-
-At the time, there was an urgent need to create an evaluation board at less than
-10% of the cost of the OEM laser parts. So, the OEM provided temperature
-controller evaluation kits were a no go.
-
-Piezo-flexure nano-positioning stage control board
-#################################################################
-
-.. figure:: https://github.com/antonysigma/piezo-stage-pid-board/raw/master/preview.jpg
-
-The PCB to implement z-stack focus scanning with a custom piezo-flexure nano-positioning stage.
-
-Technical specifications:
-
-* Power input: 5VDC, max 200mA.
-
-* Output: analog output for the piezo class-A amplifier, bandwidth 250kHz max, dual rail +/- 5V via the 50 Ohm coaxial cable.
-
-* Position sensor: linear encoder with differential quadrature TTL output.
-
-* MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.
-
-* External position control: I2C bus to reduce the cabling effort.
-
-* Project website: https://github.com/antonysigma/piezo-stage-pid-board
-
-**Why I made my own board**
-The board is primarily used to actuate the Piezo-flexure nano-positioning Z-axis
-stage at a step size of 5 micrometer; full travel range of 0~250 micrometer, and
-a close-loop settle time of 50 millisecond. The 50 millisecond settle time
-requirement originates from the need to avoid motion blur in the 96-camera
-imaging light path; the stage must settle completely before the
-flurorescence-excitation flash light can be turned on.
-
-Phase locking of 10MHz femtosecond mode-locked laser
-######################################################
-
-.. figure:: attached/phase_lock.jpg
-
-
-I designed a phase lock loop (PLL) amplifier to generate a 10 MHz TTL signal synchronized to the ultrashort pulsed fiber laser at 400 femtosecond pulse width.
-
-* Details of the `ANDi laser <https://doi.org/10.1364/OE.14.010095>`_ that we assembled in house.
-* :download:`Gerber file <attached/phase_lock.zip>`
-* `Interactive pick-and-place helper </ibom/?pcbdata=data/PhaseLock.json>`_
-* `Order from OSHPark <https://oshpark.com/shared_projects/Gh8VLLjV>`_
-
-Precise spin control of BioDVD imaging platform
-######################################################
-
-.. figure:: attached/biodvd.png
-
-
-With Anson Tang, I built a digital PID controller with ATTiny/AVR chips enabling precise speed control of BioDVD platform for microslide digitization within 5 minutes.
-
-* Anson H. L. Tang, P. Yeung, Godfrey C. F. Chan, Barbara P. Chan, Kenneth K. Y. Wong, and Kevin K. Tsia,
-  `"Time-stretch microscopy on a DVD for high-throughput imaging cell-based assay," <https://doi.org/10.1364/BOE.8.000640>`_
-  *Biomed. Opt. Express* **8**, 640--652 (2017)
-
-74HC logic board for synchronous frequency control of the acousto-optic deflector
-###################################################################################
-
-* :download:`Gerber file <attached/AOD_driver.zip>`
-* `Interactive pick-and-place helper </ibom/?pcbdata=data/aod-deflect.json>`_
-* `Order from OSHPark <https://oshpark.com/shared_projects/FaXqBfp3>`_
-
+Check out the electronics projects and software projects.

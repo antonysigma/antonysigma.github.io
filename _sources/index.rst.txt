@@ -13,7 +13,7 @@ Antony C.S. Chan, PhD
 | `California Institute of Technology <https://www.caltech.edu/>`_
 |
 | PhD, `Applied Life Photonics Laboratory <https://www.eee.hku.hk/~alphahku/>`_ 
-| `Imaging System Laboratory <https://www.eee.hku.hk/isl/>`_
+| `Imaging System Laboratory <https://eee.hku.hk/~elam/>`_
 | `The University of Hong Kong <https://www.hku.hk/>`_
 |
 | **Resume**: `Linkedin <https://www.linkedin.com/in/antonycschan/>`_
@@ -32,5 +32,6 @@ Contents
 
    projects
    publications
+   electronics
    code
 
