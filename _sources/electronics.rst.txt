@@ -77,6 +77,8 @@ Precise spin control of BioDVD imaging platform
 
 With Anson Tang, I built a digital PID controller with ATTiny/AVR chips enabling precise speed control of BioDVD platform for microslide digitization within 5 minutes.
 
+* Project website: https://github.com/antonysigma/dvd-spindle-motor-driver
+
 * Anson H. L. Tang, P. Yeung, Godfrey C. F. Chan, Barbara P. Chan, Kenneth K. Y. Wong, and Kevin K. Tsia,
   `"Time-stretch microscopy on a DVD for high-throughput imaging cell-based assay," <https://doi.org/10.1364/BOE.8.000640>`_
   *Biomed. Opt. Express* **8**, 640--652 (2017)
@@ -99,6 +101,7 @@ Phase locking of 10MHz femtosecond mode-locked laser
 
 I designed a phase lock loop (PLL) amplifier to generate a 10 MHz TTL signal synchronized to the ultrashort pulsed fiber laser at 400 femtosecond pulse width.
 
+* Project website: https://github.com/antonysigma/femptosecond-pulse-trigger-pcb
 * Details of the `ANDi laser <https://doi.org/10.1364/OE.14.010095>`_ that we assembled in house.
 * :download:`Gerber file <attached/phase_lock.zip>`
 * `Interactive pick-and-place helper </ibom/?pcbdata=data/PhaseLock.json>`_
