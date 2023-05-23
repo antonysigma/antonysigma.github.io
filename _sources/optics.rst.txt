@@ -1,0 +1,95 @@
+Optics
+########
+
+(Work in progress).
+
+Poorman's pinhole camera with silver-halide films
+====================================================
+
+TBD.
+
+2017 - 2010: Amateur telescope making
+========================================
+
+.. figure:: attached/telescope-group-photo.jpg
+
+Phase 1: Coarse grinding
+--------------------------
+
+.. figure:: attached/telescope-powder.jpg
+
+.. figure:: attached/telescope-table.jpg
+
+.. figure:: attached/telescope-defect-checking.jpg
+
+Phase 2: Fine grinding
+------------------------
+
+.. figure:: attached/telescope-fine-grinding.jpg
+
+.. figure:: attached/telescope-bubble-technique.jpg
+
+.. figure:: attached/telescope-scattering-newspaper.jpg
+
+.. figure:: attached/telescope-scattering-reflection.jpg
+
+.. figure:: attached/telescope-scattering-torch.jpg
+
+.. figure:: attached/telescope-center-dark.jpg
+
+Phase 3: Wet polishing with lap pitch
+--------------------------------------
+
+.. figure:: attached/telescope-lap-pitch.jpg
+
+.. figure:: attached/telescope-press-fit.jpg
+
+.. figure:: attached/telescope-press-fit-2.jpg
+
+.. figure:: attached/telescope-polishing.jpg
+
+.. figure:: attached/telescope-polishing-reflection.jpg
+
+.. figure:: attached/telescope-polishing-progress.jpg
+
+Phase 4: testing for optical aberration
+----------------------------------------
+
+.. figure:: attached/telescope-ronchi-tester.jpg
+
+.. figure:: attached/telescope-ronchi-diagram.jpg
+
+.. figure:: attached/telescope-ronchi-distance.jpg
+
+.. figure:: attached/telescope-ronchi.jpg
+
+.. figure:: attached/telescope-foucault.jpg
+
+.. figure:: attached/telescope-foucault-usage.jpg
+
+
+Phase 5: Opto-mechanical assembly
+---------------------------------------
+
+.. figure:: attached/telescope-workshop.jpg
+
+.. figure:: attached/telescope-kinematic-mount.jpg
+
+.. figure:: attached/telescope-painting.jpg
+
+.. figure:: attached/telescope-internal.jpg
+    
+.. figure:: attached/telescope-linear-gear.jpg
+
+Phase 6: field testing
+------------------------
+
+.. figure:: attached/telescope-party.jpg
+
+.. figure:: attached/telescope-jupyter.jpg
+
+.. figure:: attached/telescope-moon.jpg
+
+.. figure:: attached/telescope-skyscraper.jpg
+
+.. figure:: attached/telescope-solar-eclipse-2009.jpg

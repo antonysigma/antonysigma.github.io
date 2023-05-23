@@ -6,8 +6,13 @@
 Antony C.S. Chan, PhD
 ==========================================================
 
-| FPGA-accelerated computing | High-thoughput image processing,
+| Current: Consultant for hire, super-resolution imaging and giga-pixel camera design
+|
+| 2021--2023 FPGA-accelerated computing | High-thoughput image processing,
 | `Element Biosciences <https://www.elementbiosciences.com/>`_
+| 
+| 2019--2021 Hack-proof camera phone R&D to fight fake news
+| `Truepic Inc <https://truepic.com/>`_
 | 
 | 2017--2019 Postdoctoral scholar, `Biophotonics Laboratory <http://www.biophot.caltech.edu/>`_
 | `California Institute of Technology <https://www.caltech.edu/>`_
@@ -21,7 +26,7 @@ Antony C.S. Chan, PhD
 
 Contact
 --------
-| Github: @antonysigma
+| Github: https://github.com/antonysigma/
 | Linkedin: https://www.linkedin.com/in/antonycschan/
 
 Contents
@@ -33,5 +38,6 @@ Contents
    projects
    publications
    electronics
+   optics
    code
 

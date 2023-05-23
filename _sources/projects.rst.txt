@@ -1,8 +1,12 @@
-Projects
+Research
 ==========
 
-The following lists my current research projects.
-For the exhaustive list of my research, you may refer to my `Google scholar <https://scholar.google.com/citations?hl=en&user=kW8tyV0AAAAJ>`_ profile.
+Here is the curated list of large scale projects I led back in academia.
+Although I have already transitioned into the industry, I do read the past
+publications to re-live the finest moments.
+
+For the exhaustive list of my research, you may refer to my `Google scholar
+<https://scholar.google.com/citations?hl=en&user=kW8tyV0AAAAJ>`_ profile.
 
 Main projects
 ---------------
