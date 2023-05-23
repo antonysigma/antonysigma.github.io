@@ -72,7 +72,8 @@ flurorescence-excitation flash light can be turned on.
 Precise spin control of BioDVD imaging platform
 ######################################################
 
-.. figure:: attached/biodvd.png
+.. figure:: https://github.com/antonysigma/dvd-spindle-motor-driver/raw/master/drawing/preview.jpg
+    :width: 100%
 
 
 With Anson Tang, I built a digital PID controller with ATTiny/AVR chips enabling precise speed control of BioDVD platform for microslide digitization within 5 minutes.
@@ -90,8 +91,63 @@ With Anson Tang, I built a digital PID controller with ATTiny/AVR chips enabling
 * `Interactive pick-and-place helper </ibom/?pcbdata=data/aod-deflect.json>`_
 * `Order from OSHPark <https://oshpark.com/shared_projects/FaXqBfp3>`_
 
-Analog circuit
------------------
+Line follower robot using pure IC logic for STEM education
+#################################################################
+
+.. figure:: attached/Robot-car_schematics.png
+
+This is a line following car built entirely out of 74HC digital IC logic and LM
+analog IC logic, with the focus of "form... shall ever follows function". The
+following first principles are taught under the disguise of car race:
+
+* **Optical physics:** how one can measure distance, offset, and specular
+  reflectivity with an infrared proximity sensor;
+
+* **Analog electronics:** how one can reduce measurement noise with
+  signal-conditining RC circuits.
+
+* **Digital signal processing:** how one can eliminate electronic component
+  variations by digitizing the proximity sensor inputs. Why digital signals can
+  enable in-circuit programming, as well as design verifications on paper.
+
+* **Power electronics design:** how one can generate a PWM signal from OpAmps to
+  convert the digital control signal to an analog control signal (sigma delta DAC),
+  which in turn is used to drive the parallex motor on the wheels.
+
+* **Design for manufacturing:** how the control board should be built to minimize
+  damage due to shock and vibrations. How one can trade inventory complexity and
+  system robustness when engineers sources for components.
+
+* **Mechanical engineering:** how one can ensure wheel traction as a function of
+  wheel diameter, torque, tire material, and rotation speed.
+
+* **Close-loop control theory:** how one can tune the open-loop gain of the system
+  to increase car speed, while minimizing oscillations and loss of line-tracking
+  during turns, a Pareto-optiminal multi-criteria optimization problem.
+
+**Why I make my own board**
+Today's proliferation of complex embedded electronics has led to a
+`Quadcore CPU-enabled soldering iron <https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/5G-enabled soldering>`_, 
+and a `line following car running rich Linux operating system <https://projects.raspberrypi.org/en/projects/rpi-python-line-following>`_.
+It breaks my heart that these advanced technologies, e.g. Raspberry Pi, FPGA, and Arduino, are made to serve such a humble application.
+These system on boards (SoBs), and system on chip (SoCs) exist to solve a more sophsicated problem.
+
+To be fair, these education kits are ideal for student's exposure to the
+bleeding edge technologies; depending on where you live, it might help build
+your resume as a salesperson boosting the component sales of the OEM vendors.
+The strategy also helps the vendors because of the vendor lock-in and technology
+inertia built into the education kits. However, they often fall short of
+teaching the core STEM principle: "form shall ever follows function". To train
+an inquiring scientific mind, one should first define *what* the robot should
+behave to follow the track based on stakeholder's needs, not *how* the robot
+should execute the program to steer the wheels. In other words, one
+should build a *design* first, then map the design to the *technology*.
+
+
+* Schematic capture and PCB design: :download:`attached/Robot-car.zip`
+
+Analog circuit (microwave)
+-----------------------------
 
 Phase locking of 10MHz femtosecond mode-locked laser
 ######################################################
@@ -106,3 +162,8 @@ I designed a phase lock loop (PLL) amplifier to generate a 10 MHz TTL signal syn
 * :download:`Gerber file <attached/phase_lock.zip>`
 * `Interactive pick-and-place helper </ibom/?pcbdata=data/PhaseLock.json>`_
 * `Order from OSHPark <https://oshpark.com/shared_projects/Gh8VLLjV>`_
+
+Pulse oximeter signal conditioning circuit for STEM education
+################################################################################
+
+.. figure:: attached/Pulse-oximeter_schematics.png

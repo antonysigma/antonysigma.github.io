@@ -26,7 +26,7 @@ The system was successfully delivered to `Amgen <https://www.amgen.com/>`_ to ac
   `"Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)" <http://dx.doi.org/10.1038/s41598-019-47146-z>`_
   *Scientific Reports* **9**, 11114 (2019).
 
-* `Product website <https://www.clearbridgebiophotonics.com/technology>`_
+* Product website `https://www.clearbridgebiophotonics.com/technology`.
 
 Super-resolution for ultrafast optical time-stretch microscopy
 ##################################################################

@@ -1,7 +1,60 @@
 Software
 =========
 
-Here are the coding projects I wrote for research projects or as a hobby.
+Here are the custom software tools I wrote as a hobby. 
+
+MBSE-lite: system requirement tracking and design with a simplified schema
+----------------------------------------------------------------------------
+
+.. figure:: https://github.com/antonysigma/mbse-lite/blob/master/static/document-sources.png?raw=true
+
+A simple platform to organize product design requirements. Text editor only.
+Execute a single command to generate technical document for weekly design review
+meetings. Inspired from `Nichole Kass's online presentation
+<https://youtu.be/0MjopluRTaw>`_, the tools links the stakeholder's needs,
+system design problems and solutions without paying for the unused MBSE
+features, e.g. code generation, nested diagrams, and Matlab/Zemax parametrics
+simulations.
+
+* `Github <https://github.com/antonysigma/mbse-lite>`_
+
+* Reference: Nichole Kass, James Kolozs (2016). Getting Started with MBSE in
+  Product Development. INCOSE International Symposium.
+  https://doi.org/10.1002/j.2334-5837.2016.00176.x
+
+**Why I made my own tool.**
+As a giga-pixel microscopy researcher dealing with increasingly complex systems,
+I found the need for an end-to-end requirement management system that traces
+stakeholders' needs, functional requirements, design constraints, and physical
+architecture. Additionally, I needed a tool to analyze how design solutions
+(such as optical, mechanical, and electronic component specifications, software
+interface specifications, and SOPs) can verify the requirements and be validated
+with test plans.
+
+The challenge arises from the prevalent document-oriented approach used by
+research labs, startups, and OEM vendors. Traditionally, we rely on a
+combination of PowerPoint slides, documents, and freehand drawings for
+communication. As a project owner serving as a liason among vendors and
+stakeholders, these methods are labor-intensive due to the use of incompatible
+document processing tools, namely Confluence, emails, PDFs, and Word documents.
+I often ended up spending more time copy editing documents from one vendor to
+another, rather than focusing on the *design* itself.
+
+I also explored the model-based system engineering (MBSE) approach, but found
+that all existing commercial tools were overly bloated for medium-sized
+projects. My projects often involve fewer than 50 project members, including
+vendors; the commercial MBSE tools often intimidates them.
+
+For example, I do not need the code generation feature since my software vendor
+will develop their own software and test plans. Furthermore, allocating a
+function to multiple instances is unnecessary as most functions in the system
+are used exactly once for giga-pixel imaging projects. Similarly, Zemax and
+Matlab integration into the parametric design module is not needed as most PhDs
+develop their own simulation tools for academic publications.
+
+Ultimately, these commercial tools are designed to cater to NASA-scale projects
+and defense contractors with >1,000 head counts. For medium-sized projects, it
+is unnecessary to pay for features we don't use.
 
 Android Star Catalog on E-ink devices
 ---------------------------------------
@@ -9,9 +62,9 @@ Android Star Catalog on E-ink devices
 .. figure:: attached/starchart.jpg
 
 I created a "vanilla-flavoured" star map to run on E-ink readers,
-so I can focus on the serious scientific details of each star.
+so I can focus on the what matters during outdoor star gazing; to look up not down.
 The star positions are replicated from the
-*Positions and Proper Motion Star Catalog* at NASA. There are plans to add
+NASA's *Positions and Proper Motion Star Catalog*. There are plans to add
 more deep sky objects (double stars, nebula, galaxies, etc.)
 from the WDS and NGC database.
 

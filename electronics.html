@@ -270,9 +270,57 @@ flurorescence-excitation flash light can be turned on.</p>
 <li><p><a class="reference external" href="https://oshpark.com/shared_projects/FaXqBfp3">Order from OSHPark</a></p></li>
 </ul>
 </section>
+<section id="line-follower-robot-using-pure-ic-logic-for-stem-education">
+<h3>Line follower robot using pure IC logic for STEM education<a class="headerlink" href="#line-follower-robot-using-pure-ic-logic-for-stem-education" title="Permalink to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="_images/Robot-car_schematics.png" src="_images/Robot-car_schematics.png" />
+</figure>
+<p>This is a line following car built entirely out of 74HC digital IC logic and LM
+analog IC logic, with the focus of “form… shall ever follows function”. The
+following first principles are taught under the disguise of car race:</p>
+<ul class="simple">
+<li><p><strong>Optical physics:</strong> how one can measure distance, offset, and specular
+reflectivity with an infrared proximity sensor;</p></li>
+<li><p><strong>Analog electronics:</strong> how one can reduce measurement noise with
+signal-conditining RC circuits.</p></li>
+<li><p><strong>Digital signal processing:</strong> how one can eliminate electronic component
+variations by digitizing the proximity sensor inputs. Why digital signals can
+enable in-circuit programming, as well as design verifications on paper.</p></li>
+<li><p><strong>Power electronics design:</strong> how one can generate a PWM signal from OpAmps to
+convert the digital control signal to an analog control signal (sigma delta DAC),
+which in turn is used to drive the parallex motor on the wheels.</p></li>
+<li><p><strong>Design for manufacturing:</strong> how the control board should be built to minimize
+damage due to shock and vibrations. How one can trade inventory complexity and
+system robustness when engineers sources for components.</p></li>
+<li><p><strong>Mechanical engineering:</strong> how one can ensure wheel traction as a function of
+wheel diameter, torque, tire material, and rotation speed.</p></li>
+<li><p><strong>Close-loop control theory:</strong> how one can tune the open-loop gain of the system
+to increase car speed, while minimizing oscillations and loss of line-tracking
+during turns, a Pareto-optiminal multi-criteria optimization problem.</p></li>
+</ul>
+<p><strong>Why I make my own board</strong>
+Today’s proliferation of complex embedded electronics has led to a
+<a class="reference external" href="https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/5G-enabledsoldering">Quadcore CPU-enabled soldering iron</a>,
+and a <a class="reference external" href="https://projects.raspberrypi.org/en/projects/rpi-python-line-following">line following car running rich Linux operating system</a>.
+It breaks my heart that these advanced technologies, e.g. Raspberry Pi, FPGA, and Arduino, are made to serve such a humble application.
+These system on boards (SoBs), and system on chip (SoCs) exist to solve a more sophsicated problem.</p>
+<p>To be fair, these education kits are ideal for student’s exposure to the
+bleeding edge technologies; depending on where you live, it might help build
+your resume as a salesperson boosting the component sales of the OEM vendors.
+The strategy also helps the vendors because of the vendor lock-in and technology
+inertia built into the education kits. However, they often fall short of
+teaching the core STEM principle: “form shall ever follows function”. To train
+an inquiring scientific mind, one should first define <em>what</em> the robot should
+behave to follow the track based on stakeholder’s needs, not <em>how</em> the robot
+should execute the program to steer the wheels. In other words, one
+should build a <em>design</em> first, then map the design to the <em>technology</em>.</p>
+<ul class="simple">
+<li><p>Schematic capture and PCB design: <a class="reference download internal" download="" href="_downloads/8eb6c85bb8fe894b947e256af312eb75/Robot-car.zip"><code class="xref download docutils literal notranslate"><span class="pre">attached/Robot-car.zip</span></code></a></p></li>
+</ul>
 </section>
-<section id="analog-circuit">
-<h2>Analog circuit<a class="headerlink" href="#analog-circuit" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="analog-circuit-microwave">
+<h2>Analog circuit (microwave)<a class="headerlink" href="#analog-circuit-microwave" title="Permalink to this heading">#</a></h2>
 <section id="phase-locking-of-10mhz-femtosecond-mode-locked-laser">
 <h3>Phase locking of 10MHz femtosecond mode-locked laser<a class="headerlink" href="#phase-locking-of-10mhz-femtosecond-mode-locked-laser" title="Permalink to this heading">#</a></h3>
 <figure class="align-default">
@@ -286,6 +334,12 @@ flurorescence-excitation flash light can be turned on.</p>
 <li><p><a class="reference external" href="/ibom/?pcbdata=data/PhaseLock.json">Interactive pick-and-place helper</a></p></li>
 <li><p><a class="reference external" href="https://oshpark.com/shared_projects/Gh8VLLjV">Order from OSHPark</a></p></li>
 </ul>
+</section>
+<section id="pulse-oximeter-signal-conditioning-circuit-for-stem-education">
+<h3>Pulse oximeter signal conditioning circuit for STEM education<a class="headerlink" href="#pulse-oximeter-signal-conditioning-circuit-for-stem-education" title="Permalink to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="_images/Pulse-oximeter_schematics.png" src="_images/Pulse-oximeter_schematics.png" />
+</figure>
 </section>
 </section>
 </section>
@@ -351,10 +405,12 @@ flurorescence-excitation flash light can be turned on.</p>
 <li><a class="reference internal" href="#piezo-flexure-nano-positioning-stage-control-board">Piezo-flexure nano-positioning stage control board</a></li>
 <li><a class="reference internal" href="#precise-spin-control-of-biodvd-imaging-platform">Precise spin control of BioDVD imaging platform</a></li>
 <li><a class="reference internal" href="#hc-logic-board-for-synchronous-frequency-control-of-the-acousto-optic-deflector">74HC logic board for synchronous frequency control of the acousto-optic deflector</a></li>
+<li><a class="reference internal" href="#line-follower-robot-using-pure-ic-logic-for-stem-education">Line follower robot using pure IC logic for STEM education</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#analog-circuit">Analog circuit</a><ul>
+<li><a class="reference internal" href="#analog-circuit-microwave">Analog circuit (microwave)</a><ul>
 <li><a class="reference internal" href="#phase-locking-of-10mhz-femtosecond-mode-locked-laser">Phase locking of 10MHz femtosecond mode-locked laser</a></li>
+<li><a class="reference internal" href="#pulse-oximeter-signal-conditioning-circuit-for-stem-education">Pulse oximeter signal conditioning circuit for STEM education</a></li>
 </ul>
 </li>
 </ul>

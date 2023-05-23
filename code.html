@@ -197,16 +197,63 @@
         <article role="main">
           <section id="software">
 <h1>Software<a class="headerlink" href="#software" title="Permalink to this heading">#</a></h1>
-<p>Here are the coding projects I wrote for research projects or as a hobby.</p>
+<p>Here are the custom software tools I wrote as a hobby.</p>
+<section id="mbse-lite-system-requirement-tracking-and-design-with-a-simplified-schema">
+<h2>MBSE-lite: system requirement tracking and design with a simplified schema<a class="headerlink" href="#mbse-lite-system-requirement-tracking-and-design-with-a-simplified-schema" title="Permalink to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="https://github.com/antonysigma/mbse-lite/blob/master/static/document-sources.png?raw=true" src="https://github.com/antonysigma/mbse-lite/blob/master/static/document-sources.png?raw=true" />
+</figure>
+<p>A simple platform to organize product design requirements. Text editor only.
+Execute a single command to generate technical document for weekly design review
+meetings. Inspired from <a class="reference external" href="https://youtu.be/0MjopluRTaw">Nichole Kass’s online presentation</a>, the tools links the stakeholder’s needs,
+system design problems and solutions without paying for the unused MBSE
+features, e.g. code generation, nested diagrams, and Matlab/Zemax parametrics
+simulations.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/antonysigma/mbse-lite">Github</a></p></li>
+<li><p>Reference: Nichole Kass, James Kolozs (2016). Getting Started with MBSE in
+Product Development. INCOSE International Symposium.
+<a class="reference external" href="https://doi.org/10.1002/j.2334-5837.2016.00176.x">https://doi.org/10.1002/j.2334-5837.2016.00176.x</a></p></li>
+</ul>
+<p><strong>Why I made my own tool.</strong>
+As a giga-pixel microscopy researcher dealing with increasingly complex systems,
+I found the need for an end-to-end requirement management system that traces
+stakeholders’ needs, functional requirements, design constraints, and physical
+architecture. Additionally, I needed a tool to analyze how design solutions
+(such as optical, mechanical, and electronic component specifications, software
+interface specifications, and SOPs) can verify the requirements and be validated
+with test plans.</p>
+<p>The challenge arises from the prevalent document-oriented approach used by
+research labs, startups, and OEM vendors. Traditionally, we rely on a
+combination of PowerPoint slides, documents, and freehand drawings for
+communication. As a project owner serving as a liason among vendors and
+stakeholders, these methods are labor-intensive due to the use of incompatible
+document processing tools, namely Confluence, emails, PDFs, and Word documents.
+I often ended up spending more time copy editing documents from one vendor to
+another, rather than focusing on the <em>design</em> itself.</p>
+<p>I also explored the model-based system engineering (MBSE) approach, but found
+that all existing commercial tools were overly bloated for medium-sized
+projects. My projects often involve fewer than 50 project members, including
+vendors; the commercial MBSE tools often intimidates them.</p>
+<p>For example, I do not need the code generation feature since my software vendor
+will develop their own software and test plans. Furthermore, allocating a
+function to multiple instances is unnecessary as most functions in the system
+are used exactly once for giga-pixel imaging projects. Similarly, Zemax and
+Matlab integration into the parametric design module is not needed as most PhDs
+develop their own simulation tools for academic publications.</p>
+<p>Ultimately, these commercial tools are designed to cater to NASA-scale projects
+and defense contractors with &gt;1,000 head counts. For medium-sized projects, it
+is unnecessary to pay for features we don’t use.</p>
+</section>
 <section id="android-star-catalog-on-e-ink-devices">
 <h2>Android Star Catalog on E-ink devices<a class="headerlink" href="#android-star-catalog-on-e-ink-devices" title="Permalink to this heading">#</a></h2>
 <figure class="align-default">
 <img alt="_images/starchart.jpg" src="_images/starchart.jpg" />
 </figure>
 <p>I created a “vanilla-flavoured” star map to run on E-ink readers,
-so I can focus on the serious scientific details of each star.
+so I can focus on the what matters during outdoor star gazing; to look up not down.
 The star positions are replicated from the
-<em>Positions and Proper Motion Star Catalog</em> at NASA. There are plans to add
+NASA’s <em>Positions and Proper Motion Star Catalog</em>. There are plans to add
 more deep sky objects (double stars, nebula, galaxies, etc.)
 from the WDS and NGC database.</p>
 <ul class="simple">
@@ -323,6 +370,7 @@ in the future.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Software</a><ul>
+<li><a class="reference internal" href="#mbse-lite-system-requirement-tracking-and-design-with-a-simplified-schema">MBSE-lite: system requirement tracking and design with a simplified schema</a></li>
 <li><a class="reference internal" href="#android-star-catalog-on-e-ink-devices">Android Star Catalog on E-ink devices</a></li>
 <li><a class="reference internal" href="#computerized-chinese-abacus">“Computerized” Chinese abacus</a></li>
 <li><a class="reference internal" href="#online-cangjie-chinese-input-engine">Online Cangjie Chinese input engine</a></li>
