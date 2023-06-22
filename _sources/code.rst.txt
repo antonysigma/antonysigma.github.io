@@ -68,7 +68,7 @@ natural way that follows the math, and automatically determines an efficient
 algorithm for solving the problem on baremetal single-board computer, e.g.
 Nvidia Jetson Nano. ProxImaL makes it easy to experiment with the image features *a
 posteriori*, and the noise distribution of the optical hardware *a priori*, without worrying about the
-details of how the image restoration problem should be solved.
+details of how the image restoration problem should be solved or implemented on hardware.
 
 .. note::
 
