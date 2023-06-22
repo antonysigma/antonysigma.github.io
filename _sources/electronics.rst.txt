@@ -96,6 +96,10 @@ Line follower robot using pure IC logic for STEM education
 
 .. figure:: attached/Robot-car_schematics.png
 
+.. raw:: html
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/CPohQS4ja3Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 This is a line following car built entirely out of 74HC digital IC logic and LM
 analog IC logic, with the focus of "form... shall ever follows function". The
 following first principles are taught under the disguise of car race:

@@ -56,6 +56,39 @@ Ultimately, these commercial tools are designed to cater to NASA-scale projects
 and defense contractors with >1,000 head counts. For medium-sized projects, it
 is unnecessary to pay for features we don't use.
 
+ProxImaL: GPU-accelerated ISP code generation with 5th generation language
+----------------------------------------------------------------------------
+
+.. figure:: attached/proximal-banner.png
+
+
+ProxImaL is a modeling language for image reconstruction problems. It allows you
+to express the signal distortion process in the optical imaging system in a
+natural way that follows the math, and automatically determines an efficient
+algorithm for solving the problem on baremetal single-board computer, e.g.
+Nvidia Jetson Nano. ProxImaL makes it easy to experiment with the image features *a
+posteriori*, and the noise distribution of the optical hardware *a priori*, without worrying about the
+details of how the image restoration problem should be solved.
+
+.. note::
+
+   I am the maintainer of the ProxImaL project. Please report the bugs at 
+   https://github.com/comp-imaging/ProxImaL/issues
+
+The project is originally created by Felix Heide and Steve Diamond. Please cite:
+Felix Halide, Steven Diamond, et al. *ProxImaL: efficient image optimization
+using proximal algorithms.* ACM Trans. Graphics vol. 35 no. 4, July 2016.
+
+Refer to the encyclopedia for the distinction betweeen
+`a priori and a posteriori knowledge <britannica_>`_
+, in the conext of image restoration problems.
+
+.. _britannica: https://www.britannica.com/topic/epistemology/A-priori-and-a-posteriori-knowledge
+
+* Github: https://github.com/comp-imaging/proximal
+* Publication: https://doi.org/10.1145/2897824.2925875
+* Preprint: https://www.cs.princeton.edu/~fheide/papers/ProxImaL.pdf
+
 Android Star Catalog on E-ink devices
 ---------------------------------------
 
