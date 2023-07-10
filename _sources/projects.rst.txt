@@ -1,9 +1,9 @@
 Research
 ==========
 
-Here is the curated list of large scale projects I led back in academia.
-Although I have already transitioned into the industry, I do read the past
-publications to re-live the finest moments.
+Here is the curated list of large scale projects under my lead in academia. I
+have already transitioned into the industry, but I occationally share the
+stories to re-live the finest moments.
 
 For the exhaustive list of my research, you may refer to my `Google scholar
 <https://scholar.google.com/citations?hl=en&user=kW8tyV0AAAAJ>`_ profile.
@@ -14,8 +14,16 @@ Main projects
 ARM TrustZone security-hardened cameraphone to ensure authentic new photos
 ###########################################################################
 
-...
+As a former technical contributor to the Adobe-led Content Authenticity
+Initiative (CAI), I defined the hardware-efficient image encoding format capable
+of storing the raw pixel values, GPS locations, depth map, as well as the
+cryptographic signature of the original photographer. The CAI, with the new file
+format, advocates for a complete photo editing paper trail embedded in all news
+photos to combat disinformation.
 
+* `Technical whitepaper <https://acrobat.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3A2c6361d5-b8da-4aca-89bd-1ed66cd22d19>`_
+
+* Product website: https://truepic.com .
 
 96 minimature microscopes for parallel cell microscopy in fluorescence and quantitative phase
 ###############################################################################################
