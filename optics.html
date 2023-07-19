@@ -198,126 +198,86 @@
         <article role="main">
           <section id="optics">
 <h1>Optics<a class="headerlink" href="#optics" title="Permalink to this heading">#</a></h1>
-<p>(Work in progress).</p>
+<p>I used to perform a lot of fundamental optics design, optimization, and fabrication in the past.
+I verify the system architecture to meet the stakeholder needs, conducts trade studies with Fraunhofer/Poisson optical model,
+and then validate the assembled hardware does meet the system specifications.</p>
+<p>Later, I found the profession/hobby too expensive to sustain without a lab to support.
+I mostly compose and evaluate optical schematics and OEM-provided specifications these days.
+But… If you find anyone who wishes to ship
+the instrument on loan to my garage, I am more than willing to pick up the trade. Please feel free to contact me on <a class="reference external" href="https://www.linkedin.com/in/antonycschan/">LinkedIn</a>.</p>
+<section id="professional-optics-design-fabrication">
+<h2>Professional optics design &amp; fabrication<a class="headerlink" href="#professional-optics-design-fabrication" title="Permalink to this heading">#</a></h2>
+<section id="plastic-molded-microscope-lens-for-96-well-parallel-microscope">
+<h3>Plastic molded microscope lens for 96-well parallel microscope<a class="headerlink" href="#plastic-molded-microscope-lens-for-96-well-parallel-microscope" title="Permalink to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="_images/plastic-molded-lens.png" src="_images/plastic-molded-lens.png" />
+</figure>
+<p>Originally conceived by Dr Changhuei Yang and his PhD student, we spec’ed out
+the optical magnification, field of view, and focal shift requirements from
+the 96-CMOS camera project. When I took over the project, I reviewed
+the manufacturer provided CodeV raytracing report, provided export’s feedback,
+and then validated the lens and the specifications with the Caltech-patented
+aberration extraction algorithm to analyze the Zernike coefficients.</p>
+<ul class="simple">
+<li><p><strong>A.C.S. Chan</strong>, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+“Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)” Scientific Reports 9, 11114 (2019).</p></li>
+<li><p>Patent: US10754140B2</p></li>
+</ul>
+</section>
+<section id="all-optical-spatial-light-modulator-for-structured-illumination-at-10-million-fps">
+<h3>All-optical spatial light modulator for structured illumination at 10 million FPS<a class="headerlink" href="#all-optical-spatial-light-modulator-for-structured-illumination-at-10-million-fps" title="Permalink to this heading">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001"><img alt="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001" src="https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&amp;uri=optica-2-12-1037-g001" style="width: 80%;" /></a>
+</figure>
+<p>The holy grail of a spatial light modulator (SLM) is to bypass all mechanical
+actuators in pursue of speed. At &gt;10 million FPS range, the MEMS technology can
+no longer meets the requirements. I designed, modelled, and validated the all-optical
+SLM design on a physical optical setup.</p>
+<p>Due to the cost prohibitive manufacturing and cleaning process of
+the thin-glass optical cavity (VIPA), I built an optical simulator based on wave propagation optics, and optimized
+the SLM design parameter (e.g. thickness, reflectance, core material) based on multi-objective genetic algorithm (MOGA).
+The optimized design is successfully fabricated, assembled, and validated on a physical system.</p>
+</section>
+<section id="acousto-optic-beam-deflection-at-1-million-sweeps-per-second-for-pixel-super-resolution">
+<h3>Acousto-optic beam deflection at 1 million sweeps per second for pixel super-resolution<a class="headerlink" href="#acousto-optic-beam-deflection-at-1-million-sweeps-per-second-for-pixel-super-resolution" title="Permalink to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="_images/aod-beam-deflector.png" src="_images/aod-beam-deflector.png" />
+</figure>
+<p>Under the lead of Dr Terence Wong, I procured the acousto-optic deflector (AOD) evaluation kit and
+integrated it in his ultrafast imaging flow cytometry system for cancer detection. I brought up the
+RF wave generator &amp; amplifier module, and designed controller PCBs to synchronize incoming fempto-second laser pulses.
+I also conducted AOD sweep angle and step size trade studies to further understand the limit of the system.</p>
+</section>
+</section>
+<section id="amateur-optics">
+<h2>Amateur optics<a class="headerlink" href="#amateur-optics" title="Permalink to this heading">#</a></h2>
 <section id="poorman-s-pinhole-camera-with-silver-halide-films">
-<h2>Poorman’s pinhole camera with silver-halide films<a class="headerlink" href="#poorman-s-pinhole-camera-with-silver-halide-films" title="Permalink to this heading">#</a></h2>
+<h3>Poorman’s pinhole camera with silver-halide films<a class="headerlink" href="#poorman-s-pinhole-camera-with-silver-halide-films" title="Permalink to this heading">#</a></h3>
 <p>TBD.</p>
 </section>
 <section id="amateur-telescope-making">
-<h2>2017 - 2010: Amateur telescope making<a class="headerlink" href="#amateur-telescope-making" title="Permalink to this heading">#</a></h2>
+<h3>2017 - 2010: Amateur telescope making<a class="headerlink" href="#amateur-telescope-making" title="Permalink to this heading">#</a></h3>
 <figure class="align-default">
 <img alt="_images/telescope-group-photo.jpg" src="_images/telescope-group-photo.jpg" />
 </figure>
-<section id="phase-1-coarse-grinding">
-<h3>Phase 1: Coarse grinding<a class="headerlink" href="#phase-1-coarse-grinding" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/telescope-powder.jpg" src="_images/telescope-powder.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-table.jpg" src="_images/telescope-table.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-defect-checking.jpg" src="_images/telescope-defect-checking.jpg" />
-</figure>
-</section>
-<section id="phase-2-fine-grinding">
-<h3>Phase 2: Fine grinding<a class="headerlink" href="#phase-2-fine-grinding" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/telescope-fine-grinding.jpg" src="_images/telescope-fine-grinding.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-bubble-technique.jpg" src="_images/telescope-bubble-technique.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-scattering-newspaper.jpg" src="_images/telescope-scattering-newspaper.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-scattering-reflection.jpg" src="_images/telescope-scattering-reflection.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-scattering-torch.jpg" src="_images/telescope-scattering-torch.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-center-dark.jpg" src="_images/telescope-center-dark.jpg" />
-</figure>
-</section>
-<section id="phase-3-wet-polishing-with-lap-pitch">
-<h3>Phase 3: Wet polishing with lap pitch<a class="headerlink" href="#phase-3-wet-polishing-with-lap-pitch" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/telescope-lap-pitch.jpg" src="_images/telescope-lap-pitch.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-press-fit.jpg" src="_images/telescope-press-fit.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-press-fit-2.jpg" src="_images/telescope-press-fit-2.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-polishing.jpg" src="_images/telescope-polishing.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-polishing-reflection.jpg" src="_images/telescope-polishing-reflection.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-polishing-progress.jpg" src="_images/telescope-polishing-progress.jpg" />
-</figure>
-</section>
-<section id="phase-4-testing-for-optical-aberration">
-<h3>Phase 4: testing for optical aberration<a class="headerlink" href="#phase-4-testing-for-optical-aberration" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/telescope-ronchi-tester.jpg" src="_images/telescope-ronchi-tester.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-ronchi-diagram.jpg" src="_images/telescope-ronchi-diagram.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-ronchi-distance.jpg" src="_images/telescope-ronchi-distance.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-ronchi.jpg" src="_images/telescope-ronchi.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-foucault.jpg" src="_images/telescope-foucault.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-foucault-usage.jpg" src="_images/telescope-foucault-usage.jpg" />
-</figure>
-</section>
-<section id="phase-5-opto-mechanical-assembly">
-<h3>Phase 5: Opto-mechanical assembly<a class="headerlink" href="#phase-5-opto-mechanical-assembly" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/telescope-workshop.jpg" src="_images/telescope-workshop.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-kinematic-mount.jpg" src="_images/telescope-kinematic-mount.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-painting.jpg" src="_images/telescope-painting.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-internal.jpg" src="_images/telescope-internal.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-linear-gear.jpg" src="_images/telescope-linear-gear.jpg" />
-</figure>
-</section>
-<section id="phase-6-field-testing">
-<h3>Phase 6: field testing<a class="headerlink" href="#phase-6-field-testing" title="Permalink to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="_images/telescope-party.jpg" src="_images/telescope-party.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-jupyter.jpg" src="_images/telescope-jupyter.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-moon.jpg" src="_images/telescope-moon.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-skyscraper.jpg" src="_images/telescope-skyscraper.jpg" />
-</figure>
-<figure class="align-default">
-<img alt="_images/telescope-solar-eclipse-2009.jpg" src="_images/telescope-solar-eclipse-2009.jpg" />
-</figure>
+<ul class="simple">
+<li><p>Phase 1: Coarse grinding</p></li>
+</ul>
+<ul class="simple">
+<li><p>Phase 2: Fine grinding</p></li>
+</ul>
+<ul class="simple">
+<li><p>Phase 3: Wet polishing with lap pitch</p></li>
+</ul>
+<ul class="simple">
+<li><p>Phase 4: testing for optical aberration</p></li>
+</ul>
+<ul class="simple">
+<li><p>Phase 5: Opto-mechanical assembly</p></li>
+</ul>
+<ul class="simple">
+<li><p>Phase 6: field testing</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -378,14 +338,15 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Optics</a><ul>
+<li><a class="reference internal" href="#professional-optics-design-fabrication">Professional optics design &amp; fabrication</a><ul>
+<li><a class="reference internal" href="#plastic-molded-microscope-lens-for-96-well-parallel-microscope">Plastic molded microscope lens for 96-well parallel microscope</a></li>
+<li><a class="reference internal" href="#all-optical-spatial-light-modulator-for-structured-illumination-at-10-million-fps">All-optical spatial light modulator for structured illumination at 10 million FPS</a></li>
+<li><a class="reference internal" href="#acousto-optic-beam-deflection-at-1-million-sweeps-per-second-for-pixel-super-resolution">Acousto-optic beam deflection at 1 million sweeps per second for pixel super-resolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#amateur-optics">Amateur optics</a><ul>
 <li><a class="reference internal" href="#poorman-s-pinhole-camera-with-silver-halide-films">Poorman’s pinhole camera with silver-halide films</a></li>
-<li><a class="reference internal" href="#amateur-telescope-making">2017 - 2010: Amateur telescope making</a><ul>
-<li><a class="reference internal" href="#phase-1-coarse-grinding">Phase 1: Coarse grinding</a></li>
-<li><a class="reference internal" href="#phase-2-fine-grinding">Phase 2: Fine grinding</a></li>
-<li><a class="reference internal" href="#phase-3-wet-polishing-with-lap-pitch">Phase 3: Wet polishing with lap pitch</a></li>
-<li><a class="reference internal" href="#phase-4-testing-for-optical-aberration">Phase 4: testing for optical aberration</a></li>
-<li><a class="reference internal" href="#phase-5-opto-mechanical-assembly">Phase 5: Opto-mechanical assembly</a></li>
-<li><a class="reference internal" href="#phase-6-field-testing">Phase 6: field testing</a></li>
+<li><a class="reference internal" href="#amateur-telescope-making">2017 - 2010: Amateur telescope making</a></li>
 </ul>
 </li>
 </ul>

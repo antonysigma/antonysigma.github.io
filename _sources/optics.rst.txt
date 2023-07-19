@@ -1,95 +1,157 @@
 Optics
 ########
 
-(Work in progress).
+I used to perform a lot of fundamental optics design, optimization, and fabrication in the past.
+I verify the system architecture to meet the stakeholder needs, conducts trade studies with Fraunhofer/Poisson optical model,
+and then validate the assembled hardware does meet the system specifications.
+
+Later, I found the profession/hobby too expensive to sustain without a lab to support.
+I mostly compose and evaluate optical schematics and OEM-provided specifications these days.
+But... If you find anyone who wishes to ship
+the instrument on loan to my garage, I am more than willing to pick up the trade. Please feel free to contact me on `LinkedIn <https://www.linkedin.com/in/antonycschan/>`_.
+
+Professional optics design & fabrication
+-------------------------------------------
+
+Plastic molded microscope lens for 96-well parallel microscope
+===============================================================
+
+.. figure:: attached/plastic-molded-lens.png
+
+Originally conceived by Dr Changhuei Yang and his PhD student, we spec'ed out
+the optical magnification, field of view, and focal shift requirements from
+the 96-CMOS camera project. When I took over the project, I reviewed
+the manufacturer provided CodeV raytracing report, provided export's feedback,
+and then validated the lens and the specifications with the Caltech-patented
+aberration extraction algorithm to analyze the Zernike coefficients.
+
+* **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+  “Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)” Scientific Reports 9, 11114 (2019).
+
+* Patent: US10754140B2
+
+ 
+All-optical spatial light modulator for structured illumination at 10 million FPS
+==================================================================================
+
+
+.. figure:: https://opg.optica.org/getimagev2.cfm?img=q0R0V5CDyBwWnxTrgOANkmdvsYrqvOoghHSuws%2FmS%2Fo%3D&uri=optica-2-12-1037-g001
+    :width: 80%
+
+The holy grail of a spatial light modulator (SLM) is to bypass all mechanical
+actuators in pursue of speed. At >10 million FPS range, the MEMS technology can
+no longer meets the requirements. I designed, modelled, and validated the all-optical
+SLM design on a physical optical setup.
+
+Due to the cost prohibitive manufacturing and cleaning process of
+the thin-glass optical cavity (VIPA), I built an optical simulator based on wave propagation optics, and optimized 
+the SLM design parameter (e.g. thickness, reflectance, core material) based on multi-objective genetic algorithm (MOGA).
+The optimized design is successfully fabricated, assembled, and validated on a physical system.
+
+
+Acousto-optic beam deflection at 1 million sweeps per second for pixel super-resolution
+===================================================================================================
+
+.. figure:: attached/aod-beam-deflector.png
+
+Under the lead of Dr Terence Wong, I procured the acousto-optic deflector (AOD) evaluation kit and
+integrated it in his ultrafast imaging flow cytometry system for cancer detection. I brought up the
+RF wave generator & amplifier module, and designed controller PCBs to synchronize incoming fempto-second laser pulses.
+I also conducted AOD sweep angle and step size trade studies to further understand the limit of the system.
+
+
+Amateur optics
+-------------------
+
 
 Poorman's pinhole camera with silver-halide films
 ====================================================
 
 TBD.
 
+
 2017 - 2010: Amateur telescope making
 ========================================
 
 .. figure:: attached/telescope-group-photo.jpg
 
-Phase 1: Coarse grinding
---------------------------
+* Phase 1: Coarse grinding
 
-.. figure:: attached/telescope-powder.jpg
+.. 
+    .. figure:: attached/telescope-powder.jpg
 
-.. figure:: attached/telescope-table.jpg
+    .. figure:: attached/telescope-table.jpg
 
-.. figure:: attached/telescope-defect-checking.jpg
+    .. figure:: attached/telescope-defect-checking.jpg
 
-Phase 2: Fine grinding
-------------------------
+* Phase 2: Fine grinding
 
-.. figure:: attached/telescope-fine-grinding.jpg
+.. 
+    .. figure:: attached/telescope-fine-grinding.jpg
 
-.. figure:: attached/telescope-bubble-technique.jpg
+    .. figure:: attached/telescope-bubble-technique.jpg
 
-.. figure:: attached/telescope-scattering-newspaper.jpg
+    .. figure:: attached/telescope-scattering-newspaper.jpg
 
-.. figure:: attached/telescope-scattering-reflection.jpg
+    .. figure:: attached/telescope-scattering-reflection.jpg
 
-.. figure:: attached/telescope-scattering-torch.jpg
+    .. figure:: attached/telescope-scattering-torch.jpg
 
-.. figure:: attached/telescope-center-dark.jpg
+    .. figure:: attached/telescope-center-dark.jpg
 
-Phase 3: Wet polishing with lap pitch
---------------------------------------
+* Phase 3: Wet polishing with lap pitch
 
-.. figure:: attached/telescope-lap-pitch.jpg
+.. 
+    .. figure:: attached/telescope-lap-pitch.jpg
 
-.. figure:: attached/telescope-press-fit.jpg
+    .. figure:: attached/telescope-press-fit.jpg
 
-.. figure:: attached/telescope-press-fit-2.jpg
+    .. figure:: attached/telescope-press-fit-2.jpg
 
-.. figure:: attached/telescope-polishing.jpg
+    .. figure:: attached/telescope-polishing.jpg
 
-.. figure:: attached/telescope-polishing-reflection.jpg
+    .. figure:: attached/telescope-polishing-reflection.jpg
 
-.. figure:: attached/telescope-polishing-progress.jpg
+    .. figure:: attached/telescope-polishing-progress.jpg
 
-Phase 4: testing for optical aberration
-----------------------------------------
+* Phase 4: testing for optical aberration
 
-.. figure:: attached/telescope-ronchi-tester.jpg
+.. 
+    .. figure:: attached/telescope-ronchi-tester.jpg
 
-.. figure:: attached/telescope-ronchi-diagram.jpg
+    .. figure:: attached/telescope-ronchi-diagram.jpg
 
-.. figure:: attached/telescope-ronchi-distance.jpg
+    .. figure:: attached/telescope-ronchi-distance.jpg
 
-.. figure:: attached/telescope-ronchi.jpg
+    .. figure:: attached/telescope-ronchi.jpg
 
-.. figure:: attached/telescope-foucault.jpg
+    .. figure:: attached/telescope-foucault.jpg
 
-.. figure:: attached/telescope-foucault-usage.jpg
+    .. figure:: attached/telescope-foucault-usage.jpg
 
 
-Phase 5: Opto-mechanical assembly
----------------------------------------
+* Phase 5: Opto-mechanical assembly
 
-.. figure:: attached/telescope-workshop.jpg
+.. 
+    .. figure:: attached/telescope-workshop.jpg
 
-.. figure:: attached/telescope-kinematic-mount.jpg
+    .. figure:: attached/telescope-kinematic-mount.jpg
 
-.. figure:: attached/telescope-painting.jpg
+    .. figure:: attached/telescope-painting.jpg
 
-.. figure:: attached/telescope-internal.jpg
-    
-.. figure:: attached/telescope-linear-gear.jpg
+    .. figure:: attached/telescope-internal.jpg
+        
+    .. figure:: attached/telescope-linear-gear.jpg
 
-Phase 6: field testing
-------------------------
+* Phase 6: field testing
 
-.. figure:: attached/telescope-party.jpg
+..
+    .. figure:: attached/telescope-party.jpg
 
-.. figure:: attached/telescope-jupyter.jpg
+    .. figure:: attached/telescope-jupyter.jpg
 
-.. figure:: attached/telescope-moon.jpg
+    .. figure:: attached/telescope-moon.jpg
 
-.. figure:: attached/telescope-skyscraper.jpg
+    .. figure:: attached/telescope-skyscraper.jpg
 
-.. figure:: attached/telescope-solar-eclipse-2009.jpg
+    .. figure:: attached/telescope-solar-eclipse-2009.jpg

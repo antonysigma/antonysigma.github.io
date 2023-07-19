@@ -1,6 +1,30 @@
 Electronics
 ===================
 
+Digital circuit and FPGA
+--------------------------
+
+Parallel frame grabber with 96 automative CMOS's for drug discovery
+#####################################################################
+
+.. figure:: attached/96-cmos-fpga.png
+
+
+As part of the OEM provided design "ride share" program, I contracted out the 96-CMOS single-board
+camera and FPGA-based frame grabber card array design & fabrication. I drafted and negotiated the 
+pixel readout requirements, reviewed circuit schematics, and provided pre-fab feedback on the PCB's
+thermal load and EMI. The 96-CMOS subsystem is successfully integrated into the parallel microscope
+for high-throughput drug discovery at Amgen.
+The "ride share" program enables a shared domain knowledge with another customer, which in turn accelerated
+the completion of the their project.
+
+* Publication: **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+  `"Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)" <http://dx.doi.org/10.1038/s41598-019-47146-z>`_
+  *Scientific Reports* **9**, 11114 (2019).
+ 
+* Publication of the "ride share" partner: https://doi.org/10.7554/eLife.74988
+
+
 Mixed-signal circuit
 ----------------------
 
