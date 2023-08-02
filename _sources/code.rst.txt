@@ -144,6 +144,26 @@ Project Euler is a series of challenging mathematical/computer programming probl
 Dataset
 =========
 
+Computational quantitative phase microscopy with widefield fluorescence channels
+---------------------------------------------------------------------------------
+
+.. figure:: attached/96-eyes-multi-channel.jpg
+
+Complete dataset of the Fourier Ptychographic Microscopy (FPM) raw images,
+and the widefield fluorescence z-stack images, captured from the 96-camera
+parallel microscope system (project codename: 96-Eyes).
+
+The dataset also contains the reconstructed quantiative phase images on all 96 wells,
+as well as the off-axis optical aberration decomposed into Zernike modes.
+
+* **Publication**: **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+  `"Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)" <http://dx.doi.org/10.1038/s41598-019-47146-z>`_
+  *Scientific Reports* **9**, 11114 (2019).
+
+* iPSC culture on the 96-well plate, stained with SYTO24 and PhalloidinAF568
+  `(download) <https://academictorrents.com/details/c95c06e98a74a580ccbcceafdc1188ea144021c8>`_
+
+
 Pixel super-resolution of optofluidic time-stretch microscopy
 ----------------------------------------------------------------
 
