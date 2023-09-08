@@ -1,14 +1,16 @@
 Optics
 ########
 
-I used to perform a lot of fundamental optics design, optimization, and fabrication in the past.
+I used to perform fundamental optics design, optimization, and fabrication.
 I verify the system architecture to meet the stakeholder needs, conducts trade studies with Fraunhofer/Poisson optical model,
 and then validate the assembled hardware does meet the system specifications.
 
-Later, I found the profession/hobby too expensive to sustain without a lab to support.
-I mostly compose and evaluate optical schematics and OEM-provided specifications these days.
-But... If you find anyone who wishes to ship
-the instrument on loan to my garage, I am more than willing to pick up the trade. Please feel free to contact me on `LinkedIn <https://www.linkedin.com/in/antonycschan/>`_.
+Later, I found the profession/hobby too expensive to sustain without a lab to
+support. Nowadays, I mostly compose and evaluate optical schematics and
+OEM-provided specifications. If you find anyone who wishes to ship the
+instrument on loan to my office, I am more than willing to pick up the slack.
+Please feel free to contact me on `LinkedIn
+<https://www.linkedin.com/in/antonycschan/>`_.
 
 Professional optics design & fabrication
 -------------------------------------------

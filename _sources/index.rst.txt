@@ -6,25 +6,64 @@
 Antony C.S. Chan, PhD
 ==========================================================
 
-| Current: Consultant for hire, super-resolution imaging and giga-pixel camera design
+Consultant for hire, super-resolution imaging and giga-pixel camera design. Also open to permanent positions.
+
+Services
+-----------
+
+**Business verticals:**
+
+* New production development and architecture critique of high-throughput
+  imaging system involving live cells and stain-free cell culture.
+
+* Compuational image super-resolution / deconvolution algorithm design and
+  development; Fourier optics and Poisson statistics;
+
+* Multi-modal bio-chemical data analysis; model-based analysis pipeline design.
+
+* Computational imaging modelling & mathematics; Fourier optics and Poisson statistics
+
+**Business horizontals:**
+
+* End-to-end giga-pixel camera system design, manufacture, and delivery; cost of
+  materials ranging from ~$50k to ~$500k. 
+
+* System engineering requirement traceability, analysis, and architecture
+  synthesis; opto-mechanical trade studies.
+
+* Scientific/consumer imaging optics & motion control firmware architecture;
+  piezo-electric actuator; C++14 no-`malloc` firmware 
+
+* Algorithm porting and GPU acceleration.
+
+Scroll to the `bottom <#contents>`_ to learn more about the technology stack and product portfolio.
+
+Contact me at `Linkedin <https://www.linkedin.com/in/antonycschan/>`_ for details.
+
+.. figure:: attached/main-banner.png
+
+Experiences
+-------------
+
+| **Current:** Consultant for hire, super-resolution imaging and giga-pixel camera design
 |
-| 2021--2023 FPGA-accelerated basecalling | High-thoughput image processing | flow cell auto-docking/bething firmware,
+| **2021--2023** FPGA-accelerated NGS basecalling | High-thoughput image processing | flow cell auto-docking/bething firmware,
 | `Element Biosciences <https://www.elementbiosciences.com/>`_
 | 
-| 2019--2021 Hack-proof camera phone and firmware R&D to fight pixel manipulation & dis-information 
+| **2019--2021** Hack-proof camera phone and firmware R&D to fight pixel manipulation & dis-information 
 | `Truepic Inc <https://truepic.com/>`_
 | 
-| 2017--2019 Postdoctoral scholar, `Biophotonics Laboratory <http://www.biophot.caltech.edu/>`_
+| **2017--2019** Co-inventor of the 96-camera parallel imaging system for cell culture and drug discovery,
+| Postdoctoral scholar, `Croucher Fellow <https://scholars.croucher.org.hk/scholars/antony-chi-shing-chan>`_, `Biophotonics Laboratory <http://www.biophot.caltech.edu/>`_
 | `California Institute of Technology <https://www.caltech.edu/>`_
 |
+| **2012--2016** All-optical imaging flow cytometer at 1 million frames per second for circulating tumor cell (CTC) detection.
 | PhD, `Applied Life Photonics Laboratory <https://www.eee.hku.hk/~alphahku/>`_ 
 | `Imaging System Laboratory <https://eee.hku.hk/~elam/>`_
 | `The University of Hong Kong <https://www.hku.hk/>`_
 |
 | **Resume**: `Linkedin <https://www.linkedin.com/in/antonycschan/>`_
 |
-
-.. figure:: attached/main-banner.png
 
 Contact
 --------

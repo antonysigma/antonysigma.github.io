@@ -1,7 +1,8 @@
 Software
 =========
 
-Here are the custom software tools I wrote as a hobby. 
+Professional software development
+######################################
 
 MBSE-lite: system requirement tracking and design with a simplified schema
 ----------------------------------------------------------------------------
@@ -88,6 +89,14 @@ Refer to the encyclopedia for the distinction betweeen
 * Github: https://github.com/comp-imaging/proximal
 * Publication: https://doi.org/10.1145/2897824.2925875
 * Preprint: https://www.cs.princeton.edu/~fheide/papers/ProxImaL.pdf
+
+Baremetal opto-mechanical hardware drivers
+-------------------------------------------
+
+Refer to the `Electornics page <electronics.html>`_ for details.
+
+Amateur software projects
+###############################
 
 Android Star Catalog on E-ink devices
 ---------------------------------------
