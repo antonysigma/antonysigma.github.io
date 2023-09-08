@@ -17,11 +17,11 @@ Services
   imaging system involving live cells and stain-free cell culture.
 
 * Compuational image super-resolution / deconvolution algorithm design and
-  development; Fourier optics and Poisson statistics;
+  development; Fourier optics and Poisson statistical modelling;
+
+* Structured illumination for stain-free live cells; quantiative phase microscopy;
 
 * Multi-modal bio-chemical data analysis; model-based analysis pipeline design.
-
-* Computational imaging modelling & mathematics; Fourier optics and Poisson statistics
 
 **Business horizontals:**
 
