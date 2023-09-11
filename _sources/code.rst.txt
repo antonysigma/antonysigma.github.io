@@ -154,7 +154,7 @@ Dataset
 =========
 
 Computational quantitative phase microscopy with widefield fluorescence channels
----------------------------------------------------------------------------------
+#################################################################################
 
 .. figure:: attached/96-eyes-multi-channel.jpg
 
@@ -174,7 +174,7 @@ as well as the off-axis optical aberration decomposed into Zernike modes.
 
 
 Pixel super-resolution of optofluidic time-stretch microscopy
-----------------------------------------------------------------
+#############################################################
 
 .. figure:: attached/pixelsr.jpg
 

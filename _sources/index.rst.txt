@@ -13,7 +13,7 @@ Services
 
 **Business verticals:**
 
-* New production development and architecture critique of high-throughput
+* New product development (NPD) and architecture critique of high-throughput
   imaging system involving live cells and stain-free cell culture.
 
 * Compuational image super-resolution / deconvolution algorithm design and

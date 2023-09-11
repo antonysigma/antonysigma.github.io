@@ -3,6 +3,24 @@ Publications
 
 See my `Google scholar <https://scholar.google.com/citations?hl=en&user=kW8tyV0AAAAJ>`_ profile.
 
+Patents
+------------
+
+#. `US US20220078522 <https://patents.google.com/patent/US20220078522A1>`_
+   Protocol and system for tee-based authenticating and editing of mobile-device
+   captured visual and audio media
+
+#. `US 20220294640 <https://patents.google.com/patent/US20220294640A1/>`_ System
+   and method for capturing authenticatable digital media files on connected
+   media-capture devices
+
+#. `US 20190137753 <https://patents.google.com/patent/US20190137753A1/>`_
+   Parallel image acquisition and restoration method for array level Fourier
+   ptychographic imager
+
+#. `US 20190174078 <https://patents.google.com/patent/US20190174078A1/>`_
+   Recovery of pixel resolution in scanning imaging
+
 Peer reviewed paper
 ----------------------
 
