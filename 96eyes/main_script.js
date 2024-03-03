@@ -193,7 +193,7 @@ var deepzoomModel = Backbone.Model.extend({
         description: 'Demo',
         plateId: '0001',
         well: 0,
-        channel: 'raw',
+        channel: 'fluorescence',
         phase: false,
     },
     getUrl: function(datetime, autofocus_channel) {
@@ -272,9 +272,14 @@ var deepzoomView = Backbone.View.extend({
         // Initialize well selector
         var rowLabel = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
         var htmlString = '';
-        for (var i = 0; i < 8; i++)
-            for (var j = 0; j < 12; j++)
-                htmlString += '<option value="{\'x\':' + (j * 2592 + 2592 / 2) + ',\'y\':' + (i * 2592 + 1944 / 2) + '}">' + rowLabel[i] + (j + 1) + '</option>';
+        for (var i = 0; i < 8; i++) {
+            for (var j = 0; j < 12; j++) {
+                const well_id = rowLabel[i] + (j + 1);
+                const coord = [j * 2592 + 2592 / 2, i * 2592 + 1944 / 2];
+                const is_selected = (i == 0 && j == 5) ? 'selected' : '';
+                htmlString += `<option value="{'x':${coord[0]},'y':${coord[1]}}" ${is_selected}>${well_id}</option>`;
+            }
+        }
 
         // Pan to the selected well immediately
         this.$el.find('#deepzoom-well').html(htmlString).selectmenu().selectmenu('menuWidget').addClass('selectmenu-overflow');
