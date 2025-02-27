@@ -1,16 +1,34 @@
 Optics
 ########
 
-I used to perform fundamental optics design, optimization, and fabrication.
-I verify the system architecture to meet the stakeholder needs, conducts trade studies with Fraunhofer/Poisson optical model,
-and then validate the assembled hardware does meet the system specifications.
-
-Later, I found the profession/hobby too expensive to sustain without a lab to
-support. Nowadays, I mostly compose and evaluate optical schematics and
-OEM-provided specifications. If you find anyone who wishes to ship the
+Optical system design, as a business, has become very costly to run over the
+past few years for freelancer CDMO (contracted development & manufacturing
+officer), especially without purchasing authority and a host lab to support the
+R&D. Nowadays, I mostly compose/evaluate optical schematics, and verify them
+against OEM-provided specifications. If you find anyone who wishes to ship the
 instrument on loan to my office, I am more than willing to pick up the slack.
 Please feel free to contact me on `LinkedIn
 <https://www.linkedin.com/in/antonycschan/>`_.
+
+Optical design review services:
+
+- On-axis confocal free-space / few-mode fiber optics design, optimization, and
+  fabrication;
+
+- Common path multi-modal imaging path design and characterizations; (quantitative)
+  phase contrast, widefield fluorescence, confocal, and structured illumination;
+
+- High-power (up to 3,500 milli-Watt) illumination optics prototyping (i.e.
+  Research-grade only, not for commercialization);
+
+- System integration with real-time compute engines (mostly Nvidia Ampere
+  micro-architecture) and beam-steering electronics (electro-optics or
+  acousto-optics of up to 400MHz bandwidth).
+
+- Conduct trade studies and architecture tradeoff analysis among various imaging
+  modality; foundational optical modelling with either
+  Fraunhofer/Poisson/Fresnel approximations.
+
 
 Professional optics design & fabrication
 -------------------------------------------
@@ -30,9 +48,73 @@ aberration extraction algorithm to analyze the Zernike coefficients.
 * **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
   “Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)” Scientific Reports 9, 11114 (2019).
 
-* Patent: US10754140B2
+* Patent: `US 20190137753 <https://patents.google.com/patent/US20190137753A1/>`_
 
- 
+2-Laser illumination engine for whole-plate fluorescence excitation, 7000 milliWatt per plate
+================================================================================================
+
+.. figure:: attached/illumination-optics.png
+
+Laser pointers are often a foolproof solution to early instrument prototyping;
+it is relatively easy to obtain laser-safety clearance, short lead time, as well
+as the benefit of built-in/cost-effective laser driver circuits.
+
+However, it often makes sense to re-architect the illumination optics in pursuit
+of thermal stability, illumination homogeneity, as well as ease of optical
+alignment. I assisted the original project owner to finish the evaluation phase
+of the early prototype. Upon the scheduled disassembly, I reached out to
+stakeholders to **re-capture the design constraints**, followed by choosing a
+new system HW/FW/Optics architecture to meet the new requirements. The laser
+pointer based design is replaced with an external light engine, coupled with
+**homogenizing light pipes and COTS projection lenses**. I also custom-designed
+the **thermal solutions, the laser driving electronics, as well as the laser
+monitoring firmware**, interfacing the main instrument control board via I2C
+bus.
+
+**The context**
+For a 6-well multi-modal imager (i.e. quantitative phase and widefield
+fluorescence), it makes sense to design the illumination optics with one laser
+diode per well per channel, in order to take advantage of the individual
+addressable laser driving electronics to minimize photo-damage to live cells.
+Having individual laser power controls also offer a larger degree of freedom in
+laser power calibration, simplifying downstream cross-well data normalization
+pipelines.
+
+As the researchers migrate from the 6-well plate solution to the 96-well, it
+makes sense to **replicate success by simply "copying" the design over**. In fact,
+first generation `overhead projectors
+<https://www.experimental-engineering.co.uk/2020/01/18/casio-xj-a140-hybrid-projector-teardown/>`_
+and `concert lighshows <https://www.lightspaceusa.com/gallery>`_ replace halogen lamps
+with laser diode knife-edge arrays to maximize the power-to-weight ratio.
+However, as we packed 30 laser pointers into the prototype, we quickly met
+various issues causing long system downtimes: thermal overload, laser driving
+current variations, mechanical alignment, as well as uneven illumination.
+
+It should be worth to note that the original prototype (i.e. simply mounting 30
+individual laser pointers) is a huge success, as far as the primary
+stakeholder's concern. Quoting a fellow R&D scientist from the book *Turning
+Science into Things People Need: Voices of Scientists in Industry*, the
+constantly-failing instrument performs exactly what it is designed to do; stays
+online just long enough to capture R&D data for publications, before falling
+apart the next (milli-)second. "This is a proof that we don't pay for what we
+don't need for scientific discoveries."
+
+**Nice to have features**
+If I had sufficient funding, I would have contracted out the design to those
+specializing in off-axis darkfield trans-illumination optics. I also would have
+been more bold in freeform reflective optics; after all, what we truly need is a
+pair of rectangular floodlight illuminated at a shallow angle. The 96-camera
+system idea was also at least a decade ahead of its time; the DPSS laser diode
+array (465 nm, ~35% fluorescence quantum efficiency) would have been replaced
+with stacked GaN diode array on the wafer level (at 468 nm, 80% fluorescence
+quantum efficiency), completely bypassing the optical pumping setup and the bulky
+diode package.
+
+* **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+  “Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)” Scientific Reports 9, 11114 (2019).
+
+* :ref:`peltier-cooler`
+
 All-optical spatial light modulator for structured illumination at 10 million FPS
 ==================================================================================
 
@@ -46,7 +128,7 @@ no longer meet the requirements. I designed, modelled, and validated the all-opt
 SLM design on a physical optical setup.
 
 Due to the cost prohibitive manufacturing and cleaning process of
-the thin-glass optical cavity (VIPA), I coded an optical simulator based on wave propagation optics, and optimized 
+the thin-glass optical cavity (VIPA), I coded an optical simulator based on wave propagation optics, and optimized
 the SLM design parameter (e.g. thickness, reflectance, core material) based on multi-objective genetic algorithm (MOGA).
 The optimized design is successfully fabricated, assembled, and validated on a physical system.
 
@@ -79,7 +161,7 @@ TBD.
 
 * Phase 1: Coarse grinding
 
-.. 
+..
     .. figure:: attached/telescope-powder.jpg
 
     .. figure:: attached/telescope-table.jpg
@@ -88,7 +170,7 @@ TBD.
 
 * Phase 2: Fine grinding
 
-.. 
+..
     .. figure:: attached/telescope-fine-grinding.jpg
 
     .. figure:: attached/telescope-bubble-technique.jpg
@@ -103,7 +185,7 @@ TBD.
 
 * Phase 3: Wet polishing with lap pitch
 
-.. 
+..
     .. figure:: attached/telescope-lap-pitch.jpg
 
     .. figure:: attached/telescope-press-fit.jpg
@@ -118,7 +200,7 @@ TBD.
 
 * Phase 4: testing for optical aberration
 
-.. 
+..
     .. figure:: attached/telescope-ronchi-tester.jpg
 
     .. figure:: attached/telescope-ronchi-diagram.jpg
@@ -134,7 +216,7 @@ TBD.
 
 * Phase 5: Opto-mechanical assembly
 
-.. 
+..
     .. figure:: attached/telescope-workshop.jpg
 
     .. figure:: attached/telescope-kinematic-mount.jpg
@@ -142,7 +224,7 @@ TBD.
     .. figure:: attached/telescope-painting.jpg
 
     .. figure:: attached/telescope-internal.jpg
-        
+
     .. figure:: attached/telescope-linear-gear.jpg
 
 * Phase 6: field testing

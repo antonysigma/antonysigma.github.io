@@ -11,7 +11,7 @@ Parallel frame grabber with 96 automative CMOS's for drug discovery
 
 
 As part of the OEM provided design "ride share" program, I contracted out the 96-CMOS single-board
-camera and FPGA-based frame grabber card array design & fabrication. I drafted and negotiated the 
+camera and FPGA-based frame grabber card array design & fabrication. I drafted and negotiated the
 pixel readout requirements, reviewed circuit schematics, and provided pre-fab feedback on the PCB's
 thermal load and EMI. The 96-CMOS subsystem is successfully integrated into the parallel microscope
 for high-throughput drug discovery at Amgen.
@@ -21,12 +21,14 @@ the completion of the their project.
 * Publication: **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
   `"Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)" <http://dx.doi.org/10.1038/s41598-019-47146-z>`_
   *Scientific Reports* **9**, 11114 (2019).
- 
+
 * Publication of the "ride share" partner: https://doi.org/10.7554/eLife.74988
 
 
 Mixed-signal circuit
 ----------------------
+
+.. _peltier-cooler:
 
 4-channel Peltier PID cooler for 3.5Watt laser modules, 30W per channel
 ########################################################################
@@ -40,16 +42,16 @@ Technical specifications:
 * Input: 24VDC, max 20A.
 
 * Output per channel: up to 10A, PWM at 5% to 100% duty cycle. 30N06L
- 
+
 * Recommended Peltier module: series-parallel modules supporting up to 24VDC
   input, with up to 50W heat transfer on the cold side.
- 
+
 * Temperature sensor: Dallas digital temperature sensor with Onewire interface. DS18B20
- 
+
 * Microcontroller (MCU) power supply: 5VDC, max 200mA. Completely separated from the 12DVC supply.
- 
+
 * MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.
- 
+
 * External set point control: I2C bus to reduce the cabling effort.
 
 * Project website: https://github.com/antonysigma/peltier-cooler-4ch
@@ -62,7 +64,12 @@ wells of the multi-well plate (area: 180mm x 90mm).
 
 At the time, there was an urgent need to create an evaluation board at less than
 10% of the cost of the OEM laser parts. So, the OEM provided temperature
-controller evaluation kits were a no go.
+controller evaluation kits were a no-go.
+
+If I had more time on the project, I would have enabled the staggered,
+phase-correct PWM to minimize the transient current load. Staggered PWM
+significantly reduces the dead time on the powerline, as well as reduces the EMI
+noise.
 
 Piezo-flexure nano-positioning stage control board
 #################################################################
@@ -112,7 +119,7 @@ With Anson Tang, I built a digital PID controller with ATTiny/AVR chips enabling
 ###################################################################################
 
 * :download:`Gerber file <attached/AOD_driver.zip>`
-* `Interactive pick-and-place helper </ibom/?pcbdata=data/aod-deflect.json>`_
+* `Interactive pick-and-place helper </ibom/?pcbdata=aod-deflect>`_
 * `Order from OSHPark <https://oshpark.com/shared_projects/FaXqBfp3>`_
 
 Line follower robot using pure IC logic for STEM education
@@ -155,7 +162,7 @@ following first principles are taught under the disguise of car race:
 
 **Why I make my own board**
 Today's proliferation of complex embedded electronics has led to a
-`Quadcore CPU-enabled soldering iron <https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/5G-enabled soldering>`_, 
+`Quadcore CPU-enabled soldering iron <https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/5G-enabled soldering>`_,
 and a `line following car running rich Linux operating system <https://projects.raspberrypi.org/en/projects/rpi-python-line-following>`_.
 It breaks my heart that these advanced technologies, e.g. Raspberry Pi, FPGA, and Arduino, are made to serve such a humble application.
 These system on boards (SoBs), and system on chip (SoCs) exist to solve a more sophsicated problem.
@@ -188,7 +195,7 @@ I designed a phase lock loop (PLL) amplifier to generate a 10 MHz TTL signal syn
 * Project website: https://github.com/antonysigma/femptosecond-pulse-trigger-pcb
 * Details of the `ANDi laser <https://doi.org/10.1364/OE.14.010095>`_ that we assembled in house.
 * :download:`Gerber file <attached/phase_lock.zip>`
-* `Interactive pick-and-place helper </ibom/?pcbdata=data/PhaseLock.json>`_
+* `Interactive pick-and-place helper </ibom/?pcbdata=phase_lock>`_
 * `Order from OSHPark <https://oshpark.com/shared_projects/Gh8VLLjV>`_
 
 Pulse oximeter signal conditioning circuit for STEM education

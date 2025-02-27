@@ -273,7 +273,7 @@ the completion of the their project.</p>
 <section id="mixed-signal-circuit">
 <h2>Mixed-signal circuit<a class="headerlink" href="#mixed-signal-circuit" title="Link to this heading">¶</a></h2>
 <section id="channel-peltier-pid-cooler-for-3-5watt-laser-modules-30w-per-channel">
-<h3>4-channel Peltier PID cooler for 3.5Watt laser modules, 30W per channel<a class="headerlink" href="#channel-peltier-pid-cooler-for-3-5watt-laser-modules-30w-per-channel" title="Link to this heading">¶</a></h3>
+<span id="peltier-cooler"></span><h3>4-channel Peltier PID cooler for 3.5Watt laser modules, 30W per channel<a class="headerlink" href="#channel-peltier-pid-cooler-for-3-5watt-laser-modules-30w-per-channel" title="Link to this heading">¶</a></h3>
 <figure class="align-default">
 <img alt="https://github.com/antonysigma/peltier-cooler-4ch/raw/master/preview.jpg" src="https://github.com/antonysigma/peltier-cooler-4ch/raw/master/preview.jpg" />
 </figure>
@@ -297,7 +297,11 @@ lens, so that I can excite the fluorescence-stained mammalian cells on all 96
 wells of the multi-well plate (area: 180mm x 90mm).</p>
 <p>At the time, there was an urgent need to create an evaluation board at less than
 10% of the cost of the OEM laser parts. So, the OEM provided temperature
-controller evaluation kits were a no go.</p>
+controller evaluation kits were a no-go.</p>
+<p>If I had more time on the project, I would have enabled the staggered,
+phase-correct PWM to minimize the transient current load. Staggered PWM
+significantly reduces the dead time on the powerline, as well as reduces the EMI
+noise.</p>
 </section>
 <section id="piezo-flexure-nano-positioning-stage-control-board">
 <h3>Piezo-flexure nano-positioning stage control board<a class="headerlink" href="#piezo-flexure-nano-positioning-stage-control-board" title="Link to this heading">¶</a></h3>
