@@ -250,10 +250,10 @@
           <section id="optics">
 <h1>Optics<a class="headerlink" href="#optics" title="Link to this heading">¶</a></h1>
 <p>Optical system design, as a business, has become very costly to run over the
-past few years for freelancer CDMO (contracted development &amp; manufacturing
-officer), especially without purchasing authority and a host lab to support the
-R&amp;D. Nowadays, I mostly compose/evaluate optical schematics, and verify them
-against OEM-provided specifications. If you find anyone who wishes to ship the
+past few years for freelancer CDM (contracted development &amp; manufacturing),
+especially without purchasing authority and a host lab to support the R&amp;D.
+Nowadays, I mostly compose/evaluate optical schematics, and verify them against
+OEM-provided specifications. If you find anyone who wishes to ship the
 instrument on loan to my office, I am more than willing to pick up the slack.
 Please feel free to contact me on <a class="reference external" href="https://www.linkedin.com/in/antonycschan/">LinkedIn</a>.</p>
 <p>Optical design review services:</p>
@@ -295,55 +295,57 @@ aberration extraction algorithm to analyze the Zernike coefficients.</p>
 <figure class="align-default">
 <img alt="_images/illumination-optics.png" src="_images/illumination-optics.png" />
 </figure>
-<p>Laser pointers are often a foolproof solution to early instrument prototyping;
-it is relatively easy to obtain laser-safety clearance. The R&amp;D can be
-accelerated due to its short lead time, as well as skipping the laser driver
+<p>Laser pointers are often a foolproof solution for early instrument prototyping,
+as obtaining laser safety clearance is relatively easy. R&amp;D can be accelerated
+due to their short lead time, as well as by bypassing the need for laser driver
 circuit procurement.</p>
-<p>However, it often makes sense to re-architect the illumination optics in pursuit
-of thermal stability, illumination homogeneity, as well as ease of optical
-alignment. I assisted the original project owner to finish the evaluation phase
-of the early prototype. Upon the scheduled disassembly, I reached out to
-stakeholders to <strong>re-capture the design constraints</strong>, followed by choosing a
-new system HW/FW/Optics architecture to meet the new requirements. The laser
-pointer based design is replaced with an external light engine, coupled with
-<strong>homogenizing light pipes and COTS projection lenses</strong>. I also custom-designed
-the <strong>thermal solutions, the laser driving electronics, as well as the laser
-monitoring firmware</strong>, interfacing the main instrument control board via I2C
-bus.</p>
-<p><strong>The context</strong>
-For a 6-well multi-modal imager (i.e. quantitative phase and widefield
+<p>However, it often makes sense to re-architect the illumination optics to improve
+thermal stability, illumination homogeneity, and ease of optical alignment. I
+assisted the original project owner in completing the evaluation phase of the
+early prototype. Upon the scheduled disassembly, I reached out to stakeholders
+to <strong>re-capture the design constraints, followed by designing a new system
+architecture for hardware, firmware, and optics to meet the updated
+requirements</strong>. The laser pointer-based design was replaced with an external light
+engine, coupled with <strong>homogenizing light pipes and off-the-shelf (COTS)
+projection optics</strong>. I also custom-designed the <strong>thermal solutions, laser driving
+electronics, and laser monitoring firmware</strong>, which interfaced with the main
+instrument control board via the I2C bus.</p>
+<p><strong>The context</strong></p>
+<p>For a 6-well multi-modal imager (i.e., quantitative phase and widefield
 fluorescence), it makes sense to design the illumination optics with one laser
-diode per well per channel, in order to take advantage of the individual
-addressable laser driving electronics to minimize photo-damage to live cells.
-Having individual laser power controls also offer a larger degree of freedom in
-laser power calibration, simplifying downstream cross-well data normalization
-pipelines.</p>
-<p>As the researchers migrate from the 6-well plate solution to the 96-well, it
-makes sense to <strong>replicate success by simply “copying” the design over</strong>. In fact,
-first generation <a class="reference external" href="https://www.experimental-engineering.co.uk/2020/01/18/casio-xj-a140-hybrid-projector-teardown/">overhead projectors</a>
-and <a class="reference external" href="https://www.lightspaceusa.com/gallery">concert lighshows</a> replace halogen lamps
-with laser diode knife-edge arrays to maximize the power-to-weight ratio.
-However, as we packed 30 laser pointers into the prototype, we quickly met
-various issues causing long system downtimes: thermal overload, laser driving
-current variations, mechanical alignment, as well as uneven illumination.</p>
-<p>It should be worth to note that the original prototype (i.e. simply mounting 30
-individual laser pointers) is a huge success, as far as the primary
-stakeholder’s concern. Quoting a fellow R&amp;D scientist from the book <em>Turning
-Science into Things People Need: Voices of Scientists in Industry</em>, the
-constantly-failing instrument performs exactly what it is designed to do; stays
-online just long enough to capture R&amp;D data for publications, before falling
-apart the next (milli-)second. “This is a proof that we don’t pay for what we
-don’t need for scientific discoveries.”</p>
-<p><strong>Nice to have features</strong>
-If I had sufficient funding, I would have contracted out the design to those
-specializing in off-axis darkfield trans-illumination optics. I also would have
-been more bold in freeform reflective optics; after all, what we truly need is a
-pair of rectangular floodlight illuminated at a shallow angle. The 96-camera
-system idea was also at least a decade ahead of its time; the DPSS laser diode
-array (465 nm, ~35% fluorescence quantum efficiency) would have been replaced
-with stacked GaN diode array on the wafer level (at 468 nm, 80% fluorescence
-quantum efficiency), completely bypassing the optical pumping setup and the bulky
-diode package.</p>
+diode per well per channel. This allows individually addressable laser driving
+electronics to minimize photodamage to live cells. Having independent laser
+power controls also provides greater flexibility in laser power calibration,
+simplifying downstream cross-well data normalization pipelines.</p>
+<p>As researchers transitioned from the 6-well plate to a 96-well configuration,
+the logical approach was to <strong>replicate success by simply “copying” the design
+over</strong>. In fact, first-generation <a class="reference external" href="https://www.experimental-engineering.co.uk/2020/01/18/casio-xj-a140-hybrid-projector-teardown/">overhead projectors</a>
+and <a class="reference external" href="https://www.lightspaceusa.com/gallery">concert lighshows</a> replaced
+halogen lamps with laser diode knife-edge arrays to maximize the power-to-weight
+ratio. However, when we packed 30 laser pointers into the prototype, we quickly
+encountered multiple issues that caused significant system downtime, including
+thermal overload, laser driving current variations, mechanical misalignment, and
+uneven illumination.</p>
+<p>It is worth noting that the original prototype—simply mounting 30 individual
+laser pointers—was a victory from the primary stakeholder’s perspective.
+Paraphrasing a fellow R&amp;D scientist’s words from <em>Turning Science into Things
+People Need: Voices of Scientists in Industry</em>:</p>
+<blockquote>
+<div><p>A constantly failing instrument performs exactly as designed—it stays online
+just long enough to capture R&amp;D data for analysis before falling apart the
+next (milli)second. This proves that we don’t pay for what we don’t need in
+scientific discoveries.</p>
+</div></blockquote>
+<p><strong>Nice to have features</strong> If I had sufficient funding, I would have contracted
+the design to specialists in off-axis darkfield trans-illumination optics. I also
+would have been bolder in exploring freeform reflective optics—after all, what
+we truly need is a pair of rectangular floodlights illuminated at a shallow
+angle.</p>
+<p>The 96-camera system concept was also ahead of its time by at least a decade.
+The DPSS laser diode array (465 nm, ~35% fluorescence quantum efficiency) would
+have been superseded by a stacked GaN diode array at the wafer level (488 nm,
+80% fluorescence quantum efficiency), completely bypassing the optical pumping
+setup and the bulky diode package.</p>
 <ul class="simple">
 <li><p><strong>A.C.S. Chan</strong>, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
 “Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)” Scientific Reports 9, 11114 (2019).</p></li>
