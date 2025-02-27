@@ -56,8 +56,9 @@ aberration extraction algorithm to analyze the Zernike coefficients.
 .. figure:: attached/illumination-optics.png
 
 Laser pointers are often a foolproof solution to early instrument prototyping;
-it is relatively easy to obtain laser-safety clearance, short lead time, as well
-as the benefit of built-in/cost-effective laser driver circuits.
+it is relatively easy to obtain laser-safety clearance. The R&D can be
+accelerated due to its short lead time, as well as skipping the laser driver
+circuit procurement.
 
 However, it often makes sense to re-architect the illumination optics in pursuit
 of thermal stability, illumination homogeneity, as well as ease of optical

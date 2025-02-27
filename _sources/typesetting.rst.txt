@@ -1,0 +1,93 @@
+Technical illustration
+=======================
+
+I do not offer technical illustration services anymore; it is no longer a
+profitable business given the low wage and the emergence of text-to-figure
+generative AIs, e.g. DALL-E. I still keep my own palette and pre-fab icons, in
+case I need to create and present novel ideas to investors.
+
+Mid-2019: Speckle generation infographics
+-------------------------------------------
+
+.. figure:: attached/scattering_medium.png
+    :width: 30%
+
+* Duration: 8 hours
+* Purpose: lab meeting
+* Drawing tools: Inkscape, LaTeX, `Public domain discrete optics symbols <https://github.com/amv213/ComponentLibrary>`_
+
+The infographics (aka powerpoint slide) is quickly drafted to illustrate various
+well known mechanisms of artificial (pseudo-random) speckle generation.
+Originally meant for scientific publication, it failed to gain any traction
+for its lack of novelty.
+
+It is a stark reminder that even in academia settings, it is a high risk/low
+reward scenario to spend time on drawing attractive figures just to prove the
+scientific values, especially before R&D funding is released.
+
+Mid-2017: 96-camera microscope
+---------------------------------
+
+.. figure:: https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-019-47146-z/MediaObjects/41598_2019_47146_Fig1_HTML.png?as=webp
+    :width: 50%
+
+* Duration: 75 hours
+* Publication: Nature Scientific Reports
+* Drawing tools: Inkscape, LaTeX, AutoCAD.
+
+We have our own PowerPoint drawings for internal presentation and contractor
+communications; simply not attractive enough for scientific publication. There
+were also a need to highlight the benefit of shared illumination light paths for
+adjacent CMOS camera, that is only visible in orthogonal projections.
+
+Mid-2016: Speckle pattern coding nanoscopic imaging for single cell in-situ multi-omics
+----------------------------------------------------------------------------------------
+
+.. figure:: attached/croucher-schematics.png
+    :width: 50%
+
+* Duration: 8 hours
+* Purpose: research scholar application
+* Drawing Tools: Inkscape
+
+Research fellow applications are, by definition, radical and ahead of its time.
+Therefore, as I was drafting the cover figure for the prospoal, I was
+envisioning that DNA-code-multiplexing FISH (e.g. MERFISH, SNAIL) would be a
+commodity technology by the time I won the research funding. I was trying to
+apply computational imaging technique to novel bio-chemistry
+sequencing-by-hybridization technology, also an unproven technology at the time.
+Nowadays, as I traced my steps, I often wonder the road not trodden scenario
+where I successfully developed and deployed the technology during the 2-year
+tenure.
+
+Late-2015: Holographic imaging for microscopic fluorescent objects
+--------------------------------------------------------------------
+
+.. figure:: https://opg.optica.org/getimagev2.cfm?img=67SQCJTf12rVc94c%2BhD6uq%2F7UzrWCwJHDx10eeh1eLM%3D&uri=optica-3-8-911-g001
+
+* Duration: 40 hours
+* Publication: Optica, the Optical Society.
+* Drawing tools: FreeCAD, Inkscape.
+
+It is conventional wisdom that fluorescence objects cannot generate Gabor
+holograms; a lot of effort is spent on fighting the presumptions. Three insets
+are included to call out the signal generation mechanisms; optical beating is
+responsible for encoding holographic phase information through the incoherent
+fluorescent light.
+
+Late-2014: Bioprinting/lab on a chip
+--------------------------------------
+
+.. figure:: https://www.pnas.org/cms/10.1073/pnas.1524510113/asset/3c581749-6e37-41ca-814c-734678f7f994/assets/graphic/pnas.1524510113fig01.jpeg
+    :width: 30%
+
+* Duration: 20 hours
+* Publication: PNAS
+* Drawing tools: Inkscape, GIMP.
+
+There is a need to illustrate the in-situ fabrication process as a spontaneous
+operation with walk-away automation. Therefore, all the electronics (e.g. light
+engine, FPGA) and control mechanisms (frame synchronization software) are
+excluded from the drawings. The zoomed-in view further highlights the
+3-dimensional constructs in microscopic scale, so I borrowed the style from
+AA-sectional views of mechanical CAD drawings.
