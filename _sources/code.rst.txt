@@ -4,6 +4,9 @@ Software
 Professional software development
 ######################################
 
+
+.. _mbse-lite:
+
 MBSE-lite: system requirement tracking and design with a simplified schema
 ----------------------------------------------------------------------------
 
@@ -57,6 +60,8 @@ Ultimately, these commercial tools are designed to cater to NASA-scale projects
 and defense contractors with >1,000 head counts. For medium-sized projects, it
 is unnecessary to pay for features we don't use.
 
+.. _proximal-lang:
+
 ProxImaL: GPU-accelerated ISP code generation with 5th generation language
 ----------------------------------------------------------------------------
 
@@ -73,7 +78,7 @@ details of how the image restoration problem should be solved or implemented on 
 
 .. note::
 
-   I am the maintainer of the ProxImaL project. Please report the bugs at 
+   I am the maintainer of the ProxImaL project. Please report the bugs at
    https://github.com/comp-imaging/ProxImaL/issues
 
 The project is originally created by Felix Heide and Steve Diamond. Please cite:

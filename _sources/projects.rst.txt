@@ -2,7 +2,7 @@ Research
 ==========
 
 Here is the curated list of large scale projects as the owner. I
-have already transitioned into the industry, but I occationally share the
+have already transitioned into the industry, but I occasionally share the
 stories to re-live the finest moments.
 
 For the exhaustive list of my research, you may refer to my `Google scholar
@@ -99,7 +99,7 @@ With the assistance of Andy K.S. Lau, I address this challenge with a two-dimens
 Side projects
 ---------------
 
-Check out the electronics projects and software projects.
+.. _trusted-imaging:
 
 ARM TrustZone security-hardened cameraphone to ensure authentic news photos
 ###########################################################################

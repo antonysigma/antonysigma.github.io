@@ -1,0 +1,151 @@
+.. _expertise:
+
+Expertise and services
+========================
+
+Refer to the homepage for my :ref:`work experiences and business verticals/horizontals <homepage>`.
+
+System-level design and architecture review
+---------------------------------------------
+
+.. figure:: attached/design-thinking.png
+    :width: 100%
+
+I build end-to-end **giga-pixel, high-throughput imaging system** for a living.
+Compared to conventional R&D pipelines that advocates for "make it work, make it
+right, then make it fast". End-to-end design projects requires a concurrent R&D
+workflow where the entire technical stack should develop jointly to ensure timely
+project delivery.
+
+- **Physical layer:** choose between widefield fluorescence imaging setup, or
+  structured-illumination, or light-sheet, depending on the use cases;
+
+- **Digital layer:** sourcing CMOS cameras, avalanche photodiodes, and/or
+  illumination modules; thermal control via Peltier modules and custom heatsink;
+  motion PID control with custom PCBs.
+
+- **Tooling and DevOps:** Ansible and/or Buildbot for CI/CD pipeline;
+
+- **Storage layer:** ZFS for near-instant file garbage collection; EXT4 for peak
+  RW throughput.
+
+- **Compute layer:** instrument control software/firmware in either Go/C++ or
+  Python/C++ depending on the pixel throughput; CPU multithread or
+  single/multi-GPU accelerated algorithms for image reconstructions.
+
+- **Presentation layer:** variants of graphical user interfaces, e.g. Terminal
+  UI, WebUI, or OpenGL/GLFW UI.
+
+
+I offer services for system requirement capture and design, tracing the
+hardware/software design decisions back to the original design requirements and
+constraints. The deliverable can be a design-input tracking database hosted on
+the premises, or a static requirement analysis report with a simplified schema.
+
+Read more about my work on :ref:`end-to-end design input capture and analysis
+<mbse-lite>` for early stage startups (i.e. 5 to 30 stakeholders).
+
+Cross-compilation and multi-platform support, C++
+---------------------------------------------------
+
+**Linux HPC support** I primarily write multi-threaded, GPU-accelerated
+scientific code with the Clang/LLVM toolchain. Read my code for `multi-GPU workstations
+<https://github.com/Caltech-Biophotonics-Lab/fpm-96eyes-reconstruction>`_.
+
+**Windows 10/WSL support**
+I provide cross-compilation supports and DevOps to support algorithm testing on
+WSL/Linux machine, and continuous deployment on Windows 10/11. I specialize in
+C++ function mangling to call MSVC-style Math symbols from GNU/MinGW64 runtime,
+getting the best of both worlds.
+
+**Android support, native boot sector** I no longer provide this service because
+of the cost-prohibitive EULAs and licenses that comes with Snapdragon/Tensor's
+hardware development kits (HDK). Exceptions the customers has already licensed
+from the SoC vendors.
+
+Read my contributions to `Build systems <https://github.com/mesonbuild/meson/pull/7481>`_
+
+GPU acceleration and domain-specific language design for scientists
+----------------------------------------------------------------------
+
+The hardware-accelerated compute is far more fragmented than ever, resulting in
+vendor lock-in of user algorithms. We are now witnessing CPUs (equipped with
+512-bit SIMDs) out-competing mainstream GPUs on specific algorithm pipelines.
+Even for GPUs from the same vendor, the micro-architecture dragestic changes
+from one generation (e.g. Nvidia Maxwell) to another (e.g. Volta).
+
+Therefore, instead of writing multiple versions of static, hand-optimized (CUDA
+or C++) code targeting specific system-on-chips (SoCs), it makes more sense to
+design high-throughput image processing algorithms in a portable language with
+zero-cost abstraction, similar to the decoupling between computer-aided design
+(CAD) and computer-aided manufacture (CAM).
+
+Read more about my work on :ref:`Imaging problem formulation language <proximal-lang>`.
+
+Low-latency computing, C++17/C++20
+-----------------------------------
+
+.. figure:: attached/cpp20-demo.jpg
+
+    (Left) procedural programming style, versus (Right) declarative programming
+    style enabled by C++17/C++20 features.
+
+I specialize in baremetal, embedded system programming in C++17/C++20 language,
+with stack-space optimization. Microcontroller unit (MCU) and CPU architecture
+ranging from AVR to ARMv8/NEON. I also offer tutorials for founding
+scientists/engineers to equip them for Static-Type-driven development (i.e.
+parse, don't verify) and Behavior-driven development (BDD) for early algorithms
+with the low-latency mindset.
+
+Read my contribution of the security-hardened smartphone camera to :ref:`Adobe
+Content Authenticity Initiative (CAI) <trusted-imaging>`.
+
+Illumination/imaging optics design
+------------------------------------
+
+.. figure:: attached/plastic-molded-lens.png
+
+Optical system design, as a business, has become very costly to run over the
+past few years for freelancer CDM (contracted development & manufacturing),
+especially without purchasing authority and a host lab to support the R&D.
+Nowadays, I mostly compose/evaluate optical schematics, and verify them against
+OEM-provided specifications. If you find anyone who wishes to ship the
+instrument on loan to my office, I am more than willing to pick up the slack.
+Please feel free to contact me on `LinkedIn
+<https://www.linkedin.com/in/antonycschan/>`_.
+
+Read more about my projects :ref:`here <professional-optics>`.
+
+Instrument control PCB design
+--------------------------------
+
+.. figure:: https://github.com/antonysigma/piezo-stage-pid-board/raw/master/preview.jpg
+
+I used to build mixed-signal control PCBs for a living. Recently, I stopped
+offering this service amid rising BOM costs and PCBA fabs, unless my clients
+offer a cost-plus contract.
+
+My specialties:
+
+- single-axis motion control with PID feedback, implemented via biquads tuned
+  from Z-transformed designs;
+- Biomedical signal preconditioning/amplifier with second-order OpAmp filters;
+- Analog PLL circuit design, GHz input bandwith, ~10MHz clock output.
+- Peltier thermal control.
+- Adapter boards for Zynq7000s and/or Nvidia Jetson system on boards (SoBs).
+
+Read my :ref:`portfolio here <electronics>`.
+
+Technical illustration
+-------------------------
+
+.. figure:: https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-019-47146-z/MediaObjects/41598_2019_47146_Fig1_HTML.png?as=webp
+    :width: 80%
+
+Nowadays, I rarely offer technical illustration services except to friends at
+work; it is no longer a profitable service sector given the low hourly wage, and the
+emergence of text-to-figure generative AI, e.g. DALL-E. I still keep my own
+palette and pre-fab icons, in case I need to create and present novel ideas to
+investors.
+
+Read my :ref:`portfolio here <technical_illustration>`.

@@ -1,0 +1,21 @@
+Contact
+==========
+
+.. figure:: https://media.licdn.com/dms/image/v2/D5603AQEEJQeKIqbd9Q/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1689437226453?e=1758758400&v=beta&t=D44zdwrNxanHvbTpVkStnrHgyqOedS1cOXIZsqyFtd8
+    :width: 20%
+
+| Github: https://github.com/antonysigma/
+| Linkedin: https://www.linkedin.com/in/antonycschan/
+
+Antony C. Chan, PhD is an optical and computational imaging specialist with
+experience spanning the entire high throughput sensing landscape, ranging from
+high-speed microscopy (i.e.\ high frame rate, single pixel), to giga-pixel
+superresolution camera design (i.e.\ low frame rate, high pixel count). He has
+developed methods enabling million-FPS imaging cytometers, co-invented a
+96-camera live-cell imaging hardware at Caltech, engineered tamper-proof mobile
+imaging to combat news disinformation, and accelerated next-generation DNA
+sequencing pipelines with FPGA/GPU capabilities. As an independent consultant,
+he helps clients architect advanced imaging systems end-to-end---from optics
+and motion control to firmware, algorithms, and scalable data pipelines---
+delivering solutions that bridge cutting-edge research with deployable products
+for real world applications.

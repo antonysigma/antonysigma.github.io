@@ -29,6 +29,7 @@ Optical design review services:
   modality; foundational optical modelling with either
   Fraunhofer/Poisson/Fresnel approximations.
 
+.. _professional-optics:
 
 Professional optics design & fabrication
 -------------------------------------------

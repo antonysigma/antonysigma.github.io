@@ -8,8 +8,10 @@ Antony C.S. Chan, PhD
 
 Consultant for hire, super-resolution imaging and giga-pixel camera design. Also open to permanent positions.
 
-Services
------------
+.. _homepage:
+
+Expertise and Services
+--------------------------
 
 **Business verticals:**
 
@@ -36,11 +38,15 @@ Services
 
 * Algorithm porting and GPU acceleration.
 
-Scroll to the `bottom <#contents>`_ to learn more about the technology stack and product portfolio.
+:ref:`Click here <expertise>` to learn more about the technology stack and product portfolio.
+
+.. figure:: attached/main-banner.png
+
+Contacts
+----------
 
 Contact me at `Linkedin <https://www.linkedin.com/in/antonycschan/>`_ for details.
 
-.. figure:: attached/main-banner.png
 
 Experiences
 -------------
@@ -76,10 +82,12 @@ Contents
 .. toctree::
    :maxdepth: 3
 
-   projects
-   publications
-   electronics
+   expertise
    optics
    code
+   electronics
    typesetting
+   projects
+   publications
+   contact
 
