@@ -55,23 +55,23 @@ scientific code with the Clang/LLVM toolchain. Read my code for `multi-GPU works
 **Windows 10/WSL support**
 I provide cross-compilation supports and DevOps to support algorithm testing on
 WSL/Linux machine, and continuous deployment on Windows 10/11. I specialize in
-C++ function mangling to call MSVC-style Math symbols from GNU/MinGW64 runtime,
+C++ function mangling to call MSVC-style symbols from GNU/MinGW64 runtime,
 getting the best of both worlds.
 
 **Android support, native boot sector** I no longer provide this service because
 of the cost-prohibitive EULAs and licenses that comes with Snapdragon/Tensor's
-hardware development kits (HDK). Exceptions the customers has already licensed
-from the SoC vendors.
+hardware development kits (HDK). Exceptions can be made if the customers has
+already licensed from the SoC vendors.
 
 Read my contributions to `Build systems <https://github.com/mesonbuild/meson/pull/7481>`_
 
 GPU acceleration and domain-specific language design for scientists
 ----------------------------------------------------------------------
 
-The hardware-accelerated compute is far more fragmented than ever, resulting in
+The hardware-accelerated compute landscape is far more fragmented than ever, resulting in
 vendor lock-in of user algorithms. We are now witnessing CPUs (equipped with
 512-bit SIMDs) out-competing mainstream GPUs on specific algorithm pipelines.
-Even for GPUs from the same vendor, the micro-architecture dragestic changes
+Even for GPUs from the same vendor, the micro-architecture drastically changes
 from one generation (e.g. Nvidia Maxwell) to another (e.g. Volta).
 
 Therefore, instead of writing multiple versions of static, hand-optimized (CUDA
@@ -122,8 +122,8 @@ Instrument control PCB design
 .. figure:: https://github.com/antonysigma/piezo-stage-pid-board/raw/master/preview.jpg
 
 I used to build mixed-signal control PCBs for a living. Recently, I stopped
-offering this service amid rising BOM costs and PCBA fabs, unless my clients
-offer a cost-plus contract.
+offering this service amid rising BOM costs and PCBA fabs. But I am willing to
+pick up the slack if my clients offer a cost-plus contract.
 
 My specialties:
 
@@ -146,6 +146,6 @@ Nowadays, I rarely offer technical illustration services except to friends at
 work; it is no longer a profitable service sector given the low hourly wage, and the
 emergence of text-to-figure generative AI, e.g. DALL-E. I still keep my own
 palette and pre-fab icons, in case I need to create and present novel ideas to
-investors.
+customers and/or investors.
 
 Read my :ref:`portfolio here <technical_illustration>`.

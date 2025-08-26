@@ -12,20 +12,17 @@ Parallel frame grabber with 96 automative CMOS's for drug discovery
 .. figure:: attached/96-cmos-fpga.png
 
 
-As part of the OEM provided design "ride share" program, I contracted out the 96-CMOS single-board
+As part of the OEM provided design "ride-share" program, I contracted out the 96-CMOS single-board
 camera and FPGA-based frame grabber card array design & fabrication. I drafted and negotiated the
 pixel readout requirements, reviewed circuit schematics, and provided pre-fab feedback on the PCB's
 thermal load and EMI. The 96-CMOS subsystem is successfully integrated into the parallel microscope
 for high-throughput drug discovery at Amgen.
-The "ride share" program enables a shared domain knowledge with another customer, which in turn accelerated
-the completion of the their project.
+The "ride-share" program enables a shared domain knowledge with another customer, which in turn accelerated
+the completion of similar projects.
 
 * Publication: **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
   `"Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)" <http://dx.doi.org/10.1038/s41598-019-47146-z>`_
   *Scientific Reports* **9**, 11114 (2019).
-
-* Publication of the "ride share" partner: https://doi.org/10.7554/eLife.74988
-
 
 Mixed-signal circuit
 ----------------------
@@ -37,7 +34,7 @@ Mixed-signal circuit
 
 .. figure:: https://github.com/antonysigma/peltier-cooler-4ch/raw/master/preview.jpg
 
-The custom PCB to control up to 4 individual Peliter coolers interfacing the high power laser modules.
+The custom PCB to control up to 4 individual Peltier coolers interfacing the high power laser modules.
 
 Technical specifications:
 
@@ -48,11 +45,11 @@ Technical specifications:
 * Recommended Peltier module: series-parallel modules supporting up to 24VDC
   input, with up to 50W heat transfer on the cold side.
 
-* Temperature sensor: Dallas digital temperature sensor with Onewire interface. DS18B20
+* Temperature sensor: Dallas digital temperature sensor with One-Wire interface. DS18B20
 
 * Microcontroller (MCU) power supply: 5VDC, max 200mA. Completely separated from the 12DVC supply.
 
-* MCU programming interface: UART over TTL, via a 6-pin connecter with the FTDI friend USB adapter.
+* MCU programming interface: UART over TTL, via a 6-pin connector with the FTDI friend USB adapter.
 
 * External set point control: I2C bus to reduce the cabling effort.
 
@@ -167,7 +164,7 @@ Today's proliferation of complex embedded electronics has led to a
 `Quadcore CPU-enabled soldering iron <https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/5G-enabled soldering>`_,
 and a `line following car running rich Linux operating system <https://projects.raspberrypi.org/en/projects/rpi-python-line-following>`_.
 It breaks my heart that these advanced technologies, e.g. Raspberry Pi, FPGA, and Arduino, are made to serve such a humble application.
-These system on boards (SoBs), and system on chip (SoCs) exist to solve a more sophsicated problem.
+These system-on-boards (SoBs), and system-on-chip (SoCs) exist to solve a more sophisticated problem.
 
 To be fair, these education kits are ideal for student's exposure to the
 bleeding edge technologies; depending on where you live, it might help build
