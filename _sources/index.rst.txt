@@ -13,28 +13,28 @@ Consultant for hire, super-resolution imaging and giga-pixel camera design. Also
 Expertise and Services
 --------------------------
 
-**Business verticals:**
+**What I do (aka the applications)**
 
-* New product development (NPD) and architecture critique of high-throughput
-  imaging system involving live cells and stain-free cell culture.
+* New product development (NPD) and prototyping.
 
-* Compuational image super-resolution / deconvolution algorithm design and
-  development; Fourier optics and Poisson statistical modelling;
+* High-throughput, super-resolution bio-imaging system & analysis pipeline.
 
-* Structured illumination for stain-free live cells; quantiative phase microscopy;
+* Scientific & industrial camera system hardware & firmware.
 
-* Multi-modal bio-chemical data analysis; model-based analysis pipeline design.
+* Motion control systems for microscope auto-leveling and auto-focusing.
 
-**Business horizontals:**
+**Where I apply (aka the capabilities)**
 
-* End-to-end giga-pixel camera system design, manufacture, and delivery; cost of
-  materials ranging from ~$50k to ~$500k.
+* End-to-end system architecture & engineering, e.g. requirement traceability
+  analysis, trade studies, and design thinking.
 
-* System engineering requirement traceability, analysis, and architecture
-  synthesis; opto-mechanical trade studies.
+* Firmware development and QC, e.g. C++17, real-time systems, GPU acceleration.
 
-* Scientific/consumer imaging optics & motion control firmware architecture;
-  piezo-electric actuator; C++14 no-`malloc` firmware
+* Illumination/imaging optics and imaging hardware design.
+
+* Scientific graphical user interface design.
+
+* Algorithm design and development, e.g. super-resolution, deconvolution, data analysis.
 
 * Algorithm porting and GPU acceleration.
 
