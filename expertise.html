@@ -202,54 +202,136 @@
           <section id="expertise-and-services">
 <span id="expertise"></span><h1>Expertise and services<a class="headerlink" href="#expertise-and-services" title="Permalink to this heading">#</a></h1>
 <p>Refer to the homepage for my <a class="reference internal" href="index.html#homepage"><span class="std std-ref">work experiences and business verticals/horizontals</span></a>.</p>
+<section id="high-throughput-imaging-system-pocs-and-mvps">
+<h2>High-throughput imaging system POCs and MVPs<a class="headerlink" href="#high-throughput-imaging-system-pocs-and-mvps" title="Permalink to this heading">#</a></h2>
+<p>I build end-to-end <strong>giga-pixel, high-throughput imaging systems</strong> for research
+labs and early-stage startups. Compared to conventional R&amp;D pipelines that
+advocates for “make it work, make it right, then make it fast”. End-to-end
+design projects requires a concurrent R&amp;D workflow where the entire technical
+stack should develop jointly to ensure timely project delivery.</p>
+<figure class="align-default" id="id1">
+<img alt="_images/96eyes-data-flow.png" src="_images/96eyes-data-flow.png" />
+<figcaption>
+<p><span class="caption-text">An overview of a typical high-throughput, giga-pixel imaging system as a
+<strong>Proof of concept (POC)</strong>. (a) Plate loading and image acquisition steps
+overlapped in time. (b-c) High speed data links streams 96 camera pixels to
+the 5x GPU cards. (d) Front view of the 96 Eyes hardware, version 1.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/96eyes-mvp.jpg"><img alt="_images/96eyes-mvp.jpg" src="_images/96eyes-mvp.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Minimum viable product (MVP)</strong> for the client. Compared to the
+version 1, the entire instrument is rebuilt with aluminum enclosures. It also
+comes with a more robust motion &amp; thermal control electronics, mechanical
+interlocks, laser safety housing, and remote control interfaces. It is also
+equipped with auxiliary nano-positioning stages for self-calibration of
+consumables.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Design and prototyping capabilities, assuming a cost-plus contract:</p>
+<ul class="simple">
+<li><p><strong>Physical layer:</strong> choose between widefield fluorescence imaging setup, or
+structured-illumination, or light-sheet, depending on the use cases;</p></li>
+<li><p><strong>Analog layer:</strong> sourcing CMOS cameras, avalanche photodiodes, and/or
+illumination modules; thermal control via Peltier modules and custom heatsink;
+motion PID control with custom PCBs.</p></li>
+<li><p><strong>Digital layer:</strong> AVR microcontroller units for low-latency instrument
+control; Nvidia Jetson system-on-board (SoB) for real-time embedded computer
+vision. Multi-GPU compute workstation for hardware-accelerated image signal
+processing.</p></li>
+<li><p><strong>Tooling and DevOps:</strong> Ansible for continuous deployment (CD); Buildbot for
+continuous integration (CI).</p></li>
+<li><p><strong>Storage layer:</strong> ZFS for near-instant file garbage collection; EXT4 for peak
+RW throughput. HDF5 for high-throughput data container; OME-TIFF for long-term storage.</p></li>
+<li><p><strong>Compute layer:</strong> instrument control software/firmware in either Go/C++ or
+Python/C++ depending on the pixel throughput; CPU multithread or
+single/multi-GPU accelerated algorithms for image reconstructions.</p></li>
+<li><p><strong>Presentation layer:</strong> Terminal UI for factory-floor QC testing; WebUI for
+z-stack image dashboards; or OpenGL/GLFW UI for real-time volume rendering.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Learn about the Amgen-Caltech project from: <strong>A.C.S. Chan</strong>, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+<a class="reference external" href="http://dx.doi.org/10.1038/s41598-019-47146-z">“Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)”</a>
+<em>Scientific Reports</em> <strong>9</strong>, 11114 (2019).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Also, read the whitepaper regarding the multidisciplinary collaboration aspects to facilitate timely MVP launch: <a class="reference external" href="https://arxiv.org/html/2508.18512v1">https://arxiv.org/html/2508.18512v1</a></p>
+</div>
+</section>
 <section id="system-level-design-and-architecture-review">
 <h2>System-level design and architecture review<a class="headerlink" href="#system-level-design-and-architecture-review" title="Permalink to this heading">#</a></h2>
 <figure class="align-default">
 <a class="reference internal image-reference" href="_images/design-thinking.png"><img alt="_images/design-thinking.png" src="_images/design-thinking.png" style="width: 100%;" /></a>
 </figure>
-<p>I build end-to-end <strong>giga-pixel, high-throughput imaging system</strong> for a living.
-Compared to conventional R&amp;D pipelines that advocates for “make it work, make it
-right, then make it fast”. End-to-end design projects requires a concurrent R&amp;D
-workflow where the entire technical stack should develop jointly to ensure timely
-project delivery.</p>
-<ul class="simple">
-<li><p><strong>Physical layer:</strong> choose between widefield fluorescence imaging setup, or
-structured-illumination, or light-sheet, depending on the use cases;</p></li>
-<li><p><strong>Digital layer:</strong> sourcing CMOS cameras, avalanche photodiodes, and/or
-illumination modules; thermal control via Peltier modules and custom heatsink;
-motion PID control with custom PCBs.</p></li>
-<li><p><strong>Tooling and DevOps:</strong> Ansible and/or Buildbot for CI/CD pipeline;</p></li>
-<li><p><strong>Storage layer:</strong> ZFS for near-instant file garbage collection; EXT4 for peak
-RW throughput.</p></li>
-<li><p><strong>Compute layer:</strong> instrument control software/firmware in either Go/C++ or
-Python/C++ depending on the pixel throughput; CPU multithread or
-single/multi-GPU accelerated algorithms for image reconstructions.</p></li>
-<li><p><strong>Presentation layer:</strong> variants of graphical user interfaces, e.g. Terminal
-UI, WebUI, or OpenGL/GLFW UI.</p></li>
-</ul>
 <p>I offer services for system requirement capture and design, tracing the
 hardware/software design decisions back to the original design requirements and
 constraints. The deliverable can be a design-input tracking database hosted on
 the premises, or a static requirement analysis report with a simplified schema.</p>
 <p>Read more about my work on <a class="reference internal" href="code.html#mbse-lite"><span class="std std-ref">end-to-end design input capture and analysis</span></a> for early stage startups (i.e. 5 to 30 stakeholders).</p>
 </section>
-<section id="cross-compilation-and-multi-platform-support-c">
-<h2>Cross-compilation and multi-platform support, C++<a class="headerlink" href="#cross-compilation-and-multi-platform-support-c" title="Permalink to this heading">#</a></h2>
-<p><strong>Linux HPC support</strong> I primarily write multi-threaded, GPU-accelerated
-scientific code with the Clang/LLVM toolchain. Read my code for <a class="reference external" href="https://github.com/Caltech-Biophotonics-Lab/fpm-96eyes-reconstruction">multi-GPU workstations</a>.</p>
-<p><strong>Windows 10/WSL support</strong>
-I provide cross-compilation supports and DevOps to support algorithm testing on
-WSL/Linux machine, and continuous deployment on Windows 10/11. I specialize in
+<section id="cross-compilation-and-multi-platform-support-software-only-c-17">
+<h2>Cross-compilation and multi-platform support, software only, C++17<a class="headerlink" href="#cross-compilation-and-multi-platform-support-software-only-c-17" title="Permalink to this heading">#</a></h2>
+<section id="linux-high-performance-computing-cluster-workstations">
+<h3>Linux high-performance computing cluster/workstations<a class="headerlink" href="#linux-high-performance-computing-cluster-workstations" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/gpu-cooling.jpg"><img alt="_images/gpu-cooling.jpg" src="_images/gpu-cooling.jpg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-text">Custom-designed Linux workstation. (Left) custom GPU liquid cooling heatsinks
+from OEMs. (Right) Fully assembled multi-GPU workstation for high-throughput
+image processing. Photo courtesy of Bitspower and Caltech.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>I primarily write multi-threaded, GPU-accelerated scientific code with the
+Clang/LLVM toolchain. I also offer material sourcing service for
+high-performance computing (HPC) workstations with server-grade dual-CPU
+motherboards, USB/Ethernet hubs, and multi-GPU cards.</p>
+<p>Read my code for <a class="reference external" href="https://github.com/Caltech-Biophotonics-Lab/fpm-96eyes-reconstruction">multi-GPU workstations</a>.</p>
+</section>
+<section id="nvidia-gpu-jetson-system-on-board-sob">
+<h3>Nvidia GPU Jetson system-on-board (SoB)<a class="headerlink" href="#nvidia-gpu-jetson-system-on-board-sob" title="Permalink to this heading">#</a></h3>
+<p>I offer Ansible-assisted, over-the-air (OTA) application deployment over the
+Nvidia Jetpack’s Linux base image. Compared to the Yocto’s
+<em>build-everything-from-scratch</em> approach, Ansible approach ensures minimal wear
+and tear of the boot sector in the UFS/eMMC chips.</p>
+<p>Camera MIPI/USBVision interface integration in userspace is also supported, as long as the
+kernelspace drivers are already licensed from the OEMs to the clients.</p>
+<p>Examples of camera OEMs are: ArduCAM, Allied Vision.</p>
+</section>
+<section id="windows-10-wsl-native-c-golang-applications-with-webgui">
+<h3>Windows 10/WSL native C++/Golang applications, with WebGUI<a class="headerlink" href="#windows-10-wsl-native-c-golang-applications-with-webgui" title="Permalink to this heading">#</a></h3>
+<p>I provide cross-compilation supports and DevOps to support C++/Golang application testing on
+virtual machine hosted on Windows (i.e. Windows system for Linux, WSL), and
+continuous deployment of end-user applications to Windows 10/11. I specialize in
 C++ function mangling to call MSVC-style symbols from GNU/MinGW64 runtime,
 getting the best of both worlds.</p>
-<p><strong>Android support, native boot sector</strong> I no longer provide this service because
-of the cost-prohibitive EULAs and licenses that comes with Snapdragon/Tensor’s
-hardware development kits (HDK). Exceptions can be made if the customers has
-already licensed from the SoC vendors.</p>
-<p>Read my contributions to <a class="reference external" href="https://github.com/mesonbuild/meson/pull/7481">Build systems</a></p>
+</section>
+<section id="xilinx-amd-fpga-system-on-chip">
+<h3>Xilinx/AMD FPGA system-on-chip<a class="headerlink" href="#xilinx-amd-fpga-system-on-chip" title="Permalink to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="_images/ebaz4205.png" src="_images/ebaz4205.png" />
+</figure>
+<p>I customize Yocto build system directory structures integrating user-provided
+Vivado hardware designs (e.g. as blackbox). I also offer Meson build systems
+integrations to facilitate userspace application testing for both off-target
+(i.e. no QEMU) and on-target.</p>
+</section>
+<section id="android-support-native-boot-sector">
+<h3>Android support, native boot sector<a class="headerlink" href="#android-support-native-boot-sector" title="Permalink to this heading">#</a></h3>
+<p>I no longer provide this service because of the cost-prohibitive EULAs and
+licenses that comes with Snapdragon/Tensor’s hardware development kits (HDK).
+Exceptions can be made if the customers has already licensed from the SoC
+vendors. Learn about my contributions to
+<a class="reference external" href="https://github.com/mesonbuild/meson/pull/7481">Build systems</a></p>
+</section>
 </section>
 <section id="gpu-acceleration-and-domain-specific-language-design-for-scientists">
 <h2>GPU acceleration and domain-specific language design for scientists<a class="headerlink" href="#gpu-acceleration-and-domain-specific-language-design-for-scientists" title="Permalink to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="_images/proximal-banner.png" src="_images/proximal-banner.png" />
+</figure>
 <p>The hardware-accelerated compute landscape is far more fragmented than ever, resulting in
 vendor lock-in of user algorithms. We are now witnessing CPUs (equipped with
 512-bit SIMDs) out-competing mainstream GPUs on specific algorithm pipelines.
@@ -264,11 +346,11 @@ zero-cost abstraction, similar to the decoupling between computer-aided design
 </section>
 <section id="low-latency-computing-c-17-c-20">
 <h2>Low-latency computing, C++17/C++20<a class="headerlink" href="#low-latency-computing-c-17-c-20" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id4">
 <img alt="_images/cpp20-demo.jpg" src="_images/cpp20-demo.jpg" />
 <figcaption>
 <p><span class="caption-text">(Left) procedural programming style, versus (Right) declarative programming
-style enabled by C++17/C++20 features.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+style enabled by C++17/C++20 features.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>I specialize in baremetal, embedded system programming in C++17/C++20 language,
@@ -383,8 +465,16 @@ customers and/or investors.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Expertise and services</a><ul>
+<li><a class="reference internal" href="#high-throughput-imaging-system-pocs-and-mvps">High-throughput imaging system POCs and MVPs</a></li>
 <li><a class="reference internal" href="#system-level-design-and-architecture-review">System-level design and architecture review</a></li>
-<li><a class="reference internal" href="#cross-compilation-and-multi-platform-support-c">Cross-compilation and multi-platform support, C++</a></li>
+<li><a class="reference internal" href="#cross-compilation-and-multi-platform-support-software-only-c-17">Cross-compilation and multi-platform support, software only, C++17</a><ul>
+<li><a class="reference internal" href="#linux-high-performance-computing-cluster-workstations">Linux high-performance computing cluster/workstations</a></li>
+<li><a class="reference internal" href="#nvidia-gpu-jetson-system-on-board-sob">Nvidia GPU Jetson system-on-board (SoB)</a></li>
+<li><a class="reference internal" href="#windows-10-wsl-native-c-golang-applications-with-webgui">Windows 10/WSL native C++/Golang applications, with WebGUI</a></li>
+<li><a class="reference internal" href="#xilinx-amd-fpga-system-on-chip">Xilinx/AMD FPGA system-on-chip</a></li>
+<li><a class="reference internal" href="#android-support-native-boot-sector">Android support, native boot sector</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#gpu-acceleration-and-domain-specific-language-design-for-scientists">GPU acceleration and domain-specific language design for scientists</a></li>
 <li><a class="reference internal" href="#low-latency-computing-c-17-c-20">Low-latency computing, C++17/C++20</a></li>
 <li><a class="reference internal" href="#illumination-imaging-optics-design">Illumination/imaging optics design</a></li>

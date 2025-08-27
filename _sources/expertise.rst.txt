@@ -5,37 +5,73 @@ Expertise and services
 
 Refer to the homepage for my :ref:`work experiences and business verticals/horizontals <homepage>`.
 
-System-level design and architecture review
----------------------------------------------
+High-throughput imaging system POCs and MVPs
+----------------------------------------------
 
-.. figure:: attached/design-thinking.png
-    :width: 100%
+I build end-to-end **giga-pixel, high-throughput imaging systems** for research
+labs and early-stage startups. Compared to conventional R&D pipelines that
+advocates for "make it work, make it right, then make it fast". End-to-end
+design projects requires a concurrent R&D workflow where the entire technical
+stack should develop jointly to ensure timely project delivery.
 
-I build end-to-end **giga-pixel, high-throughput imaging system** for a living.
-Compared to conventional R&D pipelines that advocates for "make it work, make it
-right, then make it fast". End-to-end design projects requires a concurrent R&D
-workflow where the entire technical stack should develop jointly to ensure timely
-project delivery.
+.. figure:: attached/96eyes-data-flow.png
+
+  An overview of a typical high-throughput, giga-pixel imaging system as a
+  **Proof of concept (POC)**. (a) Plate loading and image acquisition steps
+  overlapped in time. (b-c) High speed data links streams 96 camera pixels to
+  the 5x GPU cards. (d) Front view of the 96 Eyes hardware, version 1.
+
+.. figure:: attached/96eyes-mvp.jpg
+  :width: 50%
+
+  **Minimum viable product (MVP)** for the client. Compared to the
+  version 1, the entire instrument is rebuilt with aluminum enclosures. It also
+  comes with a more robust motion & thermal control electronics, mechanical
+  interlocks, laser safety housing, and remote control interfaces. It is also
+  equipped with auxiliary nano-positioning stages for self-calibration of
+  consumables.
+
+Design and prototyping capabilities, assuming a cost-plus contract:
 
 - **Physical layer:** choose between widefield fluorescence imaging setup, or
   structured-illumination, or light-sheet, depending on the use cases;
 
-- **Digital layer:** sourcing CMOS cameras, avalanche photodiodes, and/or
+- **Analog layer:** sourcing CMOS cameras, avalanche photodiodes, and/or
   illumination modules; thermal control via Peltier modules and custom heatsink;
   motion PID control with custom PCBs.
 
-- **Tooling and DevOps:** Ansible and/or Buildbot for CI/CD pipeline;
+- **Digital layer:** AVR microcontroller units for low-latency instrument
+  control; Nvidia Jetson system-on-board (SoB) for real-time embedded computer
+  vision. Multi-GPU compute workstation for hardware-accelerated image signal
+  processing.
+
+- **Tooling and DevOps:** Ansible for continuous deployment (CD); Buildbot for
+  continuous integration (CI).
 
 - **Storage layer:** ZFS for near-instant file garbage collection; EXT4 for peak
-  RW throughput.
+  RW throughput. HDF5 for high-throughput data container; OME-TIFF for long-term storage.
 
 - **Compute layer:** instrument control software/firmware in either Go/C++ or
   Python/C++ depending on the pixel throughput; CPU multithread or
   single/multi-GPU accelerated algorithms for image reconstructions.
 
-- **Presentation layer:** variants of graphical user interfaces, e.g. Terminal
-  UI, WebUI, or OpenGL/GLFW UI.
+- **Presentation layer:** Terminal UI for factory-floor QC testing; WebUI for
+  z-stack image dashboards; or OpenGL/GLFW UI for real-time volume rendering.
 
+.. note::
+
+  Learn about the Amgen-Caltech project from: **A.C.S. Chan**, J Kim, A Pan, H Xu, D Nojima, C Hale, S Wang, C Yang,
+  `"Parallel Fourier ptychographic microscopy for high-throughput screening with 96 cameras (96 Eyes)" <http://dx.doi.org/10.1038/s41598-019-47146-z>`_
+  *Scientific Reports* **9**, 11114 (2019).
+
+.. note::
+  Also, read the whitepaper regarding the multidisciplinary collaboration aspects to facilitate timely MVP launch: https://arxiv.org/html/2508.18512v1
+
+System-level design and architecture review
+---------------------------------------------
+
+.. figure:: attached/design-thinking.png
+    :width: 100%
 
 I offer services for system requirement capture and design, tracing the
 hardware/software design decisions back to the original design requirements and
@@ -45,28 +81,72 @@ the premises, or a static requirement analysis report with a simplified schema.
 Read more about my work on :ref:`end-to-end design input capture and analysis
 <mbse-lite>` for early stage startups (i.e. 5 to 30 stakeholders).
 
-Cross-compilation and multi-platform support, C++
----------------------------------------------------
+Cross-compilation and multi-platform support, software only, C++17
+------------------------------------------------------------------
 
-**Linux HPC support** I primarily write multi-threaded, GPU-accelerated
-scientific code with the Clang/LLVM toolchain. Read my code for `multi-GPU workstations
+Linux high-performance computing cluster/workstations
+#########################################################
+
+.. figure:: attached/gpu-cooling.jpg
+  :width: 70%
+
+  Custom-designed Linux workstation. (Left) custom GPU liquid cooling heatsinks
+  from OEMs. (Right) Fully assembled multi-GPU workstation for high-throughput
+  image processing. Photo courtesy of Bitspower and Caltech.
+
+I primarily write multi-threaded, GPU-accelerated scientific code with the
+Clang/LLVM toolchain. I also offer material sourcing service for
+high-performance computing (HPC) workstations with server-grade dual-CPU
+motherboards, USB/Ethernet hubs, and multi-GPU cards.
+
+Read my code for `multi-GPU workstations
 <https://github.com/Caltech-Biophotonics-Lab/fpm-96eyes-reconstruction>`_.
 
-**Windows 10/WSL support**
-I provide cross-compilation supports and DevOps to support algorithm testing on
-WSL/Linux machine, and continuous deployment on Windows 10/11. I specialize in
+Nvidia GPU Jetson system-on-board (SoB)
+#########################################
+
+I offer Ansible-assisted, over-the-air (OTA) application deployment over the
+Nvidia Jetpack's Linux base image. Compared to the Yocto's
+*build-everything-from-scratch* approach, Ansible approach ensures minimal wear
+and tear of the boot sector in the UFS/eMMC chips.
+
+Camera MIPI/USBVision interface integration in userspace is also supported, as long as the
+kernelspace drivers are already licensed from the OEMs to the clients.
+
+Examples of camera OEMs are: ArduCAM, Allied Vision.
+
+Windows 10/WSL native C++/Golang applications, with WebGUI
+############################################################
+
+I provide cross-compilation supports and DevOps to support C++/Golang application testing on
+virtual machine hosted on Windows (i.e. Windows system for Linux, WSL), and
+continuous deployment of end-user applications to Windows 10/11. I specialize in
 C++ function mangling to call MSVC-style symbols from GNU/MinGW64 runtime,
 getting the best of both worlds.
 
-**Android support, native boot sector** I no longer provide this service because
-of the cost-prohibitive EULAs and licenses that comes with Snapdragon/Tensor's
-hardware development kits (HDK). Exceptions can be made if the customers has
-already licensed from the SoC vendors.
+Xilinx/AMD FPGA system-on-chip
+###################################
 
-Read my contributions to `Build systems <https://github.com/mesonbuild/meson/pull/7481>`_
+.. figure:: attached/ebaz4205.png
+
+I customize Yocto build system directory structures integrating user-provided
+Vivado hardware designs (e.g. as blackbox). I also offer Meson build systems
+integrations to facilitate userspace application testing for both off-target
+(i.e. no QEMU) and on-target.
+
+Android support, native boot sector
+#########################################
+
+I no longer provide this service because of the cost-prohibitive EULAs and
+licenses that comes with Snapdragon/Tensor's hardware development kits (HDK).
+Exceptions can be made if the customers has already licensed from the SoC
+vendors. Learn about my contributions to
+`Build systems <https://github.com/mesonbuild/meson/pull/7481>`_
 
 GPU acceleration and domain-specific language design for scientists
 ----------------------------------------------------------------------
+
+.. figure:: attached/proximal-banner.png
 
 The hardware-accelerated compute landscape is far more fragmented than ever, resulting in
 vendor lock-in of user algorithms. We are now witnessing CPUs (equipped with
