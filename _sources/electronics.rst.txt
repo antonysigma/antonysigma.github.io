@@ -55,6 +55,8 @@ Technical specifications:
 
 * Project website: https://github.com/antonysigma/peltier-cooler-4ch
 
+* `Interactive BOM viewer </ibom/?pcbdata=peltier-cooler>`_
+
 **Why I made my own board** The board is primarily used to dissipate the waste
 heat from the 3,000mW laser modules. A high laser power is required to
 compensate the coupling loss of the homogenizing liquid light-guide and the TV
@@ -90,6 +92,8 @@ Technical specifications:
 * External position control: I2C bus to reduce the cabling effort.
 
 * Project website: https://github.com/antonysigma/piezo-stage-pid-board
+
+* `Interactive BOM viewer </ibom/?pcbdata=piezo_control>`_
 
 **Why I made my own board**
 The board is primarily used to actuate the Piezo-flexure nano-positioning Z-axis
@@ -179,6 +183,7 @@ should build a *design* first, then map the design to the *technology*.
 
 
 * Schematic capture and PCB design: :download:`attached/Robot-car.zip`
+* `Interactive BOM viewer </ibom/?pcbdata=car>`_
 
 Analog circuit (microwave)
 -----------------------------
@@ -194,10 +199,12 @@ I designed a phase lock loop (PLL) amplifier to generate a 10 MHz TTL signal syn
 * Project website: https://github.com/antonysigma/femptosecond-pulse-trigger-pcb
 * Details of the `ANDi laser <https://doi.org/10.1364/OE.14.010095>`_ that we assembled in house.
 * :download:`Gerber file <attached/phase_lock.zip>`
-* `Interactive pick-and-place helper </ibom/?pcbdata=phase_lock>`_
+* `Interactive BOM viewer </ibom/?pcbdata=phase_lock>`_
 * `Order from OSHPark <https://oshpark.com/shared_projects/Gh8VLLjV>`_
 
 Pulse oximeter signal conditioning circuit for STEM education
 ################################################################################
 
 .. figure:: attached/Pulse-oximeter_schematics.png
+
+* `Interactive BOM viewer </ibom/?pcbdata=pulse_oximeter>`_
