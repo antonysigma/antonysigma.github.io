@@ -65,7 +65,7 @@ Design and prototyping capabilities, assuming a cost-plus contract:
   *Scientific Reports* **9**, 11114 (2019).
 
 .. note::
-  Also, read the whitepaper regarding the multidisciplinary collaboration aspects to facilitate timely MVP launch: https://arxiv.org/html/2508.18512v1
+  Also, read the whitepaper regarding the multidisciplinary collaboration aspects to facilitate timely MVP launch: https://arxiv.org/html/2508.18512
 
 System-level design and architecture review
 ---------------------------------------------

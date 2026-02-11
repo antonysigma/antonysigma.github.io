@@ -95,6 +95,69 @@ Refer to the encyclopedia for the distinction betweeen
 * Publication: https://doi.org/10.1145/2897824.2925875
 * Preprint: https://www.cs.princeton.edu/~fheide/papers/ProxImaL.pdf
 
+.. _bioimage-coder:
+
+BioImage Coder for multi-camera, high-throughput instrument control
+---------------------------------------------------------------------
+
+.. note::
+
+    Hyperlink to the source code: https://github.com/Caltech-Biophotonics-Lab/bioimage-coder
+
+
+BioImage Coder grew out of a very specific problem: programming a complex,
+high-throughput instrument where the cognitive load of reading low-level,
+asynchronous control code from 96 cameras was getting in the way of reasoning
+about the bio-imaging experiment goals itself. As a visual thinker, I wanted
+domain experts to be able to describe what the instrument is doing without
+having to mentally simulate that by monitoring packets/logs transmitted among
+dozens of devices under the hood.
+
+Imagine a world where one can read music on a book featuring multi-page,
+multi-track music scores of the Beethoven symphony, rather than figuring out who
+plays what instrument by listening to the FM/AM radio, without the ability to
+playback the audio.
+
+The result was a small domain-specific language (DSL) that emphasizes the
+experiment design intent of the bio-imaging protocols, while still compiling
+down to tightly controlled, timing-aware instrument control software with
+zero-cost abstraction enabled by the compiler.
+
+.. figure:: https://github.com/antonysigma/bioimage-coder/raw/main/figures/language-workbench-mockup.png
+
+The working principle
+@@@@@@@@@@@@@@@@@@@@@@@
+
+The two branches of R&D: system engineering and system integration, is prone to
+impedance mismatch due to different pace of workload over the span of the
+project.
+
+De novo, high‑throughput bioimaging systems evolve rapidly over the course of
+the project: optics, sensors, illumination, motion stages, and firmware
+pipelines are redesigned over successive iterations to improve speed and signal
+quality over the project lifetime. The pace of system engineering tapers to a
+near halt through a sequence of "design lockdowns" near the product launch
+phase.
+
+In contrast, image capture protocols -- the ordered sequence of excitation,
+exposure, motion, and acquisition steps -- encode scientific intent and changes
+much more slowly. Protocol revision activities conducted by system integration
+teams, e.g. post-design-lockdown synchronization tweaks and performance
+mitigations, only ramps up when the project is close to product launch.
+
+This asymmetry naturally forms an hourglass model:
+
+- Top-down (Wide): Diverse experimental protocols (time‑lapse, Z‑stacks,
+  multi‑channel fluorescence, mixed modalities)
+- Middle (Narrow): A stable, precise, domain-expert‑readable DSL describing the
+  protocol
+- Bottom-up (Wide): Diverse hardware and firmware implementations optimized for specific instruments
+
+.. figure:: https://raw.githubusercontent.com/antonysigma/bioimage-coder/main/figures/hourglass.png
+    :width: 50%
+
+    The hourglass architecture model for instrument control software design.
+
 Baremetal opto-mechanical hardware drivers
 -------------------------------------------
 
