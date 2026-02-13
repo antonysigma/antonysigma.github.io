@@ -204,10 +204,22 @@ Online Cangjie Chinese input engine
 .. figure:: attached/cangjie-logo.png
 
 
-Chinese language is a logographic writing system, where one composes a sentence by visually "assembling" individual character with shapes, rather then verbally spelling the words with letters as in other languages. Traditionally, Chinese was typed on a computer with Cangjie, a free, open source program called the Cangjie input method. However, in a mandarin dominated world, it is increasing harder to type (or to Google) in Chinese on library workstations, or on my friend's smartphones. So, I created my own online input program and hosted it here:
+Chinese language is a logographic writing system, where one composes a sentence
+by visually "assembling" individual character with shapes, rather then verbally
+spelling the words with letters as in other languages. Traditionally, Chinese
+was typed on a computer with Cangjie, a free, open source program called the
+Cangjie input method. However, in a mandarin dominated world, it is increasing
+harder to type (or to Google) in Chinese on library workstations, or on my
+friend's smartphones. So, I created my own online input program and hosted it
+here:
 
-* `Lecture about the Chinese input method war in the 90's <https://youtu.be/KSEoHLnIXYk?t=2889>`_
+.. note::
+
+    Refer to PRof Tom Mullaney's seminar on the Chinese input method arms race in the 90's
+    <https://youtu.be/KSEoHLnIXYk?t=2889>`_.
+
 * `Demo <./_static/cangjie-bin/>`_
+* Github: https://github.com/antonysigma/cangjie-web
 
 Mathematical coding challenge on Project Euler
 ----------------------------------------------
