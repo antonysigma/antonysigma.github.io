@@ -1,7 +1,7 @@
 Contact
 ==========
 
-.. figure:: https://media.licdn.com/dms/image/v2/D5603AQEEJQeKIqbd9Q/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1689437226453?e=1758758400&v=beta&t=D44zdwrNxanHvbTpVkStnrHgyqOedS1cOXIZsqyFtd8
+.. figure:: https://media.licdn.com/dms/image/v2/D5603AQEEJQeKIqbd9Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689437226453?e=1773878400&v=beta&t=R0I-lqySaJebzCGFRMUh2GUg4buqcMNv5dU6J4Px4Z8
     :width: 20%
 
 | Github: https://github.com/antonysigma/
