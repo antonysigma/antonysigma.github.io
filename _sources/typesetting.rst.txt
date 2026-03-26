@@ -9,6 +9,21 @@ emergence of text-to-figure generative AI, e.g. DALL-E. I still keep my own
 palette and pre-fab icons, in case I need to create and present novel ideas to
 investors.
 
+Early-2026: Hourglass model
+-------------------------------------------
+
+.. figure:: https://github.com/Caltech-Biophotonics-Lab/bioimage-coder/raw/main/figures/hourglass.png
+    :width: 50%
+
+* Duration: 60 minutes
+* Purpose: Project website
+* Drawing tools: Inkscape
+
+I wanted to highlight the impedance mismatch between two departments in
+(bioinstrument) startups: system engineering and system integration. A
+domain-specific language (DSL) is essential to encourage bilateral
+communications among two teams without destroying trusts.
+
 Mid-2019: Speckle generation infographics
 -------------------------------------------
 

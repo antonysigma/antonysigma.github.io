@@ -1,11 +1,19 @@
 Research
 ==========
 
-Here is the curated list of large scale projects as the owner. I
-have already transitioned into the industry, but I occasionally share the
-stories to re-live the finest moments.
+    "A quiet, unquestioning life is not a life with living." -- Socrates
 
-For the exhaustive list of my research, you may refer to my `Google scholar
+I had the privilege of working on first-class problems early in my career,
+before moving into industry; where much of the work involving solving problems
+(i.e. the How) rather than re-framing/inverting the problem (i.e. the Why) from
+first principles.
+
+Richard W. Hamming once said that one should not reach old age merely able to
+say they have led an enjoyable life and did no harm. That standard has stayed
+with me. I wanted to be able to look back and say that I pursued problems of
+real significance, and left behind work with lasting value.
+
+For the comprehensive list of my research, you may refer to my `Google scholar
 <https://scholar.google.com/citations?hl=en&user=kW8tyV0AAAAJ>`_ profile.
 
 Main projects
