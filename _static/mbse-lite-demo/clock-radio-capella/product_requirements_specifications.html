@@ -1,0 +1,1126 @@
+<html>
+  <head>
+    <title>Product requirements specification</title>
+    <link rel="stylesheet" href="https://github.com/tabatkins/railroad-diagrams/raw/gh-pages/railroad.css">
+    <script src="https://github.com/tabatkins/railroad-diagrams/raw/gh-pages/railroad.js"></script>
+    <script id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = 'http://localhost:5000/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('Pascal Roques https://www.linkedin.com/in/pascalroques/', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 3 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>
+          <a href="use_cases.html">Use cases</a>
+        </li>
+        <li>Product requirements specification (this document)</li>
+        <li>
+          <a href="logical_and_physical_architecture.html">Logical and physical architecture</a>
+        </li>
+      </ol>
+      <p>The document refines the high-level requirements into system-level specifications.
+  To contribute more contents, analyze and elaborate further the constraints, performances, and behaviors
+  by the domain-specific knowledge (Mechanical / Electrical / Optical / Software).
+  More importantly, suggest verification plans to test each one.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>The document refines and analyzes the system-level requirements.
+Since good system-level requirements aren’t complete unless they are testable,
+verification is also planned. The goal of this phase is to provide the engineering team with the
+inputs they need to architect the product.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+System Requirements refine and internalize the stakeholder needs in the engineering level,
+and in turn can be verified by Verification Plans.</figcaption>
+      </figure>
+      <p>This is communicated via a Product Requirements Specification (PRS).
+For ease of review, the PRS has been divided into three separate parts – the
+Constraint Specification, the Functional Specification, and the Verification Plan.
+A note on nomenclature – ‘system-level requirements’ are captured in the constraints specification items
+and in the Behavior Diagrams/functions of the Functional Specifications.</p>
+      <p>The Constraint Specification contains constraints on the system such as physical characteristics and
+the environment.
+The Functional Specification includes the behavior and performance requirements.
+The Verification Plan contains high level test planning, and traceability back to the system level
+requirements.</p>
+      <figure>
+        <img src="../static/document-sources.png">
+        <figcaption>Documents are generated on-demand from a central System Model Database.
+The contents of Product Requirement and Specifications (PRS) are gathered from
+the system-level requirements and verifications plans.
+All chapters can be traced back to the Originating requirements.</figcaption>
+      </figure>
+      <p>The main items used in this Constraint/Functional specification phase trace from the use cases developed in the previous phase.
+Walking through the use cases step by step is a systematic method to decompose the relevant
+requirements.</p>
+      <p>The verification item is used to plan verification activities at a high level. This allows the
+stakeholders and engineers to agree on the depth and complexity of testing required. Knowing this,
+testing schedules, cost, and equipment can be planned, and detailed test procedures written.</p>
+      <figure>
+        <img src="../static/trace-requirements.png">
+        <figcaption>System requirements and functions are decomposed from the use cases,
+which in turn is verified by the Verification plans</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2 id="constraints">Constraint specifications</h2>
+      <section>
+        <h2>Alarm</h2>
+        <section>
+          <h2 id="sys-2">sys-2: Maintain current time and display</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user.</div>
+          <p><b>Rationale: </b>The user needs to set the correct time and later read it back from the device display.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-2">ucd-2</a>]
+  Get time: </b>The user sets or reads the current time from the clock radio....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-2.1">fnc-2.1</a>]
+  Set current time: </b>The user-facing clock setting function provides the current time input....
+    </li>
+            <li><b>
+    [<a href="#fnc-2.2">fnc-2.2</a>]
+  Provide current time settings: </b>The HMI propagates current time settings to the clock logic....
+    </li>
+            <li><b>
+    [<a href="#fnc-2.3">fnc-2.3</a>]
+  Clock timestamp: </b>The clock maintains the internal timestamp....
+    </li>
+            <li><b>
+    [<a href="#fnc-2.4">fnc-2.4</a>]
+  Display time: </b>The display path converts the maintained timestamp into user-visible output....
+    </li>
+            <li><b>
+    [<a href="#ver-2">ver-2</a>]
+  Verify current time maintenance and display: </b> 1. Set the current time through the user interface. 1. Confirm the maintained timestamp updates to the requested time. 1. Confirm the displayed timestamp presented to the user matches the maintained timestamp.   ...
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-2">ver-2</a>]
+  Verify current time maintenance and display: </b> 1. Set the current time through the user interface. 1. Confirm the maintained timestamp updates to the requested time. 1. Confirm the displayed timestamp presented to the user matches the maintained timestamp.   ...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="sys-3">sys-3: Accept alarm settings</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL accept alarm time and alarm on or off settings from the user and derive current alarm time and alarm activation data for alarm management.</div>
+          <p><b>Rationale: </b>The user needs to decide whether wake-up is enabled and when it should occur.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Trigger an alarm: </b>The clock radio wakes the user at the configured alarm time....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-3.1">fnc-3.1</a>]
+  Set alarm time: </b>The user-facing alarm setting function provides alarm time and alarm activation selection....
+    </li>
+            <li><b>
+    [<a href="#fnc-3.2">fnc-3.2</a>]
+  Provide alarm settings: </b>The HMI derives current alarm time and alarm activation data for the alarm manager....
+    </li>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Verify automatic alarm behavior: </b> 1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode. 1. Operate the clock until current time equals alarm time. 1. Confirm the alarm is triggered at that moment. 1. Continue operating the device and confirm the ringing s...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-1">int-1</a>]
+  Alarm time input: </b>The user enters the alarm time and enables or disables the alarm....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Verify automatic alarm behavior: </b> 1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode. 1. Operate the clock until current time equals alarm time. 1. Confirm the alarm is triggered at that moment. 1. Continue operating the device and confirm the ringing s...
+    </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h2>Clock</h2>
+        <section>
+          <h2 id="sys-1">sys-1: Timestamp data type</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL represent time as a timestamp containing an hour in the range 0 to 23 and a minute in the range 0 to 59.</div>
+          <p><b>Rationale: </b>The user expects the device to store current time and alarm time in a normal daily clock format that is unambiguous for display and alarm triggering.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Trigger an alarm: </b>The clock radio wakes the user at the configured alarm time....
+    </li>
+            <li><b>
+    [<a href="./use_cases.html#ucd-2">ucd-2</a>]
+  Get time: </b>The user sets or reads the current time from the clock radio....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-2.3">fnc-2.3</a>]
+  Clock timestamp: </b>The clock maintains the internal timestamp....
+    </li>
+            <li><b>
+    [<a href="#ver-1">ver-1</a>]
+  Verify timestamp representation: </b> 1. Review the maintained timestamp data structure in the implementation. 1. Confirm the timestamp contains hour and minute fields. 1. Confirm hour is constrained to 0 through 23 and minute is constrained to 0 through 59.   ...
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-1">ver-1</a>]
+  Verify timestamp representation: </b> 1. Review the maintained timestamp data structure in the implementation. 1. Confirm the timestamp contains hour and minute fields. 1. Confirm hour is constrained to 0 through 23 and minute is constrained to 0 through 59.   ...
+    </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h2>Radio</h2>
+        <section>
+          <h2 id="sys-4">sys-4: Trigger alarm in automatic mode</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL trigger an alarm when the current time equals the configured alarm time while the system is in `Radio AUTO` mode.</div>
+          <p><b>Rationale: </b>The automatic mode exists so the device can remain quiet until the scheduled wake-up condition occurs.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Trigger an alarm: </b>The clock radio wakes the user at the configured alarm time....
+    </li>
+            <li><b>
+    [<a href="./originating_requirements.html#org-4">org-4</a>]
+  Support radio modes: </b>     The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.   ...
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-3.3">fnc-3.3</a>]
+  Trigger alarm: </b>The alarm manager triggers the alarm when timestamp and alarm conditions are satisfied....
+    </li>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Verify automatic alarm behavior: </b> 1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode. 1. Operate the clock until current time equals alarm time. 1. Confirm the alarm is triggered at that moment. 1. Continue operating the device and confirm the ringing s...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-4">int-4</a>]
+  Clock signal: </b>The clock provides timing information to the alarm controller....
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-5">int-5</a>]
+  Alarm signal: </b>The alarm controller provides an alarm trigger to the speaker path....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Verify automatic alarm behavior: </b> 1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode. 1. Operate the clock until current time equals alarm time. 1. Confirm the alarm is triggered at that moment. 1. Continue operating the device and confirm the ringing s...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="sys-5">sys-5: Limit automatic ringing duration</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">In `Radio AUTO` mode, the ringing state SHALL return to silent after an alarm timeout of 59 minutes.</div>
+          <p><b>Rationale: </b>The wake-up function should not leave the device ringing indefinitely after the alarm has been triggered.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Trigger an alarm: </b>The clock radio wakes the user at the configured alarm time....
+    </li>
+            <li><b>
+    [<a href="./originating_requirements.html#org-4">org-4</a>]
+  Support radio modes: </b>     The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.   ...
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-3.3">fnc-3.3</a>]
+  Trigger alarm: </b>The alarm manager triggers the alarm when timestamp and alarm conditions are satisfied....
+    </li>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Verify automatic alarm behavior: </b> 1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode. 1. Operate the clock until current time equals alarm time. 1. Confirm the alarm is triggered at that moment. 1. Continue operating the device and confirm the ringing s...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-5">int-5</a>]
+  Alarm signal: </b>The alarm controller provides an alarm trigger to the speaker path....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Verify automatic alarm behavior: </b> 1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode. 1. Operate the clock until current time equals alarm time. 1. Confirm the alarm is triggered at that moment. 1. Continue operating the device and confirm the ringing s...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="sys-7">sys-7: Decode radio waves</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL receive radio waves from the external transmitter and decode them into radio signals using the current frequency setting.</div>
+          <p><b>Rationale: </b>The user expects the device to transform incoming radio transmission into an internal signal usable for playback.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-3">ucd-3</a>]
+  Get news: </b>The user configures the radio and listens to received radio audio....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-4.4">fnc-4.4</a>]
+  Decode radio waves: </b>The radio MMI decodes incoming radio waves into radio signals....
+    </li>
+            <li><b>
+    [<a href="#ver-4">ver-4</a>]
+  Verify radio setting, decode, and playback path: </b> 1. Set radio frequency, volume, and radio on or off selection through the user interface. 1. Provide a usable radio transmission to the device. 1. Confirm the device derives current frequency, activation, and volume level from the user settings. 1. ...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-3">int-3</a>]
+  Radio channel input: </b>The external transmitter provides a radio channel to the clock radio receiver....
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-6">int-6</a>]
+  Audio signal: </b>The radio demodulator provides decoded audio to the speaker path....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-4">ver-4</a>]
+  Verify radio setting, decode, and playback path: </b> 1. Set radio frequency, volume, and radio on or off selection through the user interface. 1. Provide a usable radio transmission to the device. 1. Confirm the device derives current frequency, activation, and volume level from the user settings. 1. ...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="sys-8">sys-8: Broadcast radio sound</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level.</div>
+          <p><b>Rationale: </b>The radio path and the alarm path both exist to produce audible output that the user can hear.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Trigger an alarm: </b>The clock radio wakes the user at the configured alarm time....
+    </li>
+            <li><b>
+    [<a href="./use_cases.html#ucd-3">ucd-3</a>]
+  Get news: </b>The user configures the radio and listens to received radio audio....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-4.5">fnc-4.5</a>]
+  Broadcast radio: </b>The radio component combines alarm, activation, radio signal, and volume inputs into radio sound....
+    </li>
+            <li><b>
+    [<a href="#ver-4">ver-4</a>]
+  Verify radio setting, decode, and playback path: </b> 1. Set radio frequency, volume, and radio on or off selection through the user interface. 1. Provide a usable radio transmission to the device. 1. Confirm the device derives current frequency, activation, and volume level from the user settings. 1. ...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-2">int-2</a>]
+  Audio output: </b>The clock radio provides audible output to the user....
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-5">int-5</a>]
+  Alarm signal: </b>The alarm controller provides an alarm trigger to the speaker path....
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-6">int-6</a>]
+  Audio signal: </b>The radio demodulator provides decoded audio to the speaker path....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-4">ver-4</a>]
+  Verify radio setting, decode, and playback path: </b> 1. Set radio frequency, volume, and radio on or off selection through the user interface. 1. Provide a usable radio transmission to the device. 1. Confirm the device derives current frequency, activation, and volume level from the user settings. 1. ...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="sys-9">sys-9: Support radio operating modes</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL support the operating modes `Radio OFF`, `Radio ON`, and `Radio AUTO`, with transitions triggered by the `radio off`, `radio on`, and `radio auto` events.</div>
+          <p><b>Rationale: </b>The owner wants explicit user-selectable radio behavior rather than a single fixed playback mode.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Trigger an alarm: </b>The clock radio wakes the user at the configured alarm time....
+    </li>
+            <li><b>
+    [<a href="./use_cases.html#ucd-3">ucd-3</a>]
+  Get news: </b>The user configures the radio and listens to received radio audio....
+    </li>
+            <li><b>
+    [<a href="./originating_requirements.html#org-4">org-4</a>]
+  Support radio modes: </b>     The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.   ...
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-4.2">fnc-4.2</a>]
+  Listen to radio: </b>The user consumes radio sound and controls radio mode selection....
+    </li>
+            <li><b>
+    [<a href="#fnc-4.3">fnc-4.3</a>]
+  Provide radio settings: </b>The HMI derives activation, current frequency, and volume level for the radio path....
+    </li>
+            <li><b>
+    [<a href="#ver-5">ver-5</a>]
+  Verify radio operating modes: </b> 1. Initialize the device and confirm the default radio mode is `Radio OFF`. 1. Trigger `radio on` and confirm the system enters `Radio ON`. 1. Trigger `radio auto` and confirm the system enters `Radio AUTO`. 1. Trigger `radio off` from `Radio ON` an...
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-5">ver-5</a>]
+  Verify radio operating modes: </b> 1. Initialize the device and confirm the default radio mode is `Radio OFF`. 1. Trigger `radio on` and confirm the system enters `Radio ON`. 1. Trigger `radio auto` and confirm the system enters `Radio AUTO`. 1. Trigger `radio off` from `Radio ON` an...
+    </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h2>UserInterface</h2>
+        <section>
+          <h2 id="sys-6">sys-6: Accept radio settings</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw ee</li>
+          </ul>
+          <div data-format="markdown">The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback.</div>
+          <p><b>Rationale: </b>The user needs direct control over whether radio playback is active and how it should be tuned and heard.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Trigger an alarm: </b>The clock radio wakes the user at the configured alarm time....
+    </li>
+            <li><b>
+    [<a href="./use_cases.html#ucd-3">ucd-3</a>]
+  Get news: </b>The user configures the radio and listens to received radio audio....
+    </li>
+            <li><b>
+    [<a href="./originating_requirements.html#org-4">org-4</a>]
+  Support radio modes: </b>     The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.   ...
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-4.1">fnc-4.1</a>]
+  Set radio: </b>The user-facing radio setting function provides tuning and volume input....
+    </li>
+            <li><b>
+    [<a href="#fnc-4.2">fnc-4.2</a>]
+  Listen to radio: </b>The user consumes radio sound and controls radio mode selection....
+    </li>
+            <li><b>
+    [<a href="#fnc-4.3">fnc-4.3</a>]
+  Provide radio settings: </b>The HMI derives activation, current frequency, and volume level for the radio path....
+    </li>
+            <li><b>
+    [<a href="#ver-4">ver-4</a>]
+  Verify radio setting, decode, and playback path: </b> 1. Set radio frequency, volume, and radio on or off selection through the user interface. 1. Provide a usable radio transmission to the device. 1. Confirm the device derives current frequency, activation, and volume level from the user settings. 1. ...
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-4">ver-4</a>]
+  Verify radio setting, decode, and playback path: </b> 1. Set radio frequency, volume, and radio on or off selection through the user interface. 1. Provide a usable radio transmission to the device. 1. Confirm the device derives current frequency, activation, and volume level from the user settings. 1. ...
+    </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2 id="functional">Functional specifications</h2>
+      <section>
+        <h2 id="fnc-1">fnc-1: Operate clock radio</h2>
+        <div data-format="markdown">Operate the clock, alarm, and radio functions needed by the clock radio, using the logical functions identified in the Capella source model.</div>
+        <figure id="fnc-1-uml">
+          <svg width="758pt" height="480pt" viewBox="0.0 0.0 758.0 480.0">
+<style type="text/css">
+  svg {
+    background-color: white;
+  }
+  text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+  }
+</style>
+<filter height="300%" id="f1fkw0u0qbu464" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter>
+<g>
+      <rect x="156" y="40" width="112" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="212" y="64">Manage Clock</text>
+    <text text-anchor="end" x="260" y="92">FNC-2</text>
+
+    <rect x="308" y="140" width="112" height="80" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="364" y="174">Manage Alarm</text>
+    <text text-anchor="end" x="412" y="212">FNC-3</text>
+
+    <rect x="460" y="260" width="112" height="120" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="516" y="314">Manage Radio</text>
+    <text text-anchor="end" x="564" y="372">FNC-4</text>
+
+  <path stroke="black" fill="none" d="M 268 80 L 278 80 C 283 80 288 85 288 90 L 288 150 C 288 155 293 160 298 160 L 308 160"></path>
+<polygon fill="black" stroke="black" points="308,160 302,163 302,157 308,160"></polygon>
+<text text-anchor="start" x="273" y="75">Timestamp</text>
+
+<path stroke="black" fill="none" d="M 420 180 L 430 180 C 435 180 440 185 440 190 L 440 270 C 440 275 445 280 450 280 L 460 280"></path>
+<polygon fill="black" stroke="black" points="460,280 454,283 454,277 460,280"></polygon>
+<text text-anchor="start" x="425" y="175">Alarm</text>
+
+<line x1="20" y1="70" x2="156" y2="70" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="156,70 150,73 150,67 156,70"></polygon>
+<text text-anchor="start" x="25" y="65">CurrentTime</text>
+
+<line x1="20" y1="200" x2="308" y2="200" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="308,200 302,203 302,197 308,200"></polygon>
+<text text-anchor="start" x="25" y="195">AlarmTime</text>
+
+<line x1="20" y1="180" x2="308" y2="180" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="308,180 302,183 302,177 308,180"></polygon>
+<text text-anchor="start" x="25" y="175">AlarmOnOff</text>
+
+<line x1="20" y1="300" x2="460" y2="300" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="460,300 454,303 454,297 460,300"></polygon>
+<text text-anchor="start" x="25" y="295">Frequency</text>
+
+<line x1="20" y1="360" x2="460" y2="360" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="460,360 454,363 454,357 460,360"></polygon>
+<text text-anchor="start" x="25" y="355">Volume</text>
+
+<line x1="20" y1="320" x2="460" y2="320" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="460,320 454,323 454,317 460,320"></polygon>
+<text text-anchor="start" x="25" y="315">RadioOnOff</text>
+
+<line x1="20" y1="340" x2="460" y2="340" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="460,340 454,343 454,337 460,340"></polygon>
+<text text-anchor="start" x="25" y="335">RadioWaves</text>
+
+<line x1="268" y1="60" x2="738" y2="60" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="738,60 732,63 732,57 738,60"></polygon>
+<text text-anchor="end" x="733" y="55">TimestampDisplay</text>
+
+<line x1="572" y1="320" x2="738" y2="320" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="738,320 732,323 732,317 738,320"></polygon>
+<text text-anchor="end" x="733" y="315">RadioSound</text>
+
+<line x1="212" y1="440" x2="212" y2="100" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="212,100 209,106 215,106 212,100"></polygon>
+<text text-anchor="middle" x="212" y="455">User</text>
+
+<line x1="374" y1="420" x2="374" y2="220" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="374,220 371,226 377,226 374,220"></polygon>
+<text text-anchor="middle" x="374" y="435">User</text>
+
+<line x1="354" y1="440" x2="354" y2="220" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="354,220 351,226 357,226 354,220"></polygon>
+<text text-anchor="middle" x="354" y="455">RadioAuto</text>
+
+<line x1="526" y1="420" x2="526" y2="380" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="526,380 523,386 529,386 526,380"></polygon>
+<text text-anchor="middle" x="526" y="435">User</text>
+
+<line x1="506" y1="440" x2="506" y2="380" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="506,380 503,386 509,386 506,380"></polygon>
+<text text-anchor="middle" x="506" y="455">RadioTransmitter</text>
+
+</g>
+</svg><figcaption>Flow diagram "fnc-1: Operate clock radio"</figcaption>
+        </figure>
+        <section>
+          <h2 id="fnc-1.0">fnc-1.0: Clock radio functional flow</h2>
+          <div data-format="markdown">Coordinate the clock, alarm, and radio sub-behaviors for end-to-end clock radio operation.</div>
+          <p>Linked requirements:</p>
+          <ul></ul>
+        </section>
+      </section>
+      <section>
+        <h2 id="fnc-2">fnc-2: Manage clock</h2>
+        <div data-format="markdown">Provide current time settings, maintain the current timestamp, and display the current time to the user.</div>
+        <figure id="fnc-2-uml">
+          <svg width="918pt" height="480pt" viewBox="0.0 0.0 918.0 480.0">
+<style type="text/css">
+  svg {
+    background-color: white;
+  }
+  text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+  }
+</style>
+<filter height="300%" id="f1fkw0u0qbu464" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter>
+<g>
+      <rect x="20" y="40" width="136" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="88" y="64">Set Current Time</text>
+    <text text-anchor="end" x="148" y="92">FNC-2.1</text>
+
+    <rect x="196" y="140" width="214" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="303" y="164">Provide Current Time Settings</text>
+    <text text-anchor="end" x="402" y="192">FNC-2.2</text>
+
+    <rect x="450" y="240" width="130" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="515" y="264">Clock Timestamp</text>
+    <text text-anchor="end" x="572" y="292">FNC-2.3</text>
+
+    <rect x="620" y="340" width="112" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="676" y="364">Display Time</text>
+    <text text-anchor="end" x="724" y="392">FNC-2.4</text>
+
+  <path stroke="black" fill="none" d="M 156 70 L 166 70 C 171 70 176 75 176 80 L 176 160 C 176 165 181 170 186 170 L 196 170"></path>
+<polygon fill="black" stroke="black" points="196,170 190,173 190,167 196,170"></polygon>
+<text text-anchor="start" x="161" y="65">CurrentTime</text>
+
+<path stroke="black" fill="none" d="M 410 170 L 420 170 C 425 170 430 175 430 180 L 430 260 C 430 265 435 270 440 270 L 450 270"></path>
+<polygon fill="black" stroke="black" points="450,270 444,273 444,267 450,270"></polygon>
+<text text-anchor="start" x="415" y="165">NewCurrentTime</text>
+
+<path stroke="black" fill="none" d="M 580 270 L 590 270 C 595 270 600 275 600 280 L 600 360 C 600 365 605 370 610 370 L 620 370"></path>
+<polygon fill="black" stroke="black" points="620,370 614,373 614,367 620,370"></polygon>
+<text text-anchor="start" x="585" y="265">Timestamp</text>
+
+<line x1="732" y1="370" x2="898" y2="370" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="898,370 892,373 892,367 898,370"></polygon>
+<text text-anchor="end" x="893" y="365">TimestampDisplay</text>
+
+<line x1="88" y1="440" x2="88" y2="100" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="88,100 85,106 91,106 88,100"></polygon>
+<text text-anchor="middle" x="88" y="455">User</text>
+
+<line x1="303" y1="440" x2="303" y2="200" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="303,200 300,206 306,206 303,200"></polygon>
+<text text-anchor="middle" x="303" y="455">ClockRadioHMI</text>
+
+<line x1="515" y1="440" x2="515" y2="300" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="515,300 512,306 518,306 515,300"></polygon>
+<text text-anchor="middle" x="515" y="455">Clock</text>
+
+<line x1="676" y1="440" x2="676" y2="400" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="676,400 673,406 679,406 676,400"></polygon>
+<text text-anchor="middle" x="676" y="455">ClockRadioHMI</text>
+
+</g>
+</svg><figcaption>Flow diagram "fnc-2: Manage clock"</figcaption>
+        </figure>
+        <section>
+          <h2 id="fnc-2.1">fnc-2.1: Set current time</h2>
+          <div data-format="markdown">The user-facing clock setting function provides the current time input.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Maintain current time and display: </b>The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-2.2">fnc-2.2: Provide current time settings</h2>
+          <div data-format="markdown">The HMI propagates current time settings to the clock logic.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Maintain current time and display: </b>The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-2.3">fnc-2.3: Clock timestamp</h2>
+          <div data-format="markdown">The clock maintains the internal timestamp.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-1">sys-1</a>]
+  Timestamp data type: </b>The clock radio SHALL represent time as a timestamp containing an hour in the range 0 to 23 and a minute in the range 0 to 59....
+    </li>
+            <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Maintain current time and display: </b>The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-2.4">fnc-2.4: Display time</h2>
+          <div data-format="markdown">The display path converts the maintained timestamp into user-visible output.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Maintain current time and display: </b>The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user....
+    </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h2 id="fnc-3">fnc-3: Manage alarm</h2>
+        <div data-format="markdown">Capture alarm settings, derive current alarm data, and trigger the alarm when the current timestamp reaches the configured alarm time in automatic mode.</div>
+        <figure id="fnc-3-uml">
+          <svg width="778pt" height="420pt" viewBox="0.0 0.0 778.0 420.0">
+<style type="text/css">
+  svg {
+    background-color: white;
+  }
+  text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+  }
+</style>
+<filter height="300%" id="f1fkw0u0qbu464" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter>
+<g>
+      <rect x="124" y="40" width="124" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="186" y="64">Set Alarm Time</text>
+    <text text-anchor="end" x="240" y="92">FNC-3.1</text>
+
+    <rect x="308" y="140" width="172" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="394" y="164">Provide Alarm Settings</text>
+    <text text-anchor="end" x="472" y="192">FNC-3.2</text>
+
+    <rect x="540" y="240" width="118" height="80" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="599" y="274">Trigger Alarm</text>
+    <text text-anchor="end" x="650" y="312">FNC-3.3</text>
+
+  <path stroke="black" fill="none" d="M 248 80 L 258 80 C 263 80 268 85 268 90 L 268 170 C 268 175 273 180 278 180 L 308 180"></path>
+<polygon fill="black" stroke="black" points="308,180 302,183 302,177 308,180"></polygon>
+<text text-anchor="start" x="253" y="75">AlarmTime</text>
+
+<path stroke="black" fill="none" d="M 248 60 L 278 60 C 283 60 288 65 288 70 L 288 150 C 288 155 293 160 298 160 L 308 160"></path>
+<polygon fill="black" stroke="black" points="308,160 302,163 302,157 308,160"></polygon>
+<text text-anchor="start" x="253" y="55">AlarmOnOff</text>
+
+<path stroke="black" fill="none" d="M 480 180 L 490 180 C 495 180 500 185 500 190 L 500 270 C 500 275 505 280 510 280 L 540 280"></path>
+<polygon fill="black" stroke="black" points="540,280 534,283 534,277 540,280"></polygon>
+<text text-anchor="start" x="485" y="175">CurrentAlarmTime</text>
+
+<path stroke="black" fill="none" d="M 480 160 L 510 160 C 515 160 520 165 520 170 L 520 250 C 520 255 525 260 530 260 L 540 260"></path>
+<polygon fill="black" stroke="black" points="540,260 534,263 534,257 540,260"></polygon>
+<text text-anchor="start" x="485" y="155">AlarmActivation</text>
+
+<line x1="20" y1="300" x2="540" y2="300" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="540,300 534,303 534,297 540,300"></polygon>
+<text text-anchor="start" x="25" y="295">Timestamp</text>
+
+<line x1="658" y1="280" x2="758" y2="280" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="758,280 752,283 752,277 758,280"></polygon>
+<text text-anchor="end" x="753" y="275">Alarm</text>
+
+<line x1="186" y1="380" x2="186" y2="100" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="186,100 183,106 189,106 186,100"></polygon>
+<text text-anchor="middle" x="186" y="395">User</text>
+
+<line x1="394" y1="380" x2="394" y2="200" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="394,200 391,206 397,206 394,200"></polygon>
+<text text-anchor="middle" x="394" y="395">ClockRadioHMI</text>
+
+<line x1="589" y1="360" x2="589" y2="320" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="589,320 586,326 592,326 589,320"></polygon>
+<text text-anchor="middle" x="589" y="375">AlarmManager</text>
+
+<line x1="609" y1="380" x2="609" y2="320" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="609,320 606,326 612,326 609,320"></polygon>
+<text text-anchor="middle" x="609" y="395">RadioAuto</text>
+
+</g>
+</svg><figcaption>Flow diagram "fnc-3: Manage alarm"</figcaption>
+        </figure>
+        <section>
+          <h2 id="fnc-3.1">fnc-3.1: Set alarm time</h2>
+          <div data-format="markdown">The user-facing alarm setting function provides alarm time and alarm activation selection.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-3">sys-3</a>]
+  Accept alarm settings: </b>The clock radio SHALL accept alarm time and alarm on or off settings from the user and derive current alarm time and alarm activation data for alarm management....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-3.2">fnc-3.2: Provide alarm settings</h2>
+          <div data-format="markdown">The HMI derives current alarm time and alarm activation data for the alarm manager.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-3">sys-3</a>]
+  Accept alarm settings: </b>The clock radio SHALL accept alarm time and alarm on or off settings from the user and derive current alarm time and alarm activation data for alarm management....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-3.3">fnc-3.3: Trigger alarm</h2>
+          <div data-format="markdown">The alarm manager triggers the alarm when timestamp and alarm conditions are satisfied.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-4">sys-4</a>]
+  Trigger alarm in automatic mode: </b>The clock radio SHALL trigger an alarm when the current time equals the configured alarm time while the system is in `Radio AUTO` mode....
+    </li>
+            <li><b>
+    [<a href="#sys-5">sys-5</a>]
+  Limit automatic ringing duration: </b>In `Radio AUTO` mode, the ringing state SHALL return to silent after an alarm timeout of 59 minutes....
+    </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h2 id="fnc-4">fnc-4: Manage radio</h2>
+        <div data-format="markdown">Capture radio settings, decode radio waves, manage radio modes, and broadcast radio sound to the user.</div>
+        <figure id="fnc-4-uml">
+          <svg width="1174pt" height="660pt" viewBox="0.0 0.0 1174.0 660.0">
+<style type="text/css">
+  svg {
+    background-color: white;
+  }
+  text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+  }
+</style>
+<filter height="300%" id="f1fkw0u0qbu464" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter>
+<g>
+      <rect x="130" y="60" width="130" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="195" y="84">Listen To Radio</text>
+    <text text-anchor="end" x="252" y="112">FNC-4.2</text>
+
+    <rect x="300" y="160" width="94" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="347" y="184">Set Radio</text>
+    <text text-anchor="end" x="386" y="212">FNC-4.1</text>
+
+    <rect x="454" y="260" width="172" height="80" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="540" y="294">Provide Radio Settings</text>
+    <text text-anchor="end" x="618" y="332">FNC-4.3</text>
+
+    <rect x="706" y="380" width="148" height="60" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="780" y="404">Decode Radio Waves</text>
+    <text text-anchor="end" x="846" y="432">FNC-4.4</text>
+
+    <rect x="894" y="480" width="130" height="100" fill="lightyellow" stroke="black" filter="url(#f1fkw0u0qbu464)"></rect>
+    <text text-anchor="middle" x="959" y="524">Broadcast Radio</text>
+    <text text-anchor="end" x="1016" y="572">FNC-4.5</text>
+
+  <path stroke="black" fill="none" d="M 260 90 L 270 90 C 275 90 280 95 280 100 L 280 310 C 280 315 285 320 290 320 L 454 320"></path>
+<polygon fill="black" stroke="black" points="454,320 448,323 448,317 454,320"></polygon>
+<text text-anchor="start" x="265" y="85">RadioOnOff</text>
+
+<path stroke="black" fill="none" d="M 394 180 L 424 180 C 429 180 434 185 434 190 L 434 270 C 434 275 439 280 444 280 L 454 280"></path>
+<polygon fill="black" stroke="black" points="454,280 448,283 448,277 454,280"></polygon>
+<text text-anchor="start" x="399" y="175">Frequency</text>
+
+<path stroke="black" fill="none" d="M 394 200 L 404 200 C 409 200 414 205 414 210 L 414 290 C 414 295 419 300 424 300 L 454 300"></path>
+<polygon fill="black" stroke="black" points="454,300 448,303 448,297 454,300"></polygon>
+<text text-anchor="start" x="399" y="195">Volume</text>
+
+<path stroke="black" fill="none" d="M 626 280 L 676 280 C 681 280 686 285 686 290 L 686 390 C 686 395 691 400 696 400 L 706 400"></path>
+<polygon fill="black" stroke="black" points="706,400 700,403 700,397 706,400"></polygon>
+<text text-anchor="start" x="631" y="275">CurrentFrequency</text>
+
+<path stroke="black" fill="none" d="M 626 320 L 636 320 C 641 320 646 325 646 330 L 646 530 C 646 535 651 540 656 540 L 894 540"></path>
+<polygon fill="black" stroke="black" points="894,540 888,543 888,537 894,540"></polygon>
+<text text-anchor="start" x="631" y="315">VolumeLevel</text>
+
+<path stroke="black" fill="none" d="M 626 300 L 656 300 C 661 300 666 305 666 310 L 666 510 C 666 515 671 520 676 520 L 894 520"></path>
+<polygon fill="black" stroke="black" points="894,520 888,523 888,517 894,520"></polygon>
+<text text-anchor="start" x="631" y="295">Activation</text>
+
+<path stroke="black" fill="none" d="M 854 410 L 864 410 C 869 410 874 415 874 420 L 874 490 C 874 495 879 500 884 500 L 894 500"></path>
+<polygon fill="black" stroke="black" points="894,500 888,503 888,497 894,500"></polygon>
+<text text-anchor="start" x="859" y="405">RadioSignals</text>
+
+<line x1="20" y1="420" x2="706" y2="420" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="706,420 700,423 700,417 706,420"></polygon>
+<text text-anchor="start" x="25" y="415">RadioWaves</text>
+
+<line x1="20" y1="560" x2="894" y2="560" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="894,560 888,563 888,557 894,560"></polygon>
+<text text-anchor="start" x="25" y="555">Alarm</text>
+
+<line x1="1024" y1="530" x2="1154" y2="530" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="1154,530 1148,533 1148,527 1154,530"></polygon>
+<text text-anchor="end" x="1149" y="525">RadioSound</text>
+
+<line x1="780" y1="40" x2="780" y2="380" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="780,380 777,374 783,374 780,380"></polygon>
+<text text-anchor="middle" x="780" y="35">RadioTransmitter</text>
+
+<line x1="195" y1="620" x2="195" y2="120" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="195,120 192,126 198,126 195,120"></polygon>
+<text text-anchor="middle" x="195" y="635">User</text>
+
+<line x1="347" y1="620" x2="347" y2="220" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="347,220 344,226 350,226 347,220"></polygon>
+<text text-anchor="middle" x="347" y="635">User</text>
+
+<line x1="540" y1="620" x2="540" y2="340" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="540,340 537,346 543,346 540,340"></polygon>
+<text text-anchor="middle" x="540" y="635">RadioHMI</text>
+
+<line x1="780" y1="620" x2="780" y2="440" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="780,440 777,446 783,446 780,440"></polygon>
+<text text-anchor="middle" x="780" y="635">RadioMMI</text>
+
+<line x1="959" y1="620" x2="959" y2="580" stroke="black" stroke-dasharray="5,5"></line>
+<polygon fill="black" stroke="black" points="959,580 956,586 962,586 959,580"></polygon>
+<text text-anchor="middle" x="959" y="635">Radio</text>
+
+</g>
+</svg><figcaption>Flow diagram "fnc-4: Manage radio"</figcaption>
+        </figure>
+        <section>
+          <h2 id="fnc-4.1">fnc-4.1: Set radio</h2>
+          <div data-format="markdown">The user-facing radio setting function provides tuning and volume input.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-6">sys-6</a>]
+  Accept radio settings: </b>The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-4.2">fnc-4.2: Listen to radio</h2>
+          <div data-format="markdown">The user consumes radio sound and controls radio mode selection.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-6">sys-6</a>]
+  Accept radio settings: </b>The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback....
+    </li>
+            <li><b>
+    [<a href="#sys-9">sys-9</a>]
+  Support radio operating modes: </b>The clock radio SHALL support the operating modes `Radio OFF`, `Radio ON`, and `Radio AUTO`, with transitions triggered by the `radio off`, `radio on`, and `radio auto` events....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-4.3">fnc-4.3: Provide radio settings</h2>
+          <div data-format="markdown">The HMI derives activation, current frequency, and volume level for the radio path.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-6">sys-6</a>]
+  Accept radio settings: </b>The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback....
+    </li>
+            <li><b>
+    [<a href="#sys-9">sys-9</a>]
+  Support radio operating modes: </b>The clock radio SHALL support the operating modes `Radio OFF`, `Radio ON`, and `Radio AUTO`, with transitions triggered by the `radio off`, `radio on`, and `radio auto` events....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-4.4">fnc-4.4: Decode radio waves</h2>
+          <div data-format="markdown">The radio MMI decodes incoming radio waves into radio signals.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-7">sys-7</a>]
+  Decode radio waves: </b>The clock radio SHALL receive radio waves from the external transmitter and decode them into radio signals using the current frequency setting....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-4.5">fnc-4.5: Broadcast radio</h2>
+          <div data-format="markdown">The radio component combines alarm, activation, radio signal, and volume inputs into radio sound.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-8">sys-8</a>]
+  Broadcast radio sound: </b>The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level....
+    </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2 id="verification">Verification plan</h2>
+      <section>
+        <h2 id="ver-1">ver-1: Verify timestamp representation</h2>
+        <ul>
+          <li><b>Allocation: </b>clock_radio</li>
+          <li><b>Discipline: </b>sw ee</li>
+        </ul>
+        <div data-format="markdown">
+1. Review the maintained timestamp data structure in the implementation.
+1. Confirm the timestamp contains hour and minute fields.
+1. Confirm hour is constrained to 0 through 23 and minute is constrained to 0 through 59.
+  </div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-1">sys-1</a>]
+  Timestamp data type: </b>The clock radio SHALL represent time as a timestamp containing an hour in the range 0 to 23 and a minute in the range 0 to 59....
+    </li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ver-2">ver-2: Verify current time maintenance and display</h2>
+        <ul>
+          <li><b>Allocation: </b>clock_radio</li>
+          <li><b>Discipline: </b>sw ee</li>
+        </ul>
+        <div data-format="markdown">
+1. Set the current time through the user interface.
+1. Confirm the maintained timestamp updates to the requested time.
+1. Confirm the displayed timestamp presented to the user matches the maintained timestamp.
+  </div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Maintain current time and display: </b>The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user....
+    </li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ver-3">ver-3: Verify automatic alarm behavior</h2>
+        <ul>
+          <li><b>Allocation: </b>clock_radio</li>
+          <li><b>Discipline: </b>sw ee</li>
+        </ul>
+        <div data-format="markdown">
+1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode.
+1. Operate the clock until current time equals alarm time.
+1. Confirm the alarm is triggered at that moment.
+1. Continue operating the device and confirm the ringing state returns to silent after 59 minutes.
+</div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-3">sys-3</a>]
+  Accept alarm settings: </b>The clock radio SHALL accept alarm time and alarm on or off settings from the user and derive current alarm time and alarm activation data for alarm management....
+    </li>
+          <li><b>
+    [<a href="#sys-4">sys-4</a>]
+  Trigger alarm in automatic mode: </b>The clock radio SHALL trigger an alarm when the current time equals the configured alarm time while the system is in `Radio AUTO` mode....
+    </li>
+          <li><b>
+    [<a href="#sys-5">sys-5</a>]
+  Limit automatic ringing duration: </b>In `Radio AUTO` mode, the ringing state SHALL return to silent after an alarm timeout of 59 minutes....
+    </li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ver-4">ver-4: Verify radio setting, decode, and playback path</h2>
+        <ul>
+          <li><b>Allocation: </b>clock_radio</li>
+          <li><b>Discipline: </b>sw ee</li>
+        </ul>
+        <div data-format="markdown">
+1. Set radio frequency, volume, and radio on or off selection through the user interface.
+1. Provide a usable radio transmission to the device.
+1. Confirm the device derives current frequency, activation, and volume level from the user settings.
+1. Confirm the radio subsystem decodes radio waves into radio signals and broadcasts radio sound to the user.
+  </div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-7">sys-7</a>]
+  Decode radio waves: </b>The clock radio SHALL receive radio waves from the external transmitter and decode them into radio signals using the current frequency setting....
+    </li>
+          <li><b>
+    [<a href="#sys-8">sys-8</a>]
+  Broadcast radio sound: </b>The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level....
+    </li>
+          <li><b>
+    [<a href="#sys-6">sys-6</a>]
+  Accept radio settings: </b>The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback....
+    </li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ver-5">ver-5: Verify radio operating modes</h2>
+        <ul>
+          <li><b>Allocation: </b>clock_radio</li>
+          <li><b>Discipline: </b>sw ee</li>
+        </ul>
+        <div data-format="markdown">
+1. Initialize the device and confirm the default radio mode is `Radio OFF`.
+1. Trigger `radio on` and confirm the system enters `Radio ON`.
+1. Trigger `radio auto` and confirm the system enters `Radio AUTO`.
+1. Trigger `radio off` from `Radio ON` and `Radio AUTO` and confirm the system returns to `Radio OFF`.
+  </div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-9">sys-9</a>]
+  Support radio operating modes: </b>The clock radio SHALL support the operating modes `Radio OFF`, `Radio ON`, and `Radio AUTO`, with transitions triggered by the `radio off`, `radio on`, and `radio auto` events....
+    </li>
+        </ul>
+      </section>
+    </section>
+  </body>
+</html>

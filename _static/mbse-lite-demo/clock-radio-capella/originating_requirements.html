@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>Originating requirements</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = 'http://localhost:5000/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('Pascal Roques https://www.linkedin.com/in/pascalroques/', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 1 of the following series:</p>
+      <ol>
+        <li>Originating requirements (this document)</li>
+        <li>
+          <a href="use_cases.html">Use cases</a>
+        </li>
+        <li>
+          <a href="product_requirements_specifications.html">Product requirements specification</a>
+        </li>
+        <li>
+          <a href="logical_and_physical_architecture.html">Physical architecture and interfaces</a>
+        </li>
+      </ol>
+      <p>The document catches all of the wish lists from all stackholders.
+  To contribute more contents, review and link each item to the "internal" system model.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>The document is created as a catch-all for capturing and sorting through all of
+the supplied desires. Typically included are stakeholder requirements, user needs, and a myriad of
+other inputs.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+Originating requirements captures the high-level requirements from all stakeholders.
+Those will be internalized in the System-level requirements.</figcaption>
+      </figure>
+      <p>The first step is to import all of the input content into the requirement tracking database. Many word processing tools have
+a utility that can help with this step. Once the originating requirements have been captured within
+the database, the requirements trace begins. Originating requirements can trace to use cases, system
+requirements, and interfaces. These
+items were selected to capture the behavior (use cases), constraints and performance (system
+requirements), and interfaces (interfaces) which are typically contained in input documentation.
+Each originating requirement is systematically considered, and then traced to relevant item(s).</p>
+      <p>Some originating requirements are not traced to anything or are traced to an item that doesn't
+exactly match – this is part of the requirement analysis process that determines which stakeholder
+requirements take precedence, and which will not be included in the current project. During this
+process, the lower level items do not need to be fully defined – that will occur in the next phase – in
+some cases a placeholder for further definition is sufficient.</p>
+      <p>After the trace is complete, the Originating Requirements Trace document is output. This document
+shows the originating requirement, and each item it has been traced to. All of the redundant,
+contradictory, and impossible originating requirements are output along with those that are
+logically traced. This creates the discussion when, for example, stakeholders see an originating
+requirement for a red product traced to a system requirement for a blue product.</p>
+      <figure>
+        <img src="../static/trace-requirements.png">
+        <figcaption>Trace all system requirements and specifications back to the orignating requirements.</figcaption>
+      </figure>
+      <p>Once the trace has
+been agreed to, the originating requirements are set aside, and the focus is solely on the system
+requirements.
+In certain industries, such as medical, the originating requirements will need to be
+updated to ensure that they are coherent and traceable.</p>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2>Arcadia Clock Radio Example</h2>
+      <section data-format="markdown"><h2 id="org-1">org-1: Wake up with alarm</h2>
+    The user SHALL be able to configure the clock radio to wake them up at the intended alarm time.
+  <p>Requested by Arcadia Clock Radio Example;
+      </p></section>
+      <section data-format="markdown"><h2 id="org-2">org-2: Read current time</h2>
+    The user SHALL be able to set the current time and read the displayed time from the clock radio.
+  <p>Requested by Arcadia Clock Radio Example;
+      </p></section>
+      <section data-format="markdown"><h2 id="org-3">org-3: Get news by radio</h2>
+    The user SHALL be able to configure radio playback and listen to radio audio from an external transmitter.
+  <p>Requested by Arcadia Clock Radio Example;
+      </p></section>
+      <section data-format="markdown"><h2 id="org-4">org-4: Support radio modes</h2>
+    The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.
+  <p>Requested by Arcadia Clock Radio Example;
+      </p></section>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,325 @@
+<html>
+  <head>
+    <title>Logical and physical architecture</title>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = 'http://localhost:5000/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('Pascal Roques https://www.linkedin.com/in/pascalroques/', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 4 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>
+          <a href="use_cases.html">Use cases</a>
+        </li>
+        <li>
+          <a href="product_requirements_specifications.html">Product requirements specification</a>
+        </li>
+        <li>Physical architecture and interfaces (this document)</li>
+      </ol>
+      <p>The document maps all specifications to hardware or software interfaces.
+  To contribute more contents, identify all external interfaces and describe all properties
+  that meets the system-level specifications:
+   mechanical / optical / electrical / softrware.
+  Omit all internal interfaces; those should reside in code comments or in the technical reports.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>This document follows the Product Requirement Specifications (PRS),
+where the interfaces linking various sub-systems are captured.</p>
+      <p>There are also lower level internal interfaces; these are often the
+interfaces that are owned by a single engineer (e.g. the electrical interfaces found on a single circuit
+board). These lower level interfaces are not given a number and description, are not turned into
+requirements, and instead are captured in lower level specifications and design documentation.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+Component-level designs are captured following the system-level specifications.</figcaption>
+      </figure>
+      <p>Similar to defining use cases, the process of capturing the architecture via a
+Physical Architectual Diagram is helpful to ensure that the interfaces are identified.
+For particularly complicated interfaces, the descriptions above can reference a more detailed
+document (such as a mechanical interface drawing, electrical pinout, firmware/software
+communication protocol, etc.).
+</p>
+      <p>
+The Logical Architecture Diagram (LAD) groups the functions into sub-systems. Flows among
+functions are mapped to Interfaces, featuring interactions among sub-systems.
+
+The LAD is in turn implemented by physical components in the Physical Architecture Diagram (PAD).
+The PAD links all external interfaces with the corresponding
+internal components of the system.
+</p>
+      <figure>
+        <img src="../static/trace-requirements.png">
+        <figcaption>Interface specifications are traced back to the Originating Requirements,
+and are verified by the Verification Plans.
+The Physical Architecture Diagram (PAD) links all external interfaces with the corresponding
+internal components of the system.</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2>Logical architecture</h2>
+      <section>
+        <h2 id="lad-1">lad-1: Clock radio logical context</h2>
+        <div data-format="markdown">Top-level logical context for a radio receiver alarm clock.</div>
+        <figure id="lad-1-uml">
+          <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="292px" preserveAspectRatio="none" style="width:401px;height:292px;background:#FFFFFF;" version="1.1" viewBox="0 0 401 292" width="401px" zoomAndPan="magnify"><defs><filter height="300%" id="f1kuf0mzr2a2eg" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="User" data-source-line="4" id="ent0002"><ellipse cx="76.9551" cy="14" fill="#FEFECE" filter="url(#f1kuf0mzr2a2eg)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M76.9551,22 L76.9551,49 M63.9551,30 L89.9551,30 M76.9551,49 L63.9551,64 M76.9551,49 L89.9551,64" fill="none" filter="url(#f1kuf0mzr2a2eg)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="61" y="83.9951">User</text></g><g class="entity" data-qualified-name="Clock Radio" data-source-line="5" id="ent0003"><polygon fill="#FEFECE" filter="url(#f1kuf0mzr2a2eg)" points="16,132.5,26,122.5,138.1338,122.5,138.1338,158.7969,128.1338,168.7969,16,168.7969,16,132.5" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="128.1338" x2="138.1338" y1="132.5" y2="122.5"></line><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="128.1338" y1="132.5" y2="132.5"></line><line style="stroke:#000000;stroke-width:1.5;" x1="128.1338" x2="128.1338" y1="132.5" y2="168.7969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1338" x="31" y="155.4951">Clock Radio</text></g><g class="entity" data-qualified-name="TX" data-source-line="6" id="ent0004"><ellipse cx="77.0137" cy="214" fill="#FEFECE" filter="url(#f1kuf0mzr2a2eg)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M77.0137,222 L77.0137,249 M64.0137,230 L90.0137,230 M77.0137,249 L64.0137,264 M77.0137,249 L90.0137,264" fill="none" filter="url(#f1kuf0mzr2a2eg)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126.0273" x="14" y="283.9951">Radio Transmitter</text></g><g class="entity" data-qualified-name=".int-1. Alarm time input" data-source-line="8" id="ent0005"><ellipse cx="301" cy="143.5" fill="#FEFECE" filter="url(#f1kuf0mzr2a2eg)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165.5664" x="218.2168" y="173.4951">[int-1] Alarm time input</text></g><g class="entity" data-qualified-name=".int-2. Audio output" data-source-line="11" id="ent0008"><ellipse cx="301" cy="47.5" fill="#FEFECE" filter="url(#f1kuf0mzr2a2eg)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138.0039" x="231.998" y="77.4951">[int-2] Audio output</text></g><g class="entity" data-qualified-name=".int-3. Radio channel input" data-source-line="14" id="ent0011"><ellipse cx="301" cy="239.5" fill="#FEFECE" filter="url(#f1kuf0mzr2a2eg)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="187.5439" x="207.228" y="269.4951">[int-3] Radio channel input</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0005" data-link-type="association" data-source-line="8" id="lnk6"><path d="M93.26,52.24 C136.56,71.35 259.17,125.48 291.89,139.92" fill="none" id="User-[int-1] Alarm time input" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0005" data-link-type="association" data-source-line="9" id="lnk7"><path d="M138.08,144.96 C192.27,144.47 267.13,143.8 291.77,143.57" fill="none" id="Clock Radio-[int-1] Alarm time input" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0008" data-link-type="association" data-source-line="11" id="lnk9"><path d="M93.26,45.64 C136.56,46.03 259.17,47.13 291.89,47.43" fill="none" id="User-[int-2] Audio output" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0008" data-link-type="association" data-source-line="12" id="lnk10"><path d="M130.33,122.4 C184.94,98.29 266.13,62.45 291.87,51.09" fill="none" id="Clock Radio-[int-2] Audio output" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0011" data-link-type="association" data-source-line="14" id="lnk12"><path d="M140.13,243.82 C194.27,242.36 267.77,240.37 291.94,239.72" fill="none" id="TX-[int-3] Radio channel input" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0011" data-link-type="association" data-source-line="15" id="lnk13"><path d="M132.59,168.62 C187.03,191.66 266.11,225.15 291.69,235.98" fill="none" id="Clock Radio-[int-3] Radio channel input" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Component diagram "lad-1: Clock radio logical context"</figcaption>
+        </figure>
+        <section>
+          <h2 id="int-1">int-1: Alarm time input</h2>
+          <div data-format="markdown">The user enters the alarm time and enables or disables the alarm.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-3">sys-3</a>] Accept alarm settings:</b>The clock radio SHALL accept alarm time and alarm on or off settings from the user and derive current alarm time and alarm activation data for alarm management.</li>
+          </ul>
+          <section>
+            <h3 id="int-1-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface SHALL accept alarm time and alarm enable input from the user.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-2">int-2: Audio output</h2>
+          <div data-format="markdown">The clock radio provides audible output to the user.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-8">sys-8</a>] Broadcast radio sound:</b>The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level.</li>
+          </ul>
+          <section>
+            <h3 id="int-2-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface SHALL provide audible radio or alarm output perceived by the user.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-3">int-3: Radio channel input</h2>
+          <div data-format="markdown">The external transmitter provides a radio channel to the clock radio receiver.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-7">sys-7</a>] Decode radio waves:</b>The clock radio SHALL receive radio waves from the external transmitter and decode them into radio signals using the current frequency setting.</li>
+          </ul>
+          <section>
+            <h3 id="int-3-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface SHALL convey received radio-frequency signal from the external transmitter into the receiver path.</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h2 id="lad-2">lad-2: Clock radio logical internals</h2>
+        <div data-format="markdown">Simplified logical architecture for the receiver alarm clock.</div>
+        <figure id="lad-2-uml">
+          <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="312px" preserveAspectRatio="none" style="width:401px;height:312px;background:#FFFFFF;" version="1.1" viewBox="0 0 401 312" width="401px" zoomAndPan="magnify"><defs><filter height="300%" id="fqmx8a2onmilf" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="Clock" data-source-line="4" id="ent0002"><polygon fill="#FEFECE" filter="url(#fqmx8a2onmilf)" points="65,16,75,6,143.0352,6,143.0352,42.2969,133.0352,52.2969,65,52.2969,65,16" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="133.0352" x2="143.0352" y1="16" y2="6"></line><line style="stroke:#000000;stroke-width:1.5;" x1="65" x2="133.0352" y1="16" y2="16"></line><line style="stroke:#000000;stroke-width:1.5;" x1="133.0352" x2="133.0352" y1="16" y2="52.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38.0352" x="80" y="38.9951">Clock</text></g><g class="entity" data-qualified-name="Alarm Controller" data-source-line="5" id="ent0003"><polygon fill="#FEFECE" filter="url(#fqmx8a2onmilf)" points="26.5,97,36.5,87,181.5625,87,181.5625,123.2969,171.5625,133.2969,26.5,133.2969,26.5,97" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="171.5625" x2="181.5625" y1="97" y2="87"></line><line style="stroke:#000000;stroke-width:1.5;" x1="26.5" x2="171.5625" y1="97" y2="97"></line><line style="stroke:#000000;stroke-width:1.5;" x1="171.5625" x2="171.5625" y1="97" y2="133.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115.0625" x="41.5" y="119.9951">Alarm Controller</text></g><g class="entity" data-qualified-name="Radio Demodulator" data-source-line="6" id="ent0004"><polygon fill="#FEFECE" filter="url(#fqmx8a2onmilf)" points="16,259,26,249,191.7344,249,191.7344,285.2969,181.7344,295.2969,16,295.2969,16,259" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="181.7344" x2="191.7344" y1="259" y2="249"></line><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="181.7344" y1="259" y2="259"></line><line style="stroke:#000000;stroke-width:1.5;" x1="181.7344" x2="181.7344" y1="259" y2="295.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135.7344" x="31" y="281.9951">Radio Demodulator</text></g><g class="entity" data-qualified-name="Speaker" data-source-line="7" id="ent0005"><polygon fill="#FEFECE" filter="url(#fqmx8a2onmilf)" points="55.5,178,65.5,168,152.9424,168,152.9424,204.2969,142.9424,214.2969,55.5,214.2969,55.5,178" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="142.9424" x2="152.9424" y1="178" y2="168"></line><line style="stroke:#000000;stroke-width:1.5;" x1="55.5" x2="142.9424" y1="178" y2="178"></line><line style="stroke:#000000;stroke-width:1.5;" x1="142.9424" x2="142.9424" y1="178" y2="214.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57.4424" x="70.5" y="200.9951">Speaker</text></g><g class="entity" data-qualified-name=".int-4. Clock signal" data-source-line="9" id="ent0006"><ellipse cx="327" cy="37" fill="#FEFECE" filter="url(#fqmx8a2onmilf)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131.4824" x="261.2588" y="66.9951">[int-4] Clock signal</text></g><g class="entity" data-qualified-name=".int-5. Alarm signal" data-source-line="12" id="ent0009"><ellipse cx="327" cy="137" fill="#FEFECE" filter="url(#fqmx8a2onmilf)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134.8867" x="259.5566" y="166.9951">[int-5] Alarm signal</text></g><g class="entity" data-qualified-name=".int-6. Audio signal" data-source-line="15" id="ent0012"><ellipse cx="327" cy="244" fill="#FEFECE" filter="url(#fqmx8a2onmilf)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="133.2393" x="260.3804" y="273.9951">[int-6] Audio signal</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0006" data-link-type="association" data-source-line="9" id="lnk7"><path d="M143.24,30.38 C196.61,32.32 290.03,35.7 317.92,36.71" fill="none" id="Clock-[int-4] Clock signal" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0006" data-link-type="association" data-source-line="10" id="lnk8"><path d="M174.93,86.9 C227.78,69.44 295.03,47.23 317.94,39.66" fill="none" id="Alarm Controller-[int-4] Clock signal" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0009" data-link-type="association" data-source-line="12" id="lnk10"><path d="M181.67,119.37 C233.29,125.67 295.8,133.31 317.83,136" fill="none" id="Alarm Controller-[int-5] Alarm signal" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0009" data-link-type="association" data-source-line="13" id="lnk11"><path d="M152.68,179.35 C206.99,166.08 291.62,145.4 317.92,138.97" fill="none" id="Speaker-[int-5] Alarm signal" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0012" data-link-type="association" data-source-line="15" id="lnk13"><path d="M192.03,260.97 C241.31,254.73 297.12,247.66 317.76,245.04" fill="none" id="Radio Demodulator-[int-6] Audio signal" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0012" data-link-type="association" data-source-line="16" id="lnk14"><path d="M152.68,202.43 C206.99,215.46 291.62,235.75 317.92,242.06" fill="none" id="Speaker-[int-6] Audio signal" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Component diagram "lad-2: Clock radio logical internals"</figcaption>
+        </figure>
+        <section>
+          <h2 id="int-4">int-4: Clock signal</h2>
+          <div data-format="markdown">The clock provides timing information to the alarm controller.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-4">sys-4</a>] Trigger alarm in automatic mode:</b>The clock radio SHALL trigger an alarm when the current time equals the configured alarm time while the system is in `Radio AUTO` mode.</li>
+          </ul>
+          <section>
+            <h3 id="int-4-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface SHALL communicate current time needed to compare against the configured alarm time.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-5">int-5: Alarm signal</h2>
+          <div data-format="markdown">The alarm controller provides an alarm trigger to the speaker path.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-4">sys-4</a>] Trigger alarm in automatic mode:</b>The clock radio SHALL trigger an alarm when the current time equals the configured alarm time while the system is in `Radio AUTO` mode.</li>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-5">sys-5</a>] Limit automatic ringing duration:</b>In `Radio AUTO` mode, the ringing state SHALL return to silent after an alarm timeout of 59 minutes.</li>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-8">sys-8</a>] Broadcast radio sound:</b>The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level.</li>
+          </ul>
+          <section>
+            <h3 id="int-5-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface SHALL communicate alarm activation to the audio output path when alarm conditions are met.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-6">int-6: Audio signal</h2>
+          <div data-format="markdown">The radio demodulator provides decoded audio to the speaker path.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-7">sys-7</a>] Decode radio waves:</b>The clock radio SHALL receive radio waves from the external transmitter and decode them into radio signals using the current frequency setting.</li>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-8">sys-8</a>] Broadcast radio sound:</b>The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level.</li>
+          </ul>
+          <section>
+            <h3 id="int-6-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface SHALL communicate decoded radio audio from the radio demodulator to the speaker path.</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2>Physical architecture</h2>
+      <section>
+        <h2 id="pad-1">pad-1: Audio physical view</h2>
+        <div data-format="markdown">Physical audio path showing how alarm and radio audio drive the speaker.</div>
+        <figure id="pad-1-uml">
+          <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="312px" preserveAspectRatio="none" style="width:413px;height:312px;background:#FFFFFF;" version="1.1" viewBox="0 0 413 312" width="413px" zoomAndPan="magnify"><defs><filter height="300%" id="f183wyosi6fmrx" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="Alarm Controller" data-source-line="4" id="ent0002"><polygon fill="#FEFECE" filter="url(#f183wyosi6fmrx)" points="26.5,16,36.5,6,181.5625,6,181.5625,42.2969,171.5625,52.2969,26.5,52.2969,26.5,16" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="171.5625" x2="181.5625" y1="16" y2="6"></line><line style="stroke:#000000;stroke-width:1.5;" x1="26.5" x2="171.5625" y1="16" y2="16"></line><line style="stroke:#000000;stroke-width:1.5;" x1="171.5625" x2="171.5625" y1="16" y2="52.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115.0625" x="41.5" y="38.9951">Alarm Controller</text></g><g class="entity" data-qualified-name="Radio Demodulator" data-source-line="5" id="ent0003"><polygon fill="#FEFECE" filter="url(#f183wyosi6fmrx)" points="16,178,26,168,191.7344,168,191.7344,204.2969,181.7344,214.2969,16,214.2969,16,178" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="181.7344" x2="191.7344" y1="178" y2="168"></line><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="181.7344" y1="178" y2="178"></line><line style="stroke:#000000;stroke-width:1.5;" x1="181.7344" x2="181.7344" y1="178" y2="214.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135.7344" x="31" y="200.9951">Radio Demodulator</text></g><g class="entity" data-qualified-name="Audio Amplifier" data-source-line="6" id="ent0004"><polygon fill="#FEFECE" filter="url(#f183wyosi6fmrx)" points="30.5,97,40.5,87,177.8105,87,177.8105,123.2969,167.8105,133.2969,30.5,133.2969,30.5,97" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="167.8105" x2="177.8105" y1="97" y2="87"></line><line style="stroke:#000000;stroke-width:1.5;" x1="30.5" x2="167.8105" y1="97" y2="97"></line><line style="stroke:#000000;stroke-width:1.5;" x1="167.8105" x2="167.8105" y1="97" y2="133.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107.3105" x="45.5" y="119.9951">Audio Amplifier</text></g><g class="entity" data-qualified-name="Speaker" data-source-line="7" id="ent0005"><polygon fill="#FEFECE" filter="url(#f183wyosi6fmrx)" points="55.5,259,65.5,249,152.9424,249,152.9424,285.2969,142.9424,295.2969,55.5,295.2969,55.5,259" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="142.9424" x2="152.9424" y1="259" y2="249"></line><line style="stroke:#000000;stroke-width:1.5;" x1="55.5" x2="142.9424" y1="259" y2="259"></line><line style="stroke:#000000;stroke-width:1.5;" x1="142.9424" x2="142.9424" y1="259" y2="295.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57.4424" x="70.5" y="281.9951">Speaker</text></g><g class="entity" data-qualified-name=".phy-4. Alarm wire" data-source-line="9" id="ent0006"><ellipse cx="333" cy="37" fill="#FEFECE" filter="url(#f183wyosi6fmrx)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130.9766" x="267.5117" y="66.9951">[phy-4] Alarm wire</text></g><g class="entity" data-qualified-name=".phy-6. Audio wire" data-source-line="12" id="ent0009"><ellipse cx="333" cy="137" fill="#FEFECE" filter="url(#f183wyosi6fmrx)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129.3291" x="268.3354" y="166.9951">[phy-6] Audio wire</text></g><g class="entity" data-qualified-name=".phy-7. Speaker wire" data-source-line="15" id="ent0012"><ellipse cx="333" cy="244" fill="#FEFECE" filter="url(#f183wyosi6fmrx)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146.9795" x="259.5103" y="273.9951">[phy-7] Speaker wire</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0006" data-link-type="association" data-source-line="9" id="lnk7"><path d="M181.54,31.7 C235.08,33.58 300.94,35.91 323.76,36.71" fill="none" id="Alarm Controller-[phy-4] Alarm wire" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0006" data-link-type="association" data-source-line="10" id="lnk8"><path d="M176.82,86.9 C231.12,69.44 300.19,47.23 323.72,39.66" fill="none" id="Audio Amplifier-[phy-4] Alarm wire" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0009" data-link-type="association" data-source-line="12" id="lnk10"><path d="M192.11,170.28 C243.63,158.02 302.82,143.94 323.97,138.91" fill="none" id="Radio Demodulator-[phy-6] Audio wire" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0009" data-link-type="association" data-source-line="13" id="lnk11"><path d="M177.76,118.65 C231.97,125.1 300.47,133.25 323.79,136.02" fill="none" id="Audio Amplifier-[phy-6] Audio wire" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0012" data-link-type="association" data-source-line="15" id="lnk13"><path d="M159.05,133.21 C170.11,138.42 181.56,144.15 192,150 C244.35,179.36 302.63,221.97 323.78,237.79" fill="none" id="Audio Amplifier-[phy-7] Speaker wire" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0012" data-link-type="association" data-source-line="16" id="lnk14"><path d="M152.59,266.13 C208.49,259.23 297.04,248.31 323.97,244.99" fill="none" id="Speaker-[phy-7] Speaker wire" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Component diagram "pad-1: Audio physical view"</figcaption>
+        </figure>
+        <section>
+          <h2 id="phy-4">phy-4: Alarm wire</h2>
+          <div data-format="markdown">A wire carries alarm trigger output from the alarm controller to the audio path.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="#int-5">int-5</a>] Alarm signal:</b>The alarm controller provides an alarm trigger to the speaker path.</li>
+          </ul>
+          <section>
+            <h3 id="phy-4-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The alarm wire SHALL enable the audio path when alarm conditions are met.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="phy-6">phy-6: Audio wire</h2>
+          <div data-format="markdown">A wire carries decoded audio signal from the radio demodulator to the audio amplifier.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="#int-6">int-6</a>] Audio signal:</b>The radio demodulator provides decoded audio to the speaker path.</li>
+          </ul>
+          <section>
+            <h3 id="phy-6-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The analog audio wire SHALL carry demodulated audio from the receiver stage to the amplifier stage.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="phy-7">phy-7: Speaker wire</h2>
+          <div data-format="markdown">A wire carries amplified audio from the audio amplifier to the speaker.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="#int-2">int-2</a>] Audio output:</b>The clock radio provides audible output to the user.</li>
+          </ul>
+          <section>
+            <h3 id="phy-7-mechanical-descriptions">Mechanical description</h3>
+            <ul>
+              <li>The speaker SHALL be mounted to radiate audible sound from the enclosure.</li>
+            </ul>
+          </section>
+          <section>
+            <h3 id="phy-7-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The speaker wire SHALL carry amplified audio current from the amplifier to the speaker.</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h2 id="pad-2">pad-2: RF physical view</h2>
+        <div data-format="markdown">Physical RF path showing broadcast reception from the external transmitter into the receiver hardware.</div>
+        <figure id="pad-2-uml">
+          <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="266px" preserveAspectRatio="none" style="width:381px;height:266px;background:#FFFFFF;" version="1.1" viewBox="0 0 381 266" width="381px" zoomAndPan="magnify"><defs><filter height="300%" id="fn44m5kqwmmyn" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="TX" data-source-line="4" id="ent0002"><ellipse cx="104.0137" cy="14" fill="#FEFECE" filter="url(#fn44m5kqwmmyn)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M104.0137,22 L104.0137,49 M91.0137,30 L117.0137,30 M104.0137,49 L91.0137,64 M104.0137,49 L117.0137,64" fill="none" filter="url(#fn44m5kqwmmyn)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126.0273" x="41" y="83.9951">Radio Transmitter</text></g><g class="entity" data-qualified-name="Antenna" data-source-line="5" id="ent0003"><polygon fill="#FEFECE" filter="url(#fn44m5kqwmmyn)" points="54.5,132.5,64.5,122.5,153.3779,122.5,153.3779,158.7969,143.3779,168.7969,54.5,168.7969,54.5,132.5" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="143.3779" x2="153.3779" y1="132.5" y2="122.5"></line><line style="stroke:#000000;stroke-width:1.5;" x1="54.5" x2="143.3779" y1="132.5" y2="132.5"></line><line style="stroke:#000000;stroke-width:1.5;" x1="143.3779" x2="143.3779" y1="132.5" y2="168.7969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58.8779" x="69.5" y="155.4951">Antenna</text></g><g class="entity" data-qualified-name="Radio Demodulator" data-source-line="6" id="ent0004"><polygon fill="#FEFECE" filter="url(#fn44m5kqwmmyn)" points="16,213.5,26,203.5,191.7344,203.5,191.7344,239.7969,181.7344,249.7969,16,249.7969,16,213.5" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="181.7344" x2="191.7344" y1="213.5" y2="203.5"></line><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="181.7344" y1="213.5" y2="213.5"></line><line style="stroke:#000000;stroke-width:1.5;" x1="181.7344" x2="181.7344" y1="213.5" y2="249.7969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135.7344" x="31" y="236.4951">Radio Demodulator</text></g><g class="entity" data-qualified-name=".phy-2. Antenna" data-source-line="8" id="ent0005"><ellipse cx="317" cy="69.5" fill="#FEFECE" filter="url(#fn44m5kqwmmyn)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114.2559" x="259.8721" y="99.4951">[phy-2] Antenna</text></g><g class="entity" data-qualified-name=".phy-5. RF wire" data-source-line="11" id="ent0008"><ellipse cx="317" cy="186.5" fill="#FEFECE" filter="url(#fn44m5kqwmmyn)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107.3174" x="263.3413" y="216.4951">[phy-5] RF wire</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0005" data-link-type="association" data-source-line="8" id="lnk6"><path d="M167.17,52.57 C217.98,58.35 285.02,65.98 307.93,68.58" fill="none" id="TX-[phy-2] Antenna" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0005" data-link-type="association" data-source-line="9" id="lnk7"><path d="M153.67,127.97 C205.28,109.38 282.73,81.48 307.84,72.44" fill="none" id="Antenna-[phy-2] Antenna" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0008" data-link-type="association" data-source-line="11" id="lnk9"><path d="M153.67,154.96 C205.28,164.98 282.73,180.04 307.84,184.91" fill="none" id="Antenna-[phy-5] RF wire" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0008" data-link-type="association" data-source-line="12" id="lnk10"><path d="M192.04,210 C237.9,201.31 288.57,191.7 307.9,188.04" fill="none" id="Radio Demodulator-[phy-5] RF wire" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Component diagram "pad-2: RF physical view"</figcaption>
+        </figure>
+        <section>
+          <h2 id="phy-2">phy-2: Antenna</h2>
+          <div data-format="markdown">The antenna receives the external radio broadcast.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="#int-3">int-3</a>] Radio channel input:</b>The external transmitter provides a radio channel to the clock radio receiver.</li>
+          </ul>
+          <section>
+            <h3 id="phy-2-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The RF path SHALL convey received broadcast energy from the antenna into the receiver circuit.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="phy-5">phy-5: RF wire</h2>
+          <div data-format="markdown">The antenna feeds RF signal into the radio demodulator.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="#int-3">int-3</a>] Radio channel input:</b>The external transmitter provides a radio channel to the clock radio receiver.</li>
+          </ul>
+          <section>
+            <h3 id="phy-5-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The RF path SHALL couple the received broadcast signal from the antenna into the demodulator circuitry.</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h2 id="pad-3">pad-3: Timing physical view</h2>
+        <div data-format="markdown">Physical timing path showing alarm entry and time comparison hardware.</div>
+        <figure id="pad-3-uml">
+          <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="350px" preserveAspectRatio="none" style="width:400px;height:350px;background:#FFFFFF;" version="1.1" viewBox="0 0 400 350" width="400px" zoomAndPan="magnify"><defs><filter height="300%" id="f1fn7swiz8pou0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="User" data-source-line="4" id="ent0002"><ellipse cx="93.4551" cy="178.5" fill="#FEFECE" filter="url(#f1fn7swiz8pou0)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M93.4551,186.5 L93.4551,213.5 M80.4551,194.5 L106.4551,194.5 M93.4551,213.5 L80.4551,228.5 M93.4551,213.5 L106.4551,228.5" fill="none" filter="url(#f1fn7swiz8pou0)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="77.5" y="248.4951">User</text></g><g class="entity" data-qualified-name="Alarm Buttons" data-source-line="5" id="ent0003"><polygon fill="#FEFECE" filter="url(#f1fn7swiz8pou0)" points="23.5,297,33.5,287,163.5781,287,163.5781,323.2969,153.5781,333.2969,23.5,333.2969,23.5,297" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="153.5781" x2="163.5781" y1="297" y2="287"></line><line style="stroke:#000000;stroke-width:1.5;" x1="23.5" x2="153.5781" y1="297" y2="297"></line><line style="stroke:#000000;stroke-width:1.5;" x1="153.5781" x2="153.5781" y1="297" y2="333.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100.0781" x="38.5" y="319.9951">Alarm Buttons</text></g><g class="entity" data-qualified-name="Real-Time Clock" data-source-line="6" id="ent0004"><polygon fill="#FEFECE" filter="url(#f1fn7swiz8pou0)" points="17,16,27,6,170.0391,6,170.0391,42.2969,160.0391,52.2969,17,52.2969,17,16" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="160.0391" x2="170.0391" y1="16" y2="6"></line><line style="stroke:#000000;stroke-width:1.5;" x1="17" x2="160.0391" y1="16" y2="16"></line><line style="stroke:#000000;stroke-width:1.5;" x1="160.0391" x2="160.0391" y1="16" y2="52.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113.0391" x="32" y="38.9951">Real-Time Clock</text></g><g class="entity" data-qualified-name="Alarm Controller" data-source-line="7" id="ent0005"><polygon fill="#FEFECE" filter="url(#f1fn7swiz8pou0)" points="16,97,26,87,171.0625,87,171.0625,123.2969,161.0625,133.2969,16,133.2969,16,97" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="161.0625" x2="171.0625" y1="97" y2="87"></line><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="161.0625" y1="97" y2="97"></line><line style="stroke:#000000;stroke-width:1.5;" x1="161.0625" x2="161.0625" y1="97" y2="133.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115.0625" x="31" y="119.9951">Alarm Controller</text></g><g class="entity" data-qualified-name=".phy-1. Alarm buttons" data-source-line="9" id="ent0006"><ellipse cx="316" cy="260" fill="#FEFECE" filter="url(#f1fn7swiz8pou0)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154.7383" x="238.6309" y="289.9951">[phy-1] Alarm buttons</text></g><g class="entity" data-qualified-name=".phy-3. Clock wire" data-source-line="12" id="ent0009"><ellipse cx="316" cy="70" fill="#FEFECE" filter="url(#f1fn7swiz8pou0)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127.5723" x="252.2139" y="99.9951">[phy-3] Clock wire</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0006" data-link-type="association" data-source-line="9" id="lnk7"><path d="M109.66,213.44 C152.66,223.19 274.45,250.8 306.95,258.17" fill="none" id="User-[phy-1] Alarm buttons" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0006" data-link-type="association" data-source-line="10" id="lnk8"><path d="M163.66,294.32 C216.46,282.35 283.92,267.05 306.91,261.83" fill="none" id="Alarm Buttons-[phy-1] Alarm buttons" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0009" data-link-type="association" data-source-line="12" id="lnk10"><path d="M170.08,43.05 C221.69,52.65 284.59,64.35 306.78,68.47" fill="none" id="Real-Time Clock-[phy-3] Clock wire" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0009" data-link-type="association" data-source-line="13" id="lnk11"><path d="M171,96.12 C222.5,86.78 284.86,75.47 306.85,71.48" fill="none" id="Alarm Controller-[phy-3] Clock wire" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Component diagram "pad-3: Timing physical view"</figcaption>
+        </figure>
+        <section>
+          <h2 id="phy-1">phy-1: Alarm buttons</h2>
+          <div data-format="markdown">The user presses physical buttons to set or enable the alarm.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="#int-1">int-1</a>] Alarm time input:</b>The user enters the alarm time and enables or disables the alarm.</li>
+          </ul>
+          <section>
+            <h3 id="phy-1-mechanical-descriptions">Mechanical description</h3>
+            <ul>
+              <li>The alarm buttons SHALL be accessible from the front panel.</li>
+            </ul>
+          </section>
+          <section>
+            <h3 id="phy-1-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The button contacts SHALL convey alarm-setting input into the control electronics.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="phy-3">phy-3: Clock wire</h2>
+          <div data-format="markdown">A wire carries timing data from the real-time clock to the alarm controller.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="#int-4">int-4</a>] Clock signal:</b>The clock provides timing information to the alarm controller.</li>
+          </ul>
+          <section>
+            <h3 id="phy-3-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The timing wire SHALL carry current time data from the clock circuit to the alarm controller.</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+    </section>
+  </body>
+</html>

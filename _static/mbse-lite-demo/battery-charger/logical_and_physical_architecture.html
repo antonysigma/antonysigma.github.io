@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <title>Logical and physical architecture</title>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = '/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 4 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>
+          <a href="use_cases.html">Use cases</a>
+        </li>
+        <li>
+          <a href="product_requirements_specifications.html">Product requirements specification</a>
+        </li>
+        <li>Physical architecture and interfaces (this document)</li>
+      </ol>
+      <p>The document maps all specifications to hardware or software interfaces.
+  To contribute more contents, identify all external interfaces and describe all properties
+  that meets the system-level specifications:
+   mechanical / optical / electrical / softrware.
+  Omit all internal interfaces; those should reside in code comments or in the technical reports.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>This document follows the Product Requirement Specifications (PRS),
+where the interfaces linking various sub-systems are captured.</p>
+      <p>There are also lower level internal interfaces; these are often the
+interfaces that are owned by a single engineer (e.g. the electrical interfaces found on a single circuit
+board). These lower level interfaces are not given a number and description, are not turned into
+requirements, and instead are captured in lower level specifications and design documentation.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+Component-level designs are captured following the system-level specifications.</figcaption>
+      </figure>
+      <p>Similar to defining use cases, the process of capturing the architecture via a
+Physical Architectual Diagram is helpful to ensure that the interfaces are identified.
+For particularly complicated interfaces, the descriptions above can reference a more detailed
+document (such as a mechanical interface drawing, electrical pinout, firmware/software
+communication protocol, etc.).
+</p>
+      <p>
+The Logical Architecture Diagram (LAD) groups the functions into sub-systems. Flows among
+functions are mapped to Interfaces, featuring interactions among sub-systems.
+
+The LAD is in turn implemented by physical components in the Physical Architecture Diagram (PAD).
+The PAD links all external interfaces with the corresponding
+internal components of the system.
+</p>
+      <figure>
+        <img src="../static/trace-requirements.png">
+        <figcaption>Interface specifications are traced back to the Originating Requirements,
+and are verified by the Verification Plans.
+The Physical Architecture Diagram (PAD) links all external interfaces with the corresponding
+internal components of the system.</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2>Logical architecture</h2>
+      <p>This section is intentionally left blank.</p>
+    </section>
+    <section>
+      <h2>Physical architecture</h2>
+      <section>
+        <h2 id="pad-1">pad-1: Power</h2>
+        <div data-format="markdown">A power port accessible by the user and used to charge the device.</div>
+        <figure id="pad-1-uml">
+          <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="367px" preserveAspectRatio="none" style="width:1005px;height:367px;background:#FFFFFF;" version="1.1" viewBox="0 0 1005 367" width="1005px" zoomAndPan="magnify"><defs><filter height="300%" id="f5etbxzva9rp2" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="cluster" data-qualified-name="Charging subsystem" data-source-line="3" id="ent0002"><polygon fill="none" filter="url(#f5etbxzva9rp2)" points="146,16,156,6,729,6,729,340,719,350,146,350,146,16" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="719" x2="729" y1="16" y2="6"></line><line style="stroke:#000000;stroke-width:1.5;" x1="146" x2="719" y1="16" y2="16"></line><line style="stroke:#000000;stroke-width:1.5;" x1="719" x2="719" y1="16" y2="350"></line><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="161.1641" x="352.918" y="31.9951">Charging subsystem</text></g><g class="entity" data-qualified-name="Charging subsystem.Data port" data-source-line="4" id="ent0003"><rect fill="#FEFECE" filter="url(#f5etbxzva9rp2)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="106.5752" x="161.5" y="153"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="248.0752" y="158"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="246.0752" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="246.0752" y="164"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66.5752" x="176.5" y="185.9951">Data port</text></g><g class="entity" data-qualified-name="Charging subsystem..int-2. Front panel" data-source-line="4" id="ent0004"><ellipse cx="435" cy="305" fill="#FEFECE" filter="url(#f5etbxzva9rp2)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127.6133" x="371.1934" y="334.9951">[int-2] Front panel</text></g><g class="entity" data-qualified-name="Charging subsystem.int-3" data-source-line="5" id="ent0006"><ellipse cx="200.7766" cy="305.0236" fill="#FEFECE" rx="25.7766" ry="14.5236" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32.2109" x="184.6711" y="309.6721">int-3</text></g><g class="entity" data-qualified-name="Charging subsystem.Power port" data-source-line="7" id="ent0008"><rect fill="#FEFECE" filter="url(#f5etbxzva9rp2)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="115.9746" x="597" y="153"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="692.9746" y="158"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="690.9746" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="690.9746" y="164"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75.9746" x="612" y="185.9951">Power port</text></g><g class="entity" data-qualified-name="Charging subsystem..int-1. Power interface" data-source-line="7" id="ent0009"><ellipse cx="627" cy="305" fill="#FEFECE" filter="url(#f5etbxzva9rp2)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.3018" x="548.3491" y="334.9951">[int-1] Power interface</text></g><g class="entity" data-qualified-name="Charging subsystem.LEDs" data-source-line="10" id="ent0012"><rect fill="#FEFECE" filter="url(#f5etbxzva9rp2)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="74.7197" x="303.5" y="153"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="358.2197" y="158"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="356.2197" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="356.2197" y="164"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34.7197" x="318.5" y="185.9951">LEDs</text></g><g class="entity" data-qualified-name="Charging subsystem.Device housing" data-source-line="12" id="ent0014"><rect fill="#FEFECE" filter="url(#f5etbxzva9rp2)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="147.584" x="414" y="153"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="541.584" y="158"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="539.584" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="539.584" y="164"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107.584" x="429" y="185.9951">Device housing</text></g><g class="entity" data-qualified-name="Charging subsystem.PCB" data-source-line="14" id="ent0016"><rect fill="#FEFECE" filter="url(#f5etbxzva9rp2)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="67.8223" x="307" y="46"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="354.8223" y="51"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="352.8223" y="53"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="352.8223" y="57"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27.8223" x="322" y="78.9951">PCB</text></g><g class="entity" data-qualified-name="Computer" data-source-line="19" id="ent0020"><polygon fill="#FEFECE" filter="url(#f5etbxzva9rp2)" points="16,163,26,153,125.5967,153,125.5967,189.2969,115.5967,199.2969,16,199.2969,16,163" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="115.5967" x2="125.5967" y1="163" y2="153"></line><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="115.5967" y1="163" y2="163"></line><line style="stroke:#000000;stroke-width:1.5;" x1="115.5967" x2="115.5967" y1="163" y2="199.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69.5967" x="31" y="185.9951">Computer</text></g><g class="entity" data-qualified-name="User" data-source-line="20" id="ent0021"><polygon fill="#FEFECE" filter="url(#f5etbxzva9rp2)" points="748,163,758,153,819.9102,153,819.9102,189.2969,809.9102,199.2969,748,199.2969,748,163" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="809.9102" x2="819.9102" y1="163" y2="153"></line><line style="stroke:#000000;stroke-width:1.5;" x1="748" x2="809.9102" y1="163" y2="163"></line><line style="stroke:#000000;stroke-width:1.5;" x1="809.9102" x2="809.9102" y1="163" y2="199.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="763" y="185.9951">User</text></g><g class="entity" data-qualified-name="PS" data-source-line="21" id="ent0022"><polygon fill="#FEFECE" filter="url(#f5etbxzva9rp2)" points="855.5,163,865.5,153,988.8926,153,988.8926,189.2969,978.8926,199.2969,855.5,199.2969,855.5,163" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="978.8926" x2="988.8926" y1="163" y2="153"></line><line style="stroke:#000000;stroke-width:1.5;" x1="855.5" x2="978.8926" y1="163" y2="163"></line><line style="stroke:#000000;stroke-width:1.5;" x1="978.8926" x2="978.8926" y1="163" y2="199.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93.3926" x="870.5" y="185.9951">Power supply</text></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" data-link-type="association" data-source-line="4" id="lnk5"><path d="M253.32,199.12 C305.77,229.4 396.71,281.9 425.78,298.68" fill="none" id="Data port-[int-2] Front panel" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0006" data-link-type="association" data-source-line="5" id="lnk7"><path d="M212.56,199.12 C209.66,225.42 204.92,268.48 202.51,290.34" fill="none" id="Data port-int-3" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0008" data-entity-2="ent0009" data-link-type="association" data-source-line="7" id="lnk10"><path d="M650.12,199.12 C643.79,227.83 633.06,276.53 628.81,295.8" fill="none" id="Power port-[int-1] Power interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0008" data-entity-2="ent0004" data-link-type="association" data-source-line="8" id="lnk11"><path d="M616.68,199.12 C564.23,229.4 473.29,281.9 444.22,298.68" fill="none" id="Power port-[int-2] Front panel" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0012" data-entity-2="ent0004" data-link-type="association" data-source-line="10" id="lnk13"><path d="M357.37,199.12 C378.62,227.83 414.67,276.53 428.93,295.8" fill="none" id="LEDs-[int-2] Front panel" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0014" data-entity-2="ent0004" data-link-type="association" data-source-line="12" id="lnk15"><path d="M478.77,199.12 C466.79,227.83 446.46,276.53 438.42,295.8" fill="none" id="Device housing-[int-2] Front panel" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0016" data-entity-2="ent0012" data-link-type="association" data-source-line="14" id="lnk17"><path d="M341,92.01 C341,109.81 341,134.77 341,152.66" fill="none" id="PCB-LEDs" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0016" data-entity-2="ent0003" data-link-type="association" data-source-line="15" id="lnk18"><path d="M314.59,92.01 C293.23,109.81 263.28,134.77 241.81,152.66" fill="none" id="PCB-Data port" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0016" data-entity-2="ent0008" data-link-type="association" data-source-line="16" id="lnk19"><path d="M375.2,81.44 C428.45,99.24 531.8,133.8 596.89,155.57" fill="none" id="PCB-Power port" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0020" data-entity-2="ent0006" data-link-type="dependency" data-source-line="23" id="lnk23"><path d="M93.64,199.12 C121.29,226.13 162.7383,266.627 184.4883,287.877" fill="none" id="Computer-to-int-3" style="stroke:#A80036;stroke-width:1;stroke-dasharray:7,7;"></path><polygon fill="#A80036" points="188.78,292.07,185.1378,282.9193,185.2036,288.5758,179.5471,288.6416,188.78,292.07" style="stroke:#A80036;stroke-width:1;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="23.0103" x="140" y="242.0669">use</text></g><g class="link" data-entity-1="ent0021" data-entity-2="ent0004" data-link-type="dependency" data-source-line="24" id="lnk24"><path d="M747.98,191.63 C741.67,194.13 735.16,196.67 729,199 C617.48,241.2 486.1858,286.4644 449.8658,298.9144" fill="none" id="User-to-[int-2] Front panel" style="stroke:#A80036;stroke-width:1;stroke-dasharray:7,7;"></path><polygon fill="#A80036" points="444.19,300.86,454.0008,301.7255,448.9198,299.2387,451.4066,294.1578,444.19,300.86" style="stroke:#A80036;stroke-width:1;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="23.0103" x="641" y="242.0669">use</text></g><g class="link" data-entity-1="ent0022" data-entity-2="ent0009" data-link-type="dependency" data-source-line="25" id="lnk25"><path d="M893.01,199.31 C872.63,214.16 844.25,233.21 817,246 C750.81,277.07 669.8266,295.2393 641.9166,300.9893" fill="none" id="PS-to-[int-1] Power interface" style="stroke:#A80036;stroke-width:1;stroke-dasharray:7,7;"></path><polygon fill="#A80036" points="636.04,302.2,645.662,304.3017,640.9372,301.1911,644.0477,296.4662,636.04,302.2" style="stroke:#A80036;stroke-width:1;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="23.0103" x="848" y="242.0669">use</text></g></g></svg><figcaption>Component diagram "pad-1: Power"</figcaption>
+        </figure>
+        <section>
+          <h2 id="int-1">int-1: Power interface</h2>
+          <div data-format="markdown">The device connects to a power supply via a connector for charging.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-1">sys-1</a>] Charge duration:</b>A battery with &lt;5% capacity shall charge to &gt;95% capacity in &lt;5 hours.</li>
+          </ul>
+          <section>
+            <h3 id="int-1-mechanical-descriptions">Mechanical description</h3>
+            <ul>
+              <li>The power interface shall be a micro-USB power connector.</li>
+              <li>The power supply shall contain the plug, the device shall contain the jack.</li>
+            </ul>
+          </section>
+          <section>
+            <h3 id="int-1-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The device shall receive 1A max, 5V +/- 25mV via the power interface.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-2">int-2: Front panel</h2>
+          <div data-format="markdown">The device has a physical port on the front panel for charging.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-2">sys-2</a>] Charge indicator location:</b>The charge indicator shall be located 1.0 +/- 0.2 cm from the charging port.</li>
+          </ul>
+          <section>
+            <h3 id="int-2-mechanical-descriptions">Mechanical description</h3>
+            <ul>
+              <li>LED shall fit a 3.1 mm diameter hole on the housing.</li>
+              <li>LED shall be yellow in color.</li>
+            </ul>
+          </section>
+          <section>
+            <h3 id="int-2-electrical-descriptions">Electrical descriptions</h3>
+            <ul>
+              <li>The LED shall receive forward current 20mA.</li>
+            </ul>
+          </section>
+          <section>
+            <h3 id="int-2-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The LED shall be blinking at 2 second interval.</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+    </section>
+  </body>
+</html>

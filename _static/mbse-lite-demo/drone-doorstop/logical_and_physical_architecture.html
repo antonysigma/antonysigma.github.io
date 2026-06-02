@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <title>Logical and physical architecture</title>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = 'http://localhost:5000/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 4 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>
+          <a href="use_cases.html">Use cases</a>
+        </li>
+        <li>
+          <a href="product_requirements_specifications.html">Product requirements specification</a>
+        </li>
+        <li>Physical architecture and interfaces (this document)</li>
+      </ol>
+      <p>The document maps all specifications to hardware or software interfaces.
+  To contribute more contents, identify all external interfaces and describe all properties
+  that meets the system-level specifications:
+   mechanical / optical / electrical / softrware.
+  Omit all internal interfaces; those should reside in code comments or in the technical reports.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>This document follows the Product Requirement Specifications (PRS),
+where the interfaces linking various sub-systems are captured.</p>
+      <p>There are also lower level internal interfaces; these are often the
+interfaces that are owned by a single engineer (e.g. the electrical interfaces found on a single circuit
+board). These lower level interfaces are not given a number and description, are not turned into
+requirements, and instead are captured in lower level specifications and design documentation.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+Component-level designs are captured following the system-level specifications.</figcaption>
+      </figure>
+      <p>Similar to defining use cases, the process of capturing the architecture via a
+Physical Architectual Diagram is helpful to ensure that the interfaces are identified.
+For particularly complicated interfaces, the descriptions above can reference a more detailed
+document (such as a mechanical interface drawing, electrical pinout, firmware/software
+communication protocol, etc.).
+</p>
+      <p>
+The Logical Architecture Diagram (LAD) groups the functions into sub-systems. Flows among
+functions are mapped to Interfaces, featuring interactions among sub-systems.
+
+The LAD is in turn implemented by physical components in the Physical Architecture Diagram (PAD).
+The PAD links all external interfaces with the corresponding
+internal components of the system.
+</p>
+      <figure>
+        <img src="../static/trace-requirements.png">
+        <figcaption>Interface specifications are traced back to the Originating Requirements,
+and are verified by the Verification Plans.
+The Physical Architecture Diagram (PAD) links all external interfaces with the corresponding
+internal components of the system.</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2>Logical architecture</h2>
+      <section>
+        <h2 id="pad-1">pad-1: Autonomy stack</h2>
+        <div data-format="markdown">A logical autonomy stack linking localization, planning, control, and vehicle actuation.</div>
+        <figure id="pad-1-uml">
+          <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="353px" preserveAspectRatio="none" style="width:1116px;height:353px;background:#FFFFFF;" version="1.1" viewBox="0 0 1116 353" width="1116px" zoomAndPan="magnify"><defs><filter height="300%" id="f19k93awf5zxk3" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="cluster" data-qualified-name="Autonomy stack" data-source-line="3" id="ent0002"><polygon fill="none" filter="url(#f19k93awf5zxk3)" points="16,125,26,115,1099,115,1099,326,1089,336,16,336,16,125" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="1089" x2="1099" y1="125" y2="115"></line><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="1089" y1="125" y2="125"></line><line style="stroke:#000000;stroke-width:1.5;" x1="1089" x2="1089" y1="125" y2="336"></line><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="127.3672" x="489.8164" y="140.9951">Autonomy stack</text></g><g class="entity" data-qualified-name="Autonomy stack.Sensors" data-source-line="4" id="ent0003"><rect fill="#FEFECE" filter="url(#f19k93awf5zxk3)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="95.2822" x="903.5" y="155"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="978.7822" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="976.7822" y="162"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="976.7822" y="166"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55.2822" x="918.5" y="187.9951">Sensors</text></g><g class="entity" data-qualified-name="Autonomy stack..int-4. Sensor observation interface" data-source-line="4" id="ent0004"><ellipse cx="951" cy="291" fill="#FEFECE" filter="url(#f19k93awf5zxk3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="249.71" x="826.145" y="320.9951">[int-4] Sensor observation interface</text></g><g class="entity" data-qualified-name="Autonomy stack.Localization subsystem" data-source-line="5" id="ent0006"><rect fill="#FEFECE" filter="url(#f19k93awf5zxk3)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="203.2832" x="631.5" y="155"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="814.7832" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="812.7832" y="162"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="812.7832" y="166"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163.2832" x="646.5" y="187.9951">Localization subsystem</text></g><g class="entity" data-qualified-name="Autonomy stack..int-1. Pose estimate interface" data-source-line="6" id="ent0008"><ellipse cx="670" cy="291" fill="#FEFECE" filter="url(#f19k93awf5zxk3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="213.4453" x="563.2773" y="320.9951">[int-1] Pose estimate interface</text></g><g class="entity" data-qualified-name="Autonomy stack.Planner" data-source-line="7" id="ent0010"><rect fill="#FEFECE" filter="url(#f19k93awf5zxk3)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="93.0264" x="498.5" y="155"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="571.5264" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="569.5264" y="162"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="569.5264" y="166"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.0264" x="513.5" y="187.9951">Planner</text></g><g class="entity" data-qualified-name="Autonomy stack..int-2. Trajectory interface" data-source-line="8" id="ent0012"><ellipse cx="421" cy="291" fill="#FEFECE" filter="url(#f19k93awf5zxk3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="185.6572" x="328.1714" y="320.9951">[int-2] Trajectory interface</text></g><g class="entity" data-qualified-name="Autonomy stack.Controller" data-source-line="9" id="ent0014"><rect fill="#FEFECE" filter="url(#f19k93awf5zxk3)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="109.1729" x="344.5" y="155"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="433.6729" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="431.6729" y="162"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="431.6729" y="166"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69.1729" x="359.5" y="187.9951">Controller</text></g><g class="entity" data-qualified-name="Autonomy stack..int-3. Control command interface" data-source-line="10" id="ent0016"><ellipse cx="159" cy="291" fill="#FEFECE" filter="url(#f19k93awf5zxk3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="239.7158" x="39.1421" y="320.9951">[int-3] Control command interface</text></g><g class="entity" data-qualified-name="Autonomy stack.Vehicle actuators" data-source-line="11" id="ent0018"><rect fill="#FEFECE" filter="url(#f19k93awf5zxk3)" height="46.2969" style="stroke:#A80036;stroke-width:1;" width="161.9258" x="78" y="155"></rect><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1;" width="15" x="219.9258" y="160"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="217.9258" y="162"></rect><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1;" width="4" x="217.9258" y="166"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121.9258" x="93" y="187.9951">Vehicle actuators</text></g><g class="entity" data-qualified-name="Operator" data-source-line="14" id="ent0020"><polygon fill="#FEFECE" filter="url(#f19k93awf5zxk3)" points="467,16,477,6,622.8145,6,622.8145,42.2969,612.8145,52.2969,467,52.2969,467,16" style="stroke:#000000;stroke-width:1.5;"></polygon><line style="stroke:#000000;stroke-width:1.5;" x1="612.8145" x2="622.8145" y1="16" y2="6"></line><line style="stroke:#000000;stroke-width:1.5;" x1="467" x2="612.8145" y1="16" y2="16"></line><line style="stroke:#000000;stroke-width:1.5;" x1="612.8145" x2="612.8145" y1="16" y2="52.2969"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115.8145" x="482" y="38.9951">Vehicle operator</text></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" data-link-type="association" data-source-line="4" id="lnk5"><path d="M951,201.2 C951,226.12 951,265.27 951,282" fill="none" id="Sensors-[int-4] Sensor observation interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0006" data-entity-2="ent0004" data-link-type="association" data-source-line="5" id="lnk7"><path d="M776.33,201.06 C828.98,227.87 914.22,271.27 941.96,285.4" fill="none" id="Localization subsystem-[int-4] Sensor observation interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0006" data-entity-2="ent0008" data-link-type="association" data-source-line="6" id="lnk9"><path d="M720.4,201.2 C706.25,226.12 684.03,265.27 674.54,282" fill="none" id="Localization subsystem-[int-1] Pose estimate interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0010" data-entity-2="ent0008" data-link-type="association" data-source-line="7" id="lnk11"><path d="M570,201.2 C598.07,226.12 642.15,265.27 660.99,282" fill="none" id="Planner-[int-1] Pose estimate interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0010" data-entity-2="ent0012" data-link-type="association" data-source-line="8" id="lnk13"><path d="M520.2,201.2 C492.36,226.12 448.62,265.27 429.94,282" fill="none" id="Planner-[int-2] Trajectory interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0014" data-entity-2="ent0012" data-link-type="association" data-source-line="9" id="lnk15"><path d="M403.4,201.2 C408.34,226.12 416.1,265.27 419.41,282" fill="none" id="Controller-[int-2] Trajectory interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0014" data-entity-2="ent0016" data-link-type="association" data-source-line="10" id="lnk17"><path d="M351.3,201.06 C292.79,228.12 197.72,272.09 168.1,285.79" fill="none" id="Controller-[int-3] Control command interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0018" data-entity-2="ent0016" data-link-type="association" data-source-line="11" id="lnk19"><path d="M159,201.2 C159,226.12 159,265.27 159,282" fill="none" id="Vehicle actuators-[int-3] Control command interface" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0020" data-entity-2="ent0010" data-link-type="dependency" data-source-line="15" id="lnk21"><path d="M545,52.01 C545,79.72 545,121.06 545,148.84" fill="none" id="Operator-to-Planner" style="stroke:#A80036;stroke-width:1;stroke-dasharray:7,7;"></path><polygon fill="#A80036" points="545,154.84,549,145.84,545,149.84,541,145.84,545,154.84" style="stroke:#A80036;stroke-width:1;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="62.6831" x="546" y="95.0669">supervise</text></g></g></svg><figcaption>Component diagram "pad-1: Autonomy stack"</figcaption>
+        </figure>
+        <section>
+          <h2 id="int-1">int-1: Pose estimate interface</h2>
+          <div data-format="markdown">The localization subsystem publishes the most recent vehicle pose estimate to the planner.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-1">sys-1</a>] Valid pose computation:</b>The localization system shall compute a valid pose.
+    </li>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-2">sys-2</a>] Pose publication rate:</b>The localization system shall make the most recent pose estimate available at x Hz.</li>
+          </ul>
+          <section>
+            <h3 id="int-1-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface shall provide the most recent pose estimate at the allocated publication rate.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-2">int-2: Trajectory interface</h2>
+          <div data-format="markdown">The planner provides a selected trajectory to the controller.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#fnc-1.3">fnc-1.3</a>] Compute control command:</b>The control function shall compute a control command from the selected trajectory.</li>
+          </ul>
+          <section>
+            <h3 id="int-2-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface shall communicate the current trajectory selected for autonomous motion.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-3">int-3: Control command interface</h2>
+          <div data-format="markdown">The controller provides control commands to the vehicle actuators.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#sys-3">sys-3</a>] Control computation:</b>The control system shall compute an accurate control command.
+    </li>
+          </ul>
+          <section>
+            <h3 id="int-3-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface shall communicate steering, throttle, and braking commands to the actuation layer.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2 id="int-4">int-4: Sensor observation interface</h2>
+          <div data-format="markdown">Vehicle sensors provide observations to the localization subsystem.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>[<a href="./product_requirements_specifications.html#fnc-1.1">fnc-1.1</a>] Compute valid pose:</b>The localization function shall compute a valid pose estimate for downstream autonomy functions.</li>
+          </ul>
+          <section>
+            <h3 id="int-4-software-descriptions">Software / firmware descriptions</h3>
+            <ul>
+              <li>The interface shall provide the sensor observations required for localization.</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2>Physical architecture</h2>
+    </section>
+  </body>
+</html>

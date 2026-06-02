@@ -1,0 +1,327 @@
+<html>
+  <head>
+    <title>Product requirements specification</title>
+    <link rel="stylesheet" href="https://github.com/tabatkins/railroad-diagrams/raw/gh-pages/railroad.css">
+    <script src="https://github.com/tabatkins/railroad-diagrams/raw/gh-pages/railroad.js"></script>
+    <script id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = 'http://localhost:5000/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 3 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>
+          <a href="use_cases.html">Use cases</a>
+        </li>
+        <li>Product requirements specification (this document)</li>
+        <li>
+          <a href="logical_and_physical_architecture.html">Logical and physical architecture</a>
+        </li>
+      </ol>
+      <p>The document refines the high-level requirements into system-level specifications.
+  To contribute more contents, analyze and elaborate further the constraints, performances, and behaviors
+  by the domain-specific knowledge (Mechanical / Electrical / Optical / Software).
+  More importantly, suggest verification plans to test each one.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>The document refines and analyzes the system-level requirements.
+Since good system-level requirements aren’t complete unless they are testable,
+verification is also planned. The goal of this phase is to provide the engineering team with the
+inputs they need to architect the product.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+System Requirements refine and internalize the stakeholder needs in the engineering level,
+and in turn can be verified by Verification Plans.</figcaption>
+      </figure>
+      <p>This is communicated via a Product Requirements Specification (PRS).
+For ease of review, the PRS has been divided into three separate parts – the
+Constraint Specification, the Functional Specification, and the Verification Plan.
+A note on nomenclature – ‘system-level requirements’ are captured in the constraints specification items
+and in the Behavior Diagrams/functions of the Functional Specifications.</p>
+      <p>The Constraint Specification contains constraints on the system such as physical characteristics and
+the environment.
+The Functional Specification includes the behavior and performance requirements.
+The Verification Plan contains high level test planning, and traceability back to the system level
+requirements.</p>
+      <figure>
+        <img src="../static/document-sources.png">
+        <figcaption>Documents are generated on-demand from a central System Model Database.
+The contents of Product Requirement and Specifications (PRS) are gathered from
+the system-level requirements and verifications plans.
+All chapters can be traced back to the Originating requirements.</figcaption>
+      </figure>
+      <p>The main items used in this Constraint/Functional specification phase trace from the use cases developed in the previous phase.
+Walking through the use cases step by step is a systematic method to decompose the relevant
+requirements.</p>
+      <p>The verification item is used to plan verification activities at a high level. This allows the
+stakeholders and engineers to agree on the depth and complexity of testing required. Knowing this,
+testing schedules, cost, and equipment can be planned, and detailed test procedures written.</p>
+      <figure>
+        <img src="../static/trace-requirements.png">
+        <figcaption>System requirements and functions are decomposed from the use cases,
+which in turn is verified by the Verification plans</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2 id="constraints">Constraint specifications</h2>
+      <section>
+        <h2>Localization</h2>
+        <section>
+          <h2 id="sys-1">sys-1: Valid pose computation</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw</li>
+          </ul>
+          <div data-format="markdown">The localization system shall compute a valid pose.
+    <aside class="note">Imported from Doorstop requirement SYS0001. The source rationale states that planning and control require a valid pose.</aside>
+  </div>
+          <p><b>Rationale: </b>Planning and control depend on a usable vehicle pose estimate. This requirement captures the stakeholder intent that downstream autonomy functions must not operate without localization output that the system considers valid.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Autonomous operation: </b>The autonomy stack supports continuous automated vehicle motion....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-1.1">fnc-1.1</a>]
+  Compute valid pose: </b>The localization function shall compute a valid pose estimate for downstream autonomy functions....
+    </li>
+            <li><b>
+    [<a href="#ver-1">ver-1</a>]
+  Verify valid pose computation: </b> 1. Operate the localization system with representative sensor inputs. 1. Confirm that the system outputs a pose estimate usable by downstream planning and control interfaces. 1. Record the conditions under which the pose is considered valid. ...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-1">int-1</a>]
+  Pose estimate interface: </b>The localization subsystem publishes the most recent vehicle pose estimate to the planner....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-1">ver-1</a>]
+  Verify valid pose computation: </b> 1. Operate the localization system with representative sensor inputs. 1. Confirm that the system outputs a pose estimate usable by downstream planning and control interfaces. 1. Record the conditions under which the pose is considered valid. ...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="sys-2">sys-2: Pose publication rate</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw</li>
+          </ul>
+          <div data-format="markdown">The localization system shall make the most recent pose estimate available at x Hz.</div>
+          <p><b>Rationale: </b>Downstream consumers need timely localization data rather than stale state information. This requirement reflects the intent that planning and control receive fresh pose updates at a defined interface rate.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Autonomous operation: </b>The autonomy stack supports continuous automated vehicle motion....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-1.2">fnc-1.2</a>]
+  Publish pose: </b>The localization function shall publish the most recent pose estimate to downstream consumers....
+    </li>
+            <li><b>
+    [<a href="#ver-2">ver-2</a>]
+  Verify pose publication rate: </b> 1. Operate the localization system while sampling the published pose interface. 1. Measure the update rate of the most recent pose estimate. 1. Confirm that the measured update rate meets the allocated x Hz requirement. ...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-1">int-1</a>]
+  Pose estimate interface: </b>The localization subsystem publishes the most recent vehicle pose estimate to the planner....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-2">ver-2</a>]
+  Verify pose publication rate: </b> 1. Operate the localization system while sampling the published pose interface. 1. Measure the update rate of the most recent pose estimate. 1. Confirm that the measured update rate meets the allocated x Hz requirement. ...
+    </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h2>Control</h2>
+        <section>
+          <h2 id="sys-3">sys-3: Control computation</h2>
+          <ul>
+            <li><b>Allocation: </b>sw</li>
+            <li><b>Discipline: </b>sw</li>
+          </ul>
+          <div data-format="markdown">The control system shall compute an accurate control command.
+    <aside class="issue">Imported from Doorstop requirement SYS0003. The source explicitly marks this requirement as non-verifiable because no accuracy metric or operating condition is defined.</aside>
+  </div>
+          <p><b>Rationale: </b>The stakeholder intent is that the controller produce commands accurate enough for safe and effective vehicle motion. This captures the expected outcome behind the requirement even though the imported source does not yet define measurable acceptance limits.</p>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Autonomous operation: </b>The autonomy stack supports continuous automated vehicle motion....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-1.3">fnc-1.3</a>]
+  Compute control command: </b>The control function shall compute a control command from the selected trajectory....
+    </li>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Assess control command accuracy requirement: </b> 1. Review the control command requirement and identify the missing accuracy metric and operating conditions. 1. Define measurable acceptance criteria before attempting a formal verification procedure. 1. Reclassify this item to a test or analysis me...
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-3">int-3</a>]
+  Control command interface: </b>The controller provides control commands to the vehicle actuators....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-3">ver-3</a>]
+  Assess control command accuracy requirement: </b> 1. Review the control command requirement and identify the missing accuracy metric and operating conditions. 1. Define measurable acceptance criteria before attempting a formal verification procedure. 1. Reclassify this item to a test or analysis me...
+    </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2 id="functional">Functional specifications</h2>
+      <section>
+        <h2 id="fnc-1">fnc-1: Support autonomous operation</h2>
+        <div data-format="markdown">Support automated motion through localization, planning, and control.</div>
+        <figure id="fnc-1-uml">
+          <figure id="fnc-1-uml">
+            <svg contentStyleType="text/css" data-diagram-type="ACTIVITY" height="454px" preserveAspectRatio="none" style="width:673px;height:454px;background:#FFFFFF;" version="1.1" viewBox="0 0 673 454" width="673px" zoomAndPan="magnify"><defs><filter height="300%" id="fu4a3kq3mkbit" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><ellipse cx="313.1191" cy="20" fill="#000000" filter="url(#fu4a3kq3mkbit)" rx="10" ry="10" style="stroke:#000000;stroke-width:1;"></ellipse><rect fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="190.2969" x="217.9707" y="50"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="170.2969" x="227.9707" y="71.1387">Acquire sensor observations</text><line style="stroke:#A80036;stroke-width:1.5;" x1="108.3516" x2="513.6768" y1="147.9688" y2="147.9688"></line><rect fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="194.7031" x="11" y="221.9375"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="174.7031" x="21" y="243.0762">[fnc-1.1] Compute valid pose</text><rect fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="150.4121" x="215.7031" y="221.9375"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="130.4121" x="225.7031" y="243.0762">[fnc-1.2] Publish pose</text><rect fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="138.248" x="444.5527" y="167.9688"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="118.248" x="454.5527" y="189.1074">Generate trajectory</text><rect fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="239.123" x="394.1152" y="221.9375"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="219.123" x="404.1152" y="243.0762">[fnc-1.3] Compute control command</text><rect fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="190.4551" x="418.4492" y="275.9063"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="170.4551" x="428.4492" y="297.0449">Send command to actuators</text><line style="stroke:#A80036;stroke-width:1.5;" x1="108.3516" x2="513.6768" y1="329.875" y2="329.875"></line><polygon fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" points="313.1191,103.9688,325.1191,115.9688,313.1191,127.9688,301.1191,115.9688,313.1191,103.9688" style="stroke:#A80036;stroke-width:1.5;"></polygon><polygon fill="#FEFECE" filter="url(#fu4a3kq3mkbit)" points="239.6936,349.875,386.5447,349.875,398.5447,361.875,386.5447,373.875,239.6936,373.875,227.6936,361.875,239.6936,349.875" style="stroke:#A80036;stroke-width:1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146.8511" x="239.6936" y="365.6831">Autonomous mode active?</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="19.0083" x="398.5447" y="359.2808">yes</text><ellipse cx="313.1191" cy="426.2739" fill="none" filter="url(#fu4a3kq3mkbit)" rx="11" ry="11" style="stroke:#000000;stroke-width:1;"></ellipse><ellipse cx="313.1191" cy="426.2739" fill="#000000" rx="6" ry="6" style="stroke:#000000;stroke-width:1;"></ellipse><line style="stroke:#A80036;stroke-width:1.5;" x1="313.1191" x2="313.1191" y1="30" y2="50"></line><polygon fill="#A80036" points="309.1191,40,313.1191,50,317.1191,40,313.1191,44" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="513.6768" x2="513.6768" y1="201.9375" y2="221.9375"></line><polygon fill="#A80036" points="509.6768,211.9375,513.6768,221.9375,517.6768,211.9375,513.6768,215.9375" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="513.6768" x2="513.6768" y1="255.9063" y2="275.9063"></line><polygon fill="#A80036" points="509.6768,265.9063,513.6768,275.9063,517.6768,265.9063,513.6768,269.9063" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="108.3516" x2="108.3516" y1="149.4688" y2="221.9375"></line><polygon fill="#A80036" points="104.3516,211.9375,108.3516,221.9375,112.3516,211.9375,108.3516,215.9375" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="290.9092" x2="290.9092" y1="149.4688" y2="221.9375"></line><polygon fill="#A80036" points="286.9092,211.9375,290.9092,221.9375,294.9092,211.9375,290.9092,215.9375" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="513.6768" x2="513.6768" y1="149.4688" y2="167.9688"></line><polygon fill="#A80036" points="509.6768,157.9688,513.6768,167.9688,517.6768,157.9688,513.6768,161.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="108.3516" x2="108.3516" y1="255.9063" y2="329.875"></line><polygon fill="#A80036" points="104.3516,319.875,108.3516,329.875,112.3516,319.875,108.3516,323.875" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="290.9092" x2="290.9092" y1="255.9063" y2="329.875"></line><polygon fill="#A80036" points="286.9092,319.875,290.9092,329.875,294.9092,319.875,290.9092,323.875" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="513.6768" x2="513.6768" y1="309.875" y2="329.875"></line><polygon fill="#A80036" points="509.6768,319.875,513.6768,329.875,517.6768,319.875,513.6768,323.875" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="313.1191" x2="313.1191" y1="127.9688" y2="147.9688"></line><polygon fill="#A80036" points="309.1191,137.9688,313.1191,147.9688,317.1191,137.9688,313.1191,141.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="398.5447" x2="647.2383" y1="361.875" y2="361.875"></line><polygon fill="#A80036" points="643.2383,248.9219,647.2383,238.9219,651.2383,248.9219,647.2383,244.9219" style="stroke:#A80036;stroke-width:1.5;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="647.2383" x2="647.2383" y1="115.9688" y2="361.875"></line><line style="stroke:#A80036;stroke-width:1.5;" x1="647.2383" x2="325.1191" y1="115.9688" y2="115.9688"></line><polygon fill="#A80036" points="335.1191,111.9688,325.1191,115.9688,335.1191,119.9688,331.1191,115.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="313.1191" x2="313.1191" y1="331.375" y2="349.875"></line><polygon fill="#A80036" points="309.1191,339.875,313.1191,349.875,317.1191,339.875,313.1191,343.875" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="313.1191" x2="313.1191" y1="83.9688" y2="103.9688"></line><polygon fill="#A80036" points="309.1191,93.9688,313.1191,103.9688,317.1191,93.9688,313.1191,97.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="313.1191" x2="313.1191" y1="373.875" y2="415.2739"></line><polygon fill="#A80036" points="309.1191,405.2739,313.1191,415.2739,317.1191,405.2739,313.1191,409.2739" style="stroke:#A80036;stroke-width:1;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="13.7017" x="317.1191" y="395.1797">no</text></g></svg><figcaption>Activity diagram "fnc-1: Support autonomous operation"</figcaption>
+          </figure>
+        </figure>
+        <section>
+          <h2 id="fnc-1.1">fnc-1.1: Compute valid pose</h2>
+          <div data-format="markdown">The localization function shall compute a valid pose estimate for downstream autonomy functions.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-1">sys-1</a>]
+  Valid pose computation: </b>The localization system shall compute a valid pose.     ...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-1.2">fnc-1.2: Publish pose</h2>
+          <div data-format="markdown">The localization function shall publish the most recent pose estimate to downstream consumers.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Pose publication rate: </b>The localization system shall make the most recent pose estimate available at x Hz....
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="fnc-1.3">fnc-1.3: Compute control command</h2>
+          <div data-format="markdown">The control function shall compute a control command from the selected trajectory.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-3">sys-3</a>]
+  Control computation: </b>The control system shall compute an accurate control command.     ...
+    </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2 id="verification">Verification plan</h2>
+      <section>
+        <h2 id="ver-1">ver-1: Verify valid pose computation</h2>
+        <ul>
+          <li><b>Allocation: </b>autonomy</li>
+          <li><b>Discipline: </b>sw</li>
+        </ul>
+        <div data-format="markdown">
+1. Operate the localization system with representative sensor inputs.
+1. Confirm that the system outputs a pose estimate usable by downstream planning and control interfaces.
+1. Record the conditions under which the pose is considered valid.
+</div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-1">sys-1</a>]
+  Valid pose computation: </b>The localization system shall compute a valid pose.     ...
+    </li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ver-2">ver-2: Verify pose publication rate</h2>
+        <ul>
+          <li><b>Allocation: </b>autonomy</li>
+          <li><b>Discipline: </b>sw</li>
+        </ul>
+        <div data-format="markdown">
+1. Operate the localization system while sampling the published pose interface.
+1. Measure the update rate of the most recent pose estimate.
+1. Confirm that the measured update rate meets the allocated x Hz requirement.
+</div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Pose publication rate: </b>The localization system shall make the most recent pose estimate available at x Hz....
+    </li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ver-3">ver-3: Assess control command accuracy requirement</h2>
+        <ul>
+          <li><b>Allocation: </b>autonomy</li>
+          <li><b>Discipline: </b>sw</li>
+        </ul>
+        <div data-format="markdown">
+1. Review the control command requirement and identify the missing accuracy metric and operating conditions.
+1. Define measurable acceptance criteria before attempting a formal verification procedure.
+1. Reclassify this item to a test or analysis method once the requirement becomes verifiable.
+</div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-3">sys-3</a>]
+  Control computation: </b>The control system shall compute an accurate control command.     ...
+    </li>
+        </ul>
+      </section>
+    </section>
+  </body>
+</html>

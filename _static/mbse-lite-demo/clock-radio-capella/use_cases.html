@@ -1,0 +1,209 @@
+<html>
+  <head>
+    <title>Use cases</title>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = 'http://localhost:5000/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('Pascal Roques https://www.linkedin.com/in/pascalroques/', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 2 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>Use cases (this document)</li>
+        <li>
+          <a href="product_requirements_specifications.html">Product requirements specification</a>
+        </li>
+        <li>
+          <a href="logical_and_physical_architecture.html">Logical and physical architecture</a>
+        </li>
+      </ol>
+      <p>The document captures the high-level use cases requested by the stakeholders.
+  To contribute more contents, review and trace each item back to the Originating requirements.
+  Then, elaborate further in the system-level specifications.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>The document captures missing stakeholder requirements,
+adds additional detail, and as a precursor to capturing engineering level requirements.
+Well thought out use cases allow engineering level specifications,
+especially functional behavior of the syste, to be created more efficiently.
+The document also help identify various requirements categories that need to be detailed.</p>
+      <p>This document is shared with the stakeholders to gain alignment prior to further requirements definition
+and analysis.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+Use cases helps capture missing high-level requirements.</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2 id="ucd-1">ucd-1: Trigger an alarm</h2>
+      <div data-format="markdown">The clock radio wakes the user at the configured alarm time.</div>
+      <figure id="ucd-1-uml">
+        <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="195px" preserveAspectRatio="none" style="width:202px;height:195px;background:#FFFFFF;" version="1.1" viewBox="0 0 202 195" width="202px" zoomAndPan="magnify"><defs><filter height="300%" id="f1wx377fg4jwky" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="User" data-source-line="3" id="ent0002"><ellipse cx="55.4551" cy="14" fill="#FEFECE" filter="url(#f1wx377fg4jwky)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M55.4551,22 L55.4551,49 M42.4551,30 L68.4551,30 M55.4551,49 L42.4551,64 M55.4551,49 L68.4551,64" fill="none" filter="url(#f1wx377fg4jwky)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="39.5" y="83.9951">User</text></g><g class="entity" data-qualified-name="ucd-1. Trigger an alarm" data-source-line="3" id="ent0003"><ellipse cx="101.3333" cy="168.4667" fill="#FEFECE" rx="95.3333" ry="21.4667" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165.7168" x="18.4749" y="173.1151">ucd-1: Trigger an alarm</text></g><g class="entity" data-qualified-name="Clock Radio" data-source-line="4" id="ent0005"><ellipse cx="147.5669" cy="14" fill="#FEFECE" filter="url(#f1wx377fg4jwky)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M147.5669,22 L147.5669,49 M134.5669,30 L160.5669,30 M147.5669,49 L134.5669,64 M147.5669,49 L160.5669,64" fill="none" filter="url(#f1wx377fg4jwky)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1338" x="106.5" y="83.9951">Clock Radio</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" data-link-type="association" data-source-line="3" id="lnk4"><path d="M70.95,87.13 C78.57,107.18 87.43,130.5 93.65,146.84" fill="none" id="User-ucd-1: Trigger an alarm" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0003" data-link-type="association" data-source-line="4" id="lnk6"><path d="M132.05,87.13 C124.43,107.18 115.57,130.5 109.35,146.84" fill="none" id="Clock Radio-ucd-1: Trigger an alarm" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Use case diagram "ucd-1: Trigger an alarm"</figcaption>
+      </figure>
+      <section>
+        <h2 id="ucd-1-pre-conditions">Pre-conditions</h2>
+        <ul>
+          <li>The current time is available, alarm settings are configured, and the clock radio is powered.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-main-event-flow">Main event flow</h2>
+        <ol>
+          <li>The user enables the alarm and sets an alarm time.</li>
+          <li>The user selects the radio operating mode and optionally sets radio frequency and volume.</li>
+          <li>The clock maintains the current timestamp.</li>
+          <li>When the current time matches the configured alarm time in automatic mode, the alarm manager triggers the alarm.</li>
+          <li>The radio broadcasts audio output to the user.</li>
+        </ol>
+      </section>
+      <section>
+        <h2 id="ucd-1-post-conditions">Post-conditions</h2>
+        <ul>
+          <li>The user is alerted by the clock radio at the requested time.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-alternate-flow">Alternate flow</h2>
+        <ul>
+          <li>If the alarm is disabled, the radio mode is not automatic, the alarm time is not reached, or radio audio is unavailable, the user is not woken by radio playback.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-trace">Linked requirements</h2>
+        <ul>
+          <li><b>[<a href="./originating_requirements.html#org-1">org-1</a>] Wake up with alarm:</b>
+    The user SHALL be able to configure the clock radio to wake them up at the intended alarm time.
+  </li>
+          <li><b>[<a href="./originating_requirements.html#org-4">org-4</a>] Support radio modes:</b>
+    The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.
+  </li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-3">sys-3</a>] Accept alarm settings:</b>The clock radio SHALL accept alarm time and alarm on or off settings from the user and derive current alarm time and alarm activation data for alarm management.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-1">sys-1</a>] Timestamp data type:</b>The clock radio SHALL represent time as a timestamp containing an hour in the range 0 to 23 and a minute in the range 0 to 59.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-4">sys-4</a>] Trigger alarm in automatic mode:</b>The clock radio SHALL trigger an alarm when the current time equals the configured alarm time while the system is in `Radio AUTO` mode.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-5">sys-5</a>] Limit automatic ringing duration:</b>In `Radio AUTO` mode, the ringing state SHALL return to silent after an alarm timeout of 59 minutes.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-8">sys-8</a>] Broadcast radio sound:</b>The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-9">sys-9</a>] Support radio operating modes:</b>The clock radio SHALL support the operating modes `Radio OFF`, `Radio ON`, and `Radio AUTO`, with transitions triggered by the `radio off`, `radio on`, and `radio auto` events.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-6">sys-6</a>] Accept radio settings:</b>The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback.</li>
+        </ul>
+      </section>
+    </section>
+    <section>
+      <h2 id="ucd-2">ucd-2: Get time</h2>
+      <div data-format="markdown">The user sets or reads the current time from the clock radio.</div>
+      <figure id="ucd-2-uml">
+        <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="186px" preserveAspectRatio="none" style="width:171px;height:186px;background:#FFFFFF;" version="1.1" viewBox="0 0 171 186" width="171px" zoomAndPan="magnify"><defs><filter height="300%" id="f18ln7oae4o9e6" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="User" data-source-line="3" id="ent0002"><ellipse cx="31.4551" cy="14" fill="#FEFECE" filter="url(#f18ln7oae4o9e6)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M31.4551,22 L31.4551,49 M18.4551,30 L44.4551,30 M31.4551,49 L18.4551,64 M31.4551,49 L44.4551,64" fill="none" filter="url(#f18ln7oae4o9e6)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="15.5" y="83.9951">User</text></g><g class="entity" data-qualified-name="ucd-2. Get time" data-source-line="3" id="ent0003"><ellipse cx="77.2916" cy="163.6583" fill="#FEFECE" rx="71.2916" ry="16.6583" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109.6143" x="22.4845" y="168.3068">ucd-2: Get time</text></g><g class="entity" data-qualified-name="Clock Radio" data-source-line="4" id="ent0005"><ellipse cx="123.5669" cy="14" fill="#FEFECE" filter="url(#f18ln7oae4o9e6)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M123.5669,22 L123.5669,49 M110.5669,30 L136.5669,30 M123.5669,49 L110.5669,64 M123.5669,49 L136.5669,64" fill="none" filter="url(#f18ln7oae4o9e6)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1338" x="82.5" y="83.9951">Clock Radio</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" data-link-type="association" data-source-line="3" id="lnk4"><path d="M47.59,87.07 C55.78,107.72 65.25,131.61 71.31,146.88" fill="none" id="User-ucd-2: Get time" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0003" data-link-type="association" data-source-line="4" id="lnk6"><path d="M107.41,87.07 C99.22,107.72 89.75,131.61 83.69,146.88" fill="none" id="Clock Radio-ucd-2: Get time" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Use case diagram "ucd-2: Get time"</figcaption>
+      </figure>
+      <section>
+        <h2 id="ucd-2-pre-conditions">Pre-conditions</h2>
+        <ul>
+          <li>The clock radio is powered and the display function is available.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-2-main-event-flow">Main event flow</h2>
+        <ol>
+          <li>The user sets the current time.</li>
+          <li>The clock function updates the internal timestamp.</li>
+          <li>The display function presents the timestamp to the user.</li>
+        </ol>
+      </section>
+      <section>
+        <h2 id="ucd-2-post-conditions">Post-conditions</h2>
+        <ul>
+          <li>The clock radio shows the current time to the user.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-2-alternate-flow">Alternate flow</h2>
+        <ul>
+          <li>If the current time is not set, the displayed time may be incorrect.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-2-trace">Linked requirements</h2>
+        <ul>
+          <li><b>[<a href="./originating_requirements.html#org-2">org-2</a>] Read current time:</b>
+    The user SHALL be able to set the current time and read the displayed time from the clock radio.
+  </li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-2">sys-2</a>] Maintain current time and display:</b>The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-1">sys-1</a>] Timestamp data type:</b>The clock radio SHALL represent time as a timestamp containing an hour in the range 0 to 23 and a minute in the range 0 to 59.</li>
+        </ul>
+      </section>
+    </section>
+    <section>
+      <h2 id="ucd-3">ucd-3: Get news</h2>
+      <div data-format="markdown">The user configures the radio and listens to received radio audio.</div>
+      <figure id="ucd-3-uml">
+        <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="187px" preserveAspectRatio="none" style="width:323px;height:187px;background:#FFFFFF;" version="1.1" viewBox="0 0 323 187" width="323px" zoomAndPan="magnify"><defs><filter height="300%" id="fyr739arkugs0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="User" data-source-line="3" id="ent0002"><ellipse cx="21.9551" cy="14" fill="#FEFECE" filter="url(#fyr739arkugs0)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M21.9551,22 L21.9551,49 M8.9551,30 L34.9551,30 M21.9551,49 L8.9551,64 M21.9551,49 L34.9551,64" fill="none" filter="url(#fyr739arkugs0)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="6" y="83.9951">User</text></g><g class="entity" data-qualified-name="ucd-3. Get news" data-source-line="3" id="ent0003"><ellipse cx="114.1511" cy="164.0302" fill="#FEFECE" rx="73.1511" ry="17.0302" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114.2148" x="57.0437" y="168.6787">ucd-3: Get news</text></g><g class="entity" data-qualified-name="Clock Radio" data-source-line="4" id="ent0005"><ellipse cx="114.0669" cy="14" fill="#FEFECE" filter="url(#fyr739arkugs0)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M114.0669,22 L114.0669,49 M101.0669,30 L127.0669,30 M114.0669,49 L101.0669,64 M114.0669,49 L127.0669,64" fill="none" filter="url(#fyr739arkugs0)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1338" x="73" y="83.9951">Clock Radio</text></g><g class="entity" data-qualified-name="Radio Transmitter" data-source-line="5" id="ent0007"><ellipse cx="253.0137" cy="14" fill="#FEFECE" filter="url(#fyr739arkugs0)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M253.0137,22 L253.0137,49 M240.0137,30 L266.0137,30 M253.0137,49 L240.0137,64 M253.0137,49 L266.0137,64" fill="none" filter="url(#fyr739arkugs0)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126.0273" x="190" y="83.9951">Radio Transmitter</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" data-link-type="association" data-source-line="3" id="lnk4"><path d="M38.03,66.79 C56.04,89.61 84.93,126.19 101.41,147.05" fill="none" id="User-ucd-3: Get news" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0003" data-link-type="association" data-source-line="4" id="lnk6"><path d="M114,87.25 C114,107.72 114,131.37 114,146.72" fill="none" id="Clock Radio-ucd-3: Get news" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0007" data-entity-2="ent0003" data-link-type="association" data-source-line="5" id="lnk8"><path d="M204.38,87.25 C179.65,107.98 151.01,131.98 132.72,147.31" fill="none" id="Radio Transmitter-ucd-3: Get news" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Use case diagram "ucd-3: Get news"</figcaption>
+      </figure>
+      <section>
+        <h2 id="ucd-3-pre-conditions">Pre-conditions</h2>
+        <ul>
+          <li>The radio transmitter emits radio waves and the clock radio is powered.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-3-main-event-flow">Main event flow</h2>
+        <ol>
+          <li>The user sets radio mode, frequency, and volume.</li>
+          <li>The radio subsystem receives and decodes radio waves.</li>
+          <li>The radio subsystem broadcasts radio sound to the user.</li>
+        </ol>
+      </section>
+      <section>
+        <h2 id="ucd-3-post-conditions">Post-conditions</h2>
+        <ul>
+          <li>The user hears radio audio at the configured settings.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-3-alternate-flow">Alternate flow</h2>
+        <ul>
+          <li>If no usable radio signal is received, radio sound is unavailable to the user.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-3-trace">Linked requirements</h2>
+        <ul>
+          <li><b>[<a href="./originating_requirements.html#org-3">org-3</a>] Get news by radio:</b>
+    The user SHALL be able to configure radio playback and listen to radio audio from an external transmitter.
+  </li>
+          <li><b>[<a href="./originating_requirements.html#org-4">org-4</a>] Support radio modes:</b>
+    The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.
+  </li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-7">sys-7</a>] Decode radio waves:</b>The clock radio SHALL receive radio waves from the external transmitter and decode them into radio signals using the current frequency setting.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-8">sys-8</a>] Broadcast radio sound:</b>The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-9">sys-9</a>] Support radio operating modes:</b>The clock radio SHALL support the operating modes `Radio OFF`, `Radio ON`, and `Radio AUTO`, with transitions triggered by the `radio off`, `radio on`, and `radio auto` events.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-6">sys-6</a>] Accept radio settings:</b>The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback.</li>
+        </ul>
+      </section>
+    </section>
+  </body>
+</html>

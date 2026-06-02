@@ -20,11 +20,45 @@ system design problems and solutions without paying for the unused MBSE
 features, e.g. code generation, nested diagrams, and Matlab/Zemax parametrics
 simulations.
 
-* `Github <https://github.com/antonysigma/mbse-lite>`_
+Reference: Nichole Kass, James Kolozs (2016). Getting Started with MBSE in
+Product Development. INCOSE International Symposium.
+https://doi.org/10.1002/j.2334-5837.2016.00176.x
 
-* Reference: Nichole Kass, James Kolozs (2016). Getting Started with MBSE in
-  Product Development. INCOSE International Symposium.
-  https://doi.org/10.1002/j.2334-5837.2016.00176.x
+Source code is hosted on `Github <https://github.com/antonysigma/mbse-lite>`_.
+
+Demo of the generated product requirement specifications (PRS) documents for
+weekly design review meetings:
+
+* `Battery charger by Nochole Kass </_static/mbse-lite-demo/battery-charger/product_requirements_specifications.html>`_
+
+* (*) `Clock radio
+  </_static/mbse-lite-demo/clock-radio-capella/product_requirements_specifications.html>`_
+  with alarm function for hotel rooms, by `Rascal Roques
+  <https://download.eclipse.org/capella/samples/ClockRadio/ClockRadioExample0216.pdf>`_
+
+* (*) System model of a `drone design with camera-assisted guidance </_static/mbse-lite-demo/drone-doorstop/product_requirements_specifications.html>`_, imported from
+    `ROS 2 Safety-Critical Working Group
+    <https://github.com/ros-safety/requirements-playground>`_, and `alternate
+    link
+    <https://space-ros.github.io/docs/rolling/Related-Projects/Doorstop.html>`_.
+
+.. note::
+
+    System models marked with (*) are originally authored in native formats,
+    i.e. SysML/Capella and Doorstep. The demos here are automatically
+    transcribed to ``mbse-lite``'s model schema with OpenAI Codex/CLI. The
+    agents were specifically instructed to paraphrase design constraints and
+    architectures **from object-oriented approach to function/interface oriented
+    approach**.
+
+    According to `pioneers of the Arcadia approach
+    <https://doi.org/10.1002/j.2334-5837.2016.00158.x>`_, system designers faces
+    significant cultural differences among object-oriented and type-oriented
+    mindsets. Hardware engineers and system architects tend to describe designs
+    as object "instances". On the other hand, algorithm and control engineers
+    typically start with signal "types", and instantiate them later. Analogical
+    to the debate of wave-particle duality among physicists, the concepts are
+    simply different viewpoints of the same design.
 
 **Why I made my own tool.**
 As a giga-pixel microscopy researcher dealing with increasingly complex systems,

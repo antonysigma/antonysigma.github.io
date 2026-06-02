@@ -1,0 +1,151 @@
+<mbse copyright="" plantuml_host="http://localhost:8080" idef0svg_host="http://localhost:5000">
+<orig id="org-1" status="firm">
+  <description brief="Autonomous motion support">
+    The autonomous driving stack shall support automated vehicle motion by providing localization, planning, and control capabilities that exchange usable state and command information.
+  </description>
+  <reference
+    stakeholder="Imported Doorstop toy example"
+    href="https://github.com/ros-safety/requirements-playground/tree/master/reqs/sys"
+    title="requirements-playground reqs/sys"
+   />
+</orig>
+<usecase id="ucd-1" status="initial">
+  <uml>
+:Vehicle operator: -- <this />
+:Autonomy stack: -- <this />
+  </uml>
+  <description brief="Autonomous operation">The autonomy stack supports continuous automated vehicle motion.</description>
+  <satisfies ref="org-1" />
+  <pre-condition>The vehicle is in autonomous mode and the required sensors are available.</pre-condition>
+  <main-event>The localization system computes a valid pose estimate.</main-event>
+  <main-event>The localization system publishes the most recent pose estimate for downstream consumers.</main-event>
+  <main-event>The planning system generates a trajectory from the current pose.</main-event>
+  <main-event>The control system computes a control command from the selected trajectory.</main-event>
+  <main-event>The vehicle actuators receive the control command.</main-event>
+  <post-condition>The autonomy stack continues automated motion with current pose and command information.</post-condition>
+  <alternate-event>If localization data is invalid or stale, the autonomy stack cannot continue nominal automated motion.</alternate-event>
+</usecase>
+<constraint id="sys-1" status="initial">
+  <categories allocation="sw" discipline="sw" group="Localization" />
+  <description brief="Valid pose computation">The localization system shall compute a valid pose.
+    <aside class="note">Imported from Doorstop requirement SYS0001. The source rationale states that planning and control require a valid pose.</aside>
+  </description>
+  <rationale>Planning and control depend on a usable vehicle pose estimate. This requirement captures the stakeholder intent that downstream autonomy functions must not operate without localization output that the system considers valid.</rationale>
+  <satisfies ref="ucd-1" />
+  <test ref="ver-1" />
+</constraint>
+<performance id="sys-2" status="initial">
+  <categories allocation="sw" discipline="sw" group="Localization" />
+  <description brief="Pose publication rate">The localization system shall make the most recent pose estimate available at x Hz.</description>
+  <rationale>Downstream consumers need timely localization data rather than stale state information. This requirement reflects the intent that planning and control receive fresh pose updates at a defined interface rate.</rationale>
+  <satisfies ref="ucd-1" />
+  <test ref="ver-2" />
+</performance>
+<constraint id="sys-3" status="initial">
+  <categories allocation="sw" discipline="sw" group="Control" />
+  <description brief="Control computation">The control system shall compute an accurate control command.
+    <aside class="issue">Imported from Doorstop requirement SYS0003. The source explicitly marks this requirement as non-verifiable because no accuracy metric or operating condition is defined.</aside>
+  </description>
+  <rationale>The stakeholder intent is that the controller produce commands accurate enough for safe and effective vehicle motion. This captures the expected outcome behind the requirement even though the imported source does not yet define measurable acceptance limits.</rationale>
+  <satisfies ref="ucd-1" />
+  <test ref="ver-3" />
+</constraint>
+<behavior id="fnc-1" status="initial">
+  <uml>
+start
+:Acquire sensor observations;
+repeat
+split
+    <this ref="fnc-1.1" />
+split again
+    <this ref="fnc-1.2" />
+split again
+    :Generate trajectory;
+    <this ref="fnc-1.3" />
+    :Send command to actuators;
+end split
+repeat while (Autonomous mode active?) is (yes)
+-> no;
+stop
+  </uml>
+  <description brief="Support autonomous operation">Support automated motion through localization, planning, and control.</description>
+  <function id="fnc-1.1" status="initial">
+    <description brief="Compute valid pose">The localization function shall compute a valid pose estimate for downstream autonomy functions.</description>
+    <satisfies ref="sys-1" />
+  </function>
+  <function id="fnc-1.2" status="initial">
+    <description brief="Publish pose">The localization function shall publish the most recent pose estimate to downstream consumers.</description>
+    <satisfies ref="sys-2" />
+  </function>
+  <function id="fnc-1.3" status="initial">
+    <description brief="Compute control command">The control function shall compute a control command from the selected trajectory.</description>
+    <satisfies ref="sys-3" />
+  </function>
+</behavior>
+<verification id="ver-1" status="initial">
+  <categories method="test" owner="SQA" allocation="autonomy" discipline="sw" />
+  <description brief="Verify valid pose computation">
+1. Operate the localization system with representative sensor inputs.
+1. Confirm that the system outputs a pose estimate usable by downstream planning and control interfaces.
+1. Record the conditions under which the pose is considered valid.
+</description>
+  <satisfies ref="sys-1" />
+</verification>
+<verification id="ver-2" status="initial">
+  <categories method="test" owner="SQA" allocation="autonomy" discipline="sw" />
+  <description brief="Verify pose publication rate">
+1. Operate the localization system while sampling the published pose interface.
+1. Measure the update rate of the most recent pose estimate.
+1. Confirm that the measured update rate meets the allocated x Hz requirement.
+</description>
+  <satisfies ref="sys-2" />
+</verification>
+<verification id="ver-3" status="initial">
+  <categories method="inspection" owner="systems" allocation="autonomy" discipline="sw" />
+  <description brief="Assess control command accuracy requirement">
+1. Review the control command requirement and identify the missing accuracy metric and operating conditions.
+1. Define measurable acceptance criteria before attempting a formal verification procedure.
+1. Reclassify this item to a test or analysis method once the requirement becomes verifiable.
+</description>
+  <satisfies ref="sys-3" />
+</verification>
+<architecture id="pad-1" status="initial" is_logical="true">
+  <uml>
+node "Autonomy stack" {
+[Sensors] -- <this ref="int-4" />
+[Localization subsystem] -- <this ref="int-4" />
+[Localization subsystem] -- <this ref="int-1" />
+[Planner] -- <this ref="int-1" />
+[Planner] -- <this ref="int-2" />
+[Controller] -- <this ref="int-2" />
+[Controller] -- <this ref="int-3" />
+[Vehicle actuators] -- <this ref="int-3" />
+}
+
+node "Vehicle operator" as Operator
+Operator ..> [Planner]: supervise
+  </uml>
+  <description brief="Autonomy stack">A logical autonomy stack linking localization, planning, control, and vehicle actuation.</description>
+  <interface id="int-1">
+    <description brief="Pose estimate interface">The localization subsystem publishes the most recent vehicle pose estimate to the planner.</description>
+    <software>The interface shall provide the most recent pose estimate at the allocated publication rate.</software>
+    <satisfies ref="sys-1" />
+    <satisfies ref="sys-2" />
+  </interface>
+  <interface id="int-2">
+    <description brief="Trajectory interface">The planner provides a selected trajectory to the controller.</description>
+    <software>The interface shall communicate the current trajectory selected for autonomous motion.</software>
+    <implements ref="fnc-1.3" />
+  </interface>
+  <interface id="int-3">
+    <description brief="Control command interface">The controller provides control commands to the vehicle actuators.</description>
+    <software>The interface shall communicate steering, throttle, and braking commands to the actuation layer.</software>
+    <satisfies ref="sys-3" />
+  </interface>
+  <interface id="int-4" external="true">
+    <description brief="Sensor observation interface">Vehicle sensors provide observations to the localization subsystem.</description>
+    <software>The interface shall provide the sensor observations required for localization.</software>
+    <implements ref="fnc-1.1" />
+  </interface>
+</architecture>
+</mbse>

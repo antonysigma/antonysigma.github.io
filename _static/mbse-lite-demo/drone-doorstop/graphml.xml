@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<graphml>
+  <graph id="mbse_graph" edgedefault="directed">
+    <node id="org-1"/>
+    <node id="ucd-1"/>
+    <node id="sys-1"/>
+    <node id="sys-2"/>
+    <node id="fnc-1"/>
+    <node id="fnc-1.1"/>
+    <node id="ver-1"/>
+    <node id="pad-1"/>
+    <node id="int-1"/>
+    <node id="int-2"/>
+    <edge source="org-1" target="ucd-1"/>
+    <edge source="ucd-1" target="sys-1"/>
+    <edge source="ucd-1" target="fnc-1"/>
+    <edge source="ucd-1" target="int-1"/>
+    <edge source="ucd-1" target="int-2"/>
+    <edge source="sys-1" target="fnc-1"/>
+    <edge source="sys-2" target="fnc-1"/>
+    <edge source="fnc-1.1" target="sys-1"/>
+    <edge source="int-1" target="sys-1"/>
+    <edge source="int-2" target="sys-2"/>
+  </graph>
+</graphml>

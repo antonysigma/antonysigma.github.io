@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <title>Product requirements specification</title>
+    <link rel="stylesheet" href="https://github.com/tabatkins/railroad-diagrams/raw/gh-pages/railroad.css">
+    <script src="https://github.com/tabatkins/railroad-diagrams/raw/gh-pages/railroad.js"></script>
+    <script id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = '/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 3 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>
+          <a href="use_cases.html">Use cases</a>
+        </li>
+        <li>Product requirements specification (this document)</li>
+        <li>
+          <a href="logical_and_physical_architecture.html">Logical and physical architecture</a>
+        </li>
+      </ol>
+      <p>The document refines the high-level requirements into system-level specifications.
+  To contribute more contents, analyze and elaborate further the constraints, performances, and behaviors
+  by the domain-specific knowledge (Mechanical / Electrical / Optical / Software).
+  More importantly, suggest verification plans to test each one.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>The document refines and analyzes the system-level requirements.
+Since good system-level requirements aren’t complete unless they are testable,
+verification is also planned. The goal of this phase is to provide the engineering team with the
+inputs they need to architect the product.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+System Requirements refine and internalize the stakeholder needs in the engineering level,
+and in turn can be verified by Verification Plans.</figcaption>
+      </figure>
+      <p>This is communicated via a Product Requirements Specification (PRS).
+For ease of review, the PRS has been divided into three separate parts – the
+Constraint Specification, the Functional Specification, and the Verification Plan.
+A note on nomenclature – ‘system-level requirements’ are captured in the constraints specification items
+and in the Behavior Diagrams/functions of the Functional Specifications.</p>
+      <p>The Constraint Specification contains constraints on the system such as physical characteristics and
+the environment.
+The Functional Specification includes the behavior and performance requirements.
+The Verification Plan contains high level test planning, and traceability back to the system level
+requirements.</p>
+      <figure>
+        <img src="../static/document-sources.png">
+        <figcaption>Documents are generated on-demand from a central System Model Database.
+The contents of Product Requirement and Specifications (PRS) are gathered from
+the system-level requirements and verifications plans.
+All chapters can be traced back to the Originating requirements.</figcaption>
+      </figure>
+      <p>The main items used in this Constraint/Functional specification phase trace from the use cases developed in the previous phase.
+Walking through the use cases step by step is a systematic method to decompose the relevant
+requirements.</p>
+      <p>The verification item is used to plan verification activities at a high level. This allows the
+stakeholders and engineers to agree on the depth and complexity of testing required. Knowing this,
+testing schedules, cost, and equipment can be planned, and detailed test procedures written.</p>
+      <figure>
+        <img src="../static/trace-requirements.png">
+        <figcaption>System requirements and functions are decomposed from the use cases,
+which in turn is verified by the Verification plans</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2 id="constraints">Constraint specifications</h2>
+      <section>
+        <h2>Charging</h2>
+        <section>
+          <h2 id="sys-1">sys-1: Charge duration</h2>
+          <ul>
+            <li><b>Allocation: </b>ee</li>
+            <li><b>Discipline: </b>ee</li>
+          </ul>
+          <div data-format="markdown">A battery with &lt;5% capacity shall charge to &gt;95% capacity in &lt;5 hours.</div>
+          <p>Satisfies:</p>
+          <ul></ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-1.1">fnc-1.1</a>]
+  Charge device: </b>The device battery shall charge....
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-1">int-1</a>]
+  Power interface: </b>The device connects to a power supply via a connector for charging....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-1">ver-1</a>]
+  Re-charging: </b> 1. Connect a device with a low battery to the charger. 1. Confirm charge completes within the specified time limit. 1. Confirm the displays per the diagram. 1. Connect a device with a low battery to the charger. 1. Disconnect the battery prior to th...
+    </li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="sys-2">sys-2: Charge indicator location</h2>
+          <ul>
+            <li><b>Allocation: </b>user_interface</li>
+            <li><b>Discipline: </b>mech ee</li>
+          </ul>
+          <div data-format="markdown">The charge indicator shall be located 1.0 +/- 0.2 cm from the charging port.</div>
+          <p>Satisfies:</p>
+          <ul>
+            <li><b>
+    [<a href="./use_cases.html#ucd-1">ucd-1</a>]
+  Charging: </b>The device battery is re-charged....
+    </li>
+          </ul>
+          <p>Designs directly impacted by this:</p>
+          <ul>
+            <li><b>
+    [<a href="#fnc-1.1">fnc-1.1</a>]
+  Charge device: </b>The device battery shall charge....
+    </li>
+            <li><b>
+    [<a href="./logical_and_physical_architecture.html#int-2">int-2</a>]
+  Front panel: </b>The device has a physical port on the front panel for charging....
+    </li>
+          </ul>
+          <p>Verification plans:</p>
+          <ul>
+            <li><b>
+    [<a href="#ver-1">ver-1</a>]
+  Re-charging: </b> 1. Connect a device with a low battery to the charger. 1. Confirm charge completes within the specified time limit. 1. Confirm the displays per the diagram. 1. Connect a device with a low battery to the charger. 1. Disconnect the battery prior to th...
+    </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2 id="functional">Functional specifications</h2>
+      <section>
+        <h2 id="fnc-1">fnc-1: Charge device</h2>
+        <div data-format="markdown">Charge device</div>
+        <figure id="fnc-1-uml">
+          <figure id="fnc-1-uml">
+            <svg contentStyleType="text/css" data-diagram-type="ACTIVITY" height="468px" preserveAspectRatio="none" style="width:720px;height:468px;background:#FFFFFF;" version="1.1" viewBox="0 0 720 468" width="720px" zoomAndPan="magnify"><defs><filter height="300%" id="f1958zzpuhal7x" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><ellipse cx="358.1855" cy="20" fill="#000000" filter="url(#f1958zzpuhal7x)" rx="10" ry="10" style="stroke:#000000;stroke-width:1;"></ellipse><rect fill="#FEFECE" filter="url(#f1958zzpuhal7x)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="178.9473" x="268.7119" y="50"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="158.9473" x="278.7119" y="71.1387">Connect device to charger</text><rect fill="#000000" filter="url(#f1958zzpuhal7x)" height="6" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="692.562" x="11" y="103.9688"></rect><polygon fill="#FEFECE" filter="url(#f1958zzpuhal7x)" points="132.856,181.3398,144.856,193.3398,132.856,205.3398,120.856,193.3398,132.856,181.3398" style="stroke:#A80036;stroke-width:1.5;"></polygon><polygon fill="#FEFECE" filter="url(#f1958zzpuhal7x)" points="35,285.7422,230.7119,285.7422,242.7119,297.7422,230.7119,309.7422,35,309.7422,23,297.7422,35,285.7422" style="stroke:#A80036;stroke-width:1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="195.7119" x="35" y="301.5503">Device disconnected from charger?</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="13.7017" x="242.7119" y="295.1479">no</text><line style="stroke:#A80036;stroke-width:1.5;" x1="371.2817" x2="576.8022" y1="173.9688" y2="173.9688"></line><rect fill="#FEFECE" filter="url(#f1958zzpuhal7x)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="161.5215" x="290.521" y="195.4688"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="141.5215" x="300.521" y="216.6074">[fnc-1.1] Charge device</text><rect fill="#FEFECE" filter="url(#f1958zzpuhal7x)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="193.5195" x="480.0425" y="195.4688"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="173.5195" x="490.0425" y="216.6074">Blink charge indicator yellow</text><line style="stroke:#A80036;stroke-width:1.5;" x1="371.2817" x2="576.8022" y1="249.4375" y2="249.4375"></line><polygon fill="#FEFECE" filter="url(#f1958zzpuhal7x)" points="482.0415,129.9688,494.0415,141.9688,482.0415,153.9688,470.0415,141.9688,482.0415,129.9688" style="stroke:#A80036;stroke-width:1.5;"></polygon><polygon fill="#FEFECE" filter="url(#f1958zzpuhal7x)" points="431.8513,283.3398,532.2317,283.3398,544.2317,295.3398,532.2317,307.3398,431.8513,307.3398,419.8513,295.3398,431.8513,283.3398" style="stroke:#A80036;stroke-width:1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100.3804" x="431.8513" y="299.1479">Charge complete?</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="13.7017" x="544.2317" y="292.7456">no</text><rect fill="#FEFECE" filter="url(#f1958zzpuhal7x)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="158.6445" x="402.7192" y="351.1411"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138.6445" x="412.7192" y="372.2798">Charge indicator green</text><rect fill="#000000" filter="url(#f1958zzpuhal7x)" height="6" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="692.562" x="11" y="405.1099"></rect><ellipse cx="358.1855" cy="441.1099" fill="none" filter="url(#f1958zzpuhal7x)" rx="10" ry="10" style="stroke:#000000;stroke-width:1;"></ellipse><line style="stroke:#000000;stroke-width:2.5;" x1="351.9984" x2="364.3727" y1="434.9227" y2="447.297"></line><line style="stroke:#000000;stroke-width:2.5;" x1="364.3727" x2="351.9984" y1="434.9227" y2="447.297"></line><line style="stroke:#A80036;stroke-width:1.5;" x1="358.1855" x2="358.1855" y1="30" y2="50"></line><polygon fill="#A80036" points="354.1855,40,358.1855,50,362.1855,40,358.1855,44" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="132.856" x2="132.856" y1="205.3398" y2="285.7422"></line><polygon fill="#A80036" points="128.856,275.7422,132.856,285.7422,136.856,275.7422,132.856,279.7422" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="242.7119" x2="254.7119" y1="297.7422" y2="297.7422"></line><polygon fill="#A80036" points="250.7119,263.3398,254.7119,253.3398,258.7119,263.3398,254.7119,259.3398" style="stroke:#A80036;stroke-width:1.5;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="254.7119" x2="254.7119" y1="193.3398" y2="297.7422"></line><line style="stroke:#A80036;stroke-width:1.5;" x1="254.7119" x2="144.856" y1="193.3398" y2="193.3398"></line><polygon fill="#A80036" points="154.856,189.3398,144.856,193.3398,154.856,197.3398,150.856,193.3398" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="371.2817" x2="371.2817" y1="175.4688" y2="195.4688"></line><polygon fill="#A80036" points="367.2817,185.4688,371.2817,195.4688,375.2817,185.4688,371.2817,189.4688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="576.8022" x2="576.8022" y1="175.4688" y2="195.4688"></line><polygon fill="#A80036" points="572.8022,185.4688,576.8022,195.4688,580.8022,185.4688,576.8022,189.4688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="371.2817" x2="371.2817" y1="229.4375" y2="249.4375"></line><polygon fill="#A80036" points="367.2817,239.4375,371.2817,249.4375,375.2817,239.4375,371.2817,243.4375" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="576.8022" x2="576.8022" y1="229.4375" y2="249.4375"></line><polygon fill="#A80036" points="572.8022,239.4375,576.8022,249.4375,580.8022,239.4375,576.8022,243.4375" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="482.0415" x2="482.0415" y1="153.9688" y2="173.9688"></line><polygon fill="#A80036" points="478.0415,163.9688,482.0415,173.9688,486.0415,163.9688,482.0415,167.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="544.2317" x2="687.562" y1="295.3398" y2="295.3398"></line><polygon fill="#A80036" points="683.562,222.4531,687.562,212.4531,691.562,222.4531,687.562,218.4531" style="stroke:#A80036;stroke-width:1.5;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="687.562" x2="687.562" y1="141.9688" y2="295.3398"></line><line style="stroke:#A80036;stroke-width:1.5;" x1="687.562" x2="494.0415" y1="141.9688" y2="141.9688"></line><polygon fill="#A80036" points="504.0415,137.9688,494.0415,141.9688,504.0415,145.9688,500.0415,141.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="482.0415" x2="482.0415" y1="250.9375" y2="283.3398"></line><polygon fill="#A80036" points="478.0415,273.3398,482.0415,283.3398,486.0415,273.3398,482.0415,277.3398" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="482.0415" x2="482.0415" y1="307.3398" y2="351.1411"></line><polygon fill="#A80036" points="478.0415,341.1411,482.0415,351.1411,486.0415,341.1411,482.0415,345.1411" style="stroke:#A80036;stroke-width:1;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="19.0083" x="486.0415" y="331.0469">yes</text><line style="stroke:#A80036;stroke-width:1.5;" x1="132.856" x2="132.856" y1="109.9688" y2="181.3398"></line><polygon fill="#A80036" points="128.856,171.3398,132.856,181.3398,136.856,171.3398,132.856,175.3398" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="482.0415" x2="482.0415" y1="109.9688" y2="129.9688"></line><polygon fill="#A80036" points="478.0415,119.9688,482.0415,129.9688,486.0415,119.9688,482.0415,123.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="132.856" x2="132.856" y1="309.7422" y2="405.1099"></line><polygon fill="#A80036" points="128.856,395.1099,132.856,405.1099,136.856,395.1099,132.856,399.1099" style="stroke:#A80036;stroke-width:1;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="19.0083" x="136.856" y="365.6348">yes</text><line style="stroke:#A80036;stroke-width:1.5;" x1="482.0415" x2="482.0415" y1="385.1099" y2="405.1099"></line><polygon fill="#A80036" points="478.0415,395.1099,482.0415,405.1099,486.0415,395.1099,482.0415,399.1099" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="358.1855" x2="358.1855" y1="83.9688" y2="103.9688"></line><polygon fill="#A80036" points="354.1855,93.9688,358.1855,103.9688,362.1855,93.9688,358.1855,97.9688" style="stroke:#A80036;stroke-width:1;"></polygon><line style="stroke:#A80036;stroke-width:1.5;" x1="358.1855" x2="358.1855" y1="411.1099" y2="431.1099"></line><polygon fill="#A80036" points="354.1855,421.1099,358.1855,431.1099,362.1855,421.1099,358.1855,425.1099" style="stroke:#A80036;stroke-width:1;"></polygon></g></svg><figcaption>Activity diagram "fnc-1: Charge device"</figcaption>
+          </figure>
+        </figure>
+        <section>
+          <h2 id="fnc-1.1">fnc-1.1: Charge device</h2>
+          <div data-format="markdown">The device battery shall charge.</div>
+          <p>Linked requirements:</p>
+          <ul>
+            <li><b>
+    [<a href="#sys-1">sys-1</a>]
+  Charge duration: </b>A battery with &lt;5% capacity shall charge to &gt;95% capacity in &lt;5 hours....
+    </li>
+            <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Charge indicator location: </b>The charge indicator shall be located 1.0 +/- 0.2 cm from the charging port....
+    </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2 id="verification">Verification plan</h2>
+      <section>
+        <h2 id="ver-1">ver-1: Re-charging</h2>
+        <ul>
+          <li><b>Allocation: </b>power</li>
+          <li><b>Discipline: </b>ee mech</li>
+        </ul>
+        <div data-format="markdown">
+1. Connect a device with a low battery to the charger.
+1. Confirm charge completes within the specified time limit.
+1. Confirm the displays per the diagram.
+1. Connect a device with a low battery to the charger.
+1. Disconnect the battery prior to the battery completely charging.
+1. Confirm the displays per the diagram.
+</div>
+        <p>Linked requirements:</p>
+        <ul>
+          <li><b>
+    [<a href="#sys-1">sys-1</a>]
+  Charge duration: </b>A battery with &lt;5% capacity shall charge to &gt;95% capacity in &lt;5 hours....
+    </li>
+          <li><b>
+    [<a href="#sys-2">sys-2</a>]
+  Charge indicator location: </b>The charge indicator shall be located 1.0 +/- 0.2 cm from the charging port....
+    </li>
+        </ul>
+      </section>
+    </section>
+  </body>
+</html>

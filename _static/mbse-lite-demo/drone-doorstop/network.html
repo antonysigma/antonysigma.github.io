@@ -1,0 +1,215 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Network visualization</title>
+<link href="../static/network-main.css" rel="stylesheet">
+<script>
+window.plantuml_host = 'http://www.plantuml.com/plantuml/svg/';
+window.idef0svg_host = '/svg/';
+
+window.network_data = [
+{group: 'nodes', data:
+  {id: "org-1",
+  label: "org-1: Charging",
+  group: "org",
+  
+  }},
+{group: 'nodes', data:
+  {id: "ucd-1",
+  label: "ucd-1: Charging",
+  group: "ucd",
+  
+	  physics: false,
+  
+  }},
+{group: 'nodes', data:
+  {id: "sys-1",
+  label: "sys-1: Charge duration",
+  group: "sys",
+  
+  }},
+{group: 'nodes', data:
+  {id: "sys-2",
+  label: "sys-2: Charge indicator location",
+  group: "sys",
+  
+  }},
+{group: 'nodes', data:
+  {id: "fnc-1",
+  label: "fnc-1: Charge device",
+  group: "fnc",
+  
+  }},
+{group: 'nodes', data:
+  {id: "fnc-1.1",
+  label: "fnc-1.1: Charge device",
+  group: "fnc",
+  
+  }},
+{group: 'nodes', data:
+  {id: "ver-1",
+  label: "ver-1: Re-charging",
+  group: "ver",
+  
+  }},
+{group: 'nodes', data:
+  {id: "pad-1",
+  label: "pad-1: Power",
+  group: "pad",
+  
+	  physics: false,
+  
+  }},
+{group: 'nodes', data:
+  {id: "int-1",
+  label: "int-1: Power interface",
+  group: "int",
+  
+  }},
+{group: 'nodes', data:
+  {id: "int-2",
+  label: "int-2: Front panel",
+  group: "int",
+  
+  }},
+{group: 'edges', data:
+  {source: "org-1", target: "ucd-1", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "ucd-1", target: "sys-2", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "sys-1", target: "fnc-1.1", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "sys-2", target: "fnc-1.1", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "sys-1", target: "int-1", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "sys-2", target: "int-2", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "sys-1", target: "ver-1", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "sys-2", target: "ver-1", arrows: 'to',}},
+{group: 'edges', data:
+  {source: "int-1", target: "pad-1", arrows: 'from,to',}},
+{group: 'edges', data:
+  {target: "int-1", source: "pad-1", arrows: 'from,to', duplicate: true}},
+{group: 'edges', data:
+  {source: "int-2", target: "pad-1", arrows: 'from,to',}},
+{group: 'edges', data:
+  {target: "int-2", source: "pad-1", arrows: 'from,to', duplicate: true}},
+{group: 'edges', data:
+  {target: "fnc-1.1", source: "fnc-1", arrows: 'from,to',}},
+{group: 'edges', data:
+  {source: "fnc-1.1", target: "fnc-1", arrows: 'from,to', duplicate: true}},
+
+];
+</script><script src="../static/network-main.js"></script>
+</head>
+<body>
+<div id="topbar">
+Reference: <a id="source_doc" href="./product_requirements_specifications.html" target="source_doc_tab">product_requirements_specifications.html</a>
+</div>
+<div class="grid">
+<div><img id="behavior"></div>
+<div class="gutter-col gutter-col-1"></div>
+<div id="requirement">
+<div id="sys-1" class="hidden">
+<h2>sys-1: Charge duration</h2>
+<span class="markdown">A battery with &lt;5% capacity shall charge to &gt;95% capacity in &lt;5 hours.</span><span class="markdown">**Rationale**
+
+</span>
+</div>
+<div id="sys-2" class="hidden">
+<h2>sys-2: Charge indicator location</h2>
+<span class="markdown">The charge indicator shall be located 1.0 +/- 0.2 cm from the charging port.</span><span class="markdown">**Rationale**
+
+</span>
+</div>
+<div id="org-1" class="hidden">
+<h2>org-1: Charging</h2>
+<span class="markdown">
+    A user should be able to quickly charge the device with a cell phone charger.
+  </span><span class="markdown">**Rationale**
+
+</span>
+</div>
+<div id="ver-1" class="hidden">
+<h2>ver-1: Re-charging</h2>
+<span class="markdown">
+1. Connect a device with a low battery to the charger.
+1. Confirm charge completes within the specified time limit.
+1. Confirm the displays per the diagram.
+1. Connect a device with a low battery to the charger.
+1. Disconnect the battery prior to the battery completely charging.
+1. Confirm the displays per the diagram.
+</span><span class="markdown">**Rationale**
+
+</span>
+</div>
+</div>
+<div><img id="architecture"></div>
+<div class="gutter-row gutter-row-1"></div>
+<div id="viewer"></div>
+</div>
+<div id="uml">
+<pre id="ucd-1">
+:User: --
+    (ucd-1: Charging)
+:Power Supply: --
+    (ucd-1: Charging)
+  </pre>
+<pre id="fnc-1">
+start
+:Connect device to charger;
+fork
+    repeat
+    repeat while (Device disconnected from charger?) is (no)
+    -&gt; yes;
+fork again
+    repeat
+    split
+    :[fnc-1.1] Charge device;
+    split again
+        :Blink charge indicator yellow;
+    end split
+    repeat while (Charge complete?) is (no)
+    -&gt; yes;
+    :Charge indicator green;
+end fork
+end
+  </pre>
+<pre id="pad-1">
+node "Charging subsystem" {
+[Data port] --
+    () "[int-2] Front panel"
+[Data port] -- (int-3)
+
+[Power port] --
+    () "[int-1] Power interface"
+[Power port] --
+    () "[int-2] Front panel"
+
+[LEDs] --
+    () "[int-2] Front panel"
+
+[Device housing] --
+    () "[int-2] Front panel"
+
+[PCB] -- [LEDs]
+[PCB] -- [Data port]
+[PCB] -- [Power port]
+}
+
+node Computer
+node User
+node "Power supply" as PS
+
+Computer ..&gt; (int-3): use
+User ..&gt;
+    () "[int-2] Front panel": use
+PS ..&gt;
+    () "[int-1] Power interface": use
+  </pre>
+</div>
+<div id="idef0"></div>
+</body>
+</html>

@@ -1,0 +1,532 @@
+<mbse copyright="Pascal Roques https://www.linkedin.com/in/pascalroques/" plantuml_host="http://localhost:8080" idef0svg_host="http://localhost:5000">
+<orig id="org-1" status="initial">
+  <description brief="Wake up with alarm">
+    The user SHALL be able to configure the clock radio to wake them up at the intended alarm time.
+  </description>
+  <reference
+    stakeholder="Arcadia Clock Radio Example"
+    title="ClockRadio101 Capella source model"
+   />
+</orig>
+<orig id="org-2" status="initial">
+  <description brief="Read current time">
+    The user SHALL be able to set the current time and read the displayed time from the clock radio.
+  </description>
+  <reference
+    stakeholder="Arcadia Clock Radio Example"
+    title="ClockRadio101 Capella source model"
+   />
+</orig>
+<orig id="org-3" status="initial">
+  <description brief="Get news by radio">
+    The user SHALL be able to configure radio playback and listen to radio audio from an external transmitter.
+  </description>
+  <reference
+    stakeholder="Arcadia Clock Radio Example"
+    title="ClockRadio101 Capella source model"
+   />
+</orig>
+<orig id="org-4" status="initial">
+  <description brief="Support radio modes">
+    The clock radio SHALL support explicit radio operating modes so the user can keep radio playback on, off, or automatically driven by the alarm.
+  </description>
+  <reference
+    stakeholder="Arcadia Clock Radio Example"
+    title="ClockRadio101 Capella source model"
+   />
+</orig>
+<usecase id="ucd-1" status="initial">
+  <uml>
+:User: -- <this />
+:Clock Radio: -- <this />
+  </uml>
+  <description brief="Trigger an alarm">The clock radio wakes the user at the configured alarm time.</description>
+  <satisfies ref="org-1" />
+  <satisfies ref="org-4" />
+  <pre-condition>The current time is available, alarm settings are configured, and the clock radio is powered.</pre-condition>
+  <main-event>The user enables the alarm and sets an alarm time.</main-event>
+  <main-event>The user selects the radio operating mode and optionally sets radio frequency and volume.</main-event>
+  <main-event>The clock maintains the current timestamp.</main-event>
+  <main-event>When the current time matches the configured alarm time in automatic mode, the alarm manager triggers the alarm.</main-event>
+  <main-event>The radio broadcasts audio output to the user.</main-event>
+  <post-condition>The user is alerted by the clock radio at the requested time.</post-condition>
+  <alternate-event>If the alarm is disabled, the radio mode is not automatic, the alarm time is not reached, or radio audio is unavailable, the user is not woken by radio playback.</alternate-event>
+</usecase>
+<usecase id="ucd-2" status="initial">
+  <uml>
+:User: -- <this />
+:Clock Radio: -- <this />
+  </uml>
+  <description brief="Get time">The user sets or reads the current time from the clock radio.</description>
+  <satisfies ref="org-2" />
+  <pre-condition>The clock radio is powered and the display function is available.</pre-condition>
+  <main-event>The user sets the current time.</main-event>
+  <main-event>The clock function updates the internal timestamp.</main-event>
+  <main-event>The display function presents the timestamp to the user.</main-event>
+  <post-condition>The clock radio shows the current time to the user.</post-condition>
+  <alternate-event>If the current time is not set, the displayed time may be incorrect.</alternate-event>
+</usecase>
+<usecase id="ucd-3" status="initial">
+  <uml>
+:User: -- <this />
+:Clock Radio: -- <this />
+:Radio Transmitter: -- <this />
+  </uml>
+  <description brief="Get news">The user configures the radio and listens to received radio audio.</description>
+  <satisfies ref="org-3" />
+  <satisfies ref="org-4" />
+  <pre-condition>The radio transmitter emits radio waves and the clock radio is powered.</pre-condition>
+  <main-event>The user sets radio mode, frequency, and volume.</main-event>
+  <main-event>The radio subsystem receives and decodes radio waves.</main-event>
+  <main-event>The radio subsystem broadcasts radio sound to the user.</main-event>
+  <post-condition>The user hears radio audio at the configured settings.</post-condition>
+  <alternate-event>If no usable radio signal is received, radio sound is unavailable to the user.</alternate-event>
+</usecase>
+<constraint id="sys-2" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Alarm" />
+  <description brief="Maintain current time and display">The clock radio SHALL accept current time input, maintain the current timestamp, and provide a timestamp display to the user.</description>
+  <rationale>The user needs to set the correct time and later read it back from the device display.</rationale>
+  <satisfies ref="ucd-2" />
+  <test ref="ver-2" />
+</constraint>
+<constraint id="sys-3" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Alarm" />
+  <description brief="Accept alarm settings">The clock radio SHALL accept alarm time and alarm on or off settings from the user and derive current alarm time and alarm activation data for alarm management.</description>
+  <rationale>The user needs to decide whether wake-up is enabled and when it should occur.</rationale>
+  <satisfies ref="ucd-1" />
+  <test ref="ver-3" />
+</constraint>
+<constraint id="sys-1" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Clock" />
+  <description brief="Timestamp data type">The clock radio SHALL represent time as a timestamp containing an hour in the range 0 to 23 and a minute in the range 0 to 59.</description>
+  <rationale>The user expects the device to store current time and alarm time in a normal daily clock format that is unambiguous for display and alarm triggering.</rationale>
+  <satisfies ref="ucd-1" />
+  <satisfies ref="ucd-2" />
+  <test ref="ver-1" />
+</constraint>
+<constraint id="sys-4" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Radio" />
+  <description brief="Trigger alarm in automatic mode">The clock radio SHALL trigger an alarm when the current time equals the configured alarm time while the system is in `Radio AUTO` mode.</description>
+  <rationale>The automatic mode exists so the device can remain quiet until the scheduled wake-up condition occurs.</rationale>
+  <satisfies ref="ucd-1" />
+  <satisfies ref="org-4" />
+  <test ref="ver-3" />
+</constraint>
+<constraint id="sys-5" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Radio" />
+  <description brief="Limit automatic ringing duration">In `Radio AUTO` mode, the ringing state SHALL return to silent after an alarm timeout of 59 minutes.</description>
+  <rationale>The wake-up function should not leave the device ringing indefinitely after the alarm has been triggered.</rationale>
+  <satisfies ref="ucd-1" />
+  <satisfies ref="org-4" />
+  <test ref="ver-3" />
+</constraint>
+<constraint id="sys-7" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Radio" />
+  <description brief="Decode radio waves">The clock radio SHALL receive radio waves from the external transmitter and decode them into radio signals using the current frequency setting.</description>
+  <rationale>The user expects the device to transform incoming radio transmission into an internal signal usable for playback.</rationale>
+  <satisfies ref="ucd-3" />
+  <test ref="ver-4" />
+</constraint>
+<constraint id="sys-8" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Radio" />
+  <description brief="Broadcast radio sound">The clock radio SHALL broadcast radio sound to the user from radio signals, alarm input, activation, and volume level.</description>
+  <rationale>The radio path and the alarm path both exist to produce audible output that the user can hear.</rationale>
+  <satisfies ref="ucd-1" />
+  <satisfies ref="ucd-3" />
+  <test ref="ver-4" />
+</constraint>
+<constraint id="sys-9" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="Radio" />
+  <description brief="Support radio operating modes">The clock radio SHALL support the operating modes `Radio OFF`, `Radio ON`, and `Radio AUTO`, with transitions triggered by the `radio off`, `radio on`, and `radio auto` events.</description>
+  <rationale>The owner wants explicit user-selectable radio behavior rather than a single fixed playback mode.</rationale>
+  <satisfies ref="ucd-1" />
+  <satisfies ref="ucd-3" />
+  <satisfies ref="org-4" />
+  <test ref="ver-5" />
+</constraint>
+<constraint id="sys-6" status="initial">
+  <categories allocation="sw" discipline="sw ee" group="UserInterface" />
+  <description brief="Accept radio settings">The clock radio SHALL accept radio on or off mode selection, frequency, and volume settings from the user and derive activation, current frequency, and volume level data for radio playback.</description>
+  <rationale>The user needs direct control over whether radio playback is active and how it should be tuned and heard.</rationale>
+  <satisfies ref="ucd-1" />
+  <satisfies ref="ucd-3" />
+  <satisfies ref="org-4" />
+  <test ref="ver-4" />
+</constraint>
+<behavior id="fnc-3" status="initial">
+  <idef0>
+<this ref="fnc-3.1" />
+    ctrl User
+    out AlarmTime
+    out AlarmOnOff
+
+<this ref="fnc-3.2" />
+    in AlarmTime
+    in AlarmOnOff
+    ctrl ClockRadioHMI
+    out CurrentAlarmTime
+    out AlarmActivation
+
+<this ref="fnc-3.3" />
+    in Timestamp
+    in CurrentAlarmTime
+    in AlarmActivation
+    ctrl AlarmManager
+    ctrl RadioAuto
+    out Alarm
+  </idef0>
+  <description brief="Manage alarm">Capture alarm settings, derive current alarm data, and trigger the alarm when the current timestamp reaches the configured alarm time in automatic mode.</description>
+  <function id="fnc-3.1" status="initial">
+    <description brief="Set alarm time">The user-facing alarm setting function provides alarm time and alarm activation selection.</description>
+    <satisfies ref="sys-3" />
+  </function>
+  <function id="fnc-3.2" status="initial">
+    <description brief="Provide alarm settings">The HMI derives current alarm time and alarm activation data for the alarm manager.</description>
+    <satisfies ref="sys-3" />
+  </function>
+  <function id="fnc-3.3" status="initial">
+    <description brief="Trigger alarm">The alarm manager triggers the alarm when timestamp and alarm conditions are satisfied.</description>
+    <satisfies ref="sys-4" />
+    <satisfies ref="sys-5" />
+  </function>
+</behavior>
+<behavior id="fnc-2" status="initial">
+  <idef0>
+<this ref="fnc-2.1" />
+    ctrl User
+    out CurrentTime
+
+<this ref="fnc-2.2" />
+    in CurrentTime
+    ctrl ClockRadioHMI
+    out NewCurrentTime
+
+<this ref="fnc-2.3" />
+    in NewCurrentTime
+    ctrl Clock
+    out Timestamp
+
+<this ref="fnc-2.4" />
+    in Timestamp
+    ctrl ClockRadioHMI
+    out TimestampDisplay
+  </idef0>
+  <description brief="Manage clock">Provide current time settings, maintain the current timestamp, and display the current time to the user.</description>
+  <function id="fnc-2.1" status="initial">
+    <description brief="Set current time">The user-facing clock setting function provides the current time input.</description>
+    <satisfies ref="sys-2" />
+  </function>
+  <function id="fnc-2.2" status="initial">
+    <description brief="Provide current time settings">The HMI propagates current time settings to the clock logic.</description>
+    <satisfies ref="sys-2" />
+  </function>
+  <function id="fnc-2.3" status="initial">
+    <description brief="Clock timestamp">The clock maintains the internal timestamp.</description>
+    <satisfies ref="sys-1" />
+    <satisfies ref="sys-2" />
+  </function>
+  <function id="fnc-2.4" status="initial">
+    <description brief="Display time">The display path converts the maintained timestamp into user-visible output.</description>
+    <satisfies ref="sys-2" />
+  </function>
+</behavior>
+<behavior id="fnc-4" status="initial">
+  <idef0>
+<this ref="fnc-4.1" />
+    ctrl User
+    out Frequency
+    out Volume
+
+<this ref="fnc-4.2" />
+    ctrl User
+    out RadioOnOff
+
+<this ref="fnc-4.3" />
+    in Frequency
+    in Volume
+    in RadioOnOff
+    ctrl RadioHMI
+    out CurrentFrequency
+    out VolumeLevel
+    out Activation
+
+<this ref="fnc-4.4" />
+    in RadioWaves
+    in CurrentFrequency
+    ctrl RadioMMI
+    res RadioTransmitter
+    out RadioSignals
+
+<this ref="fnc-4.5" />
+    in Alarm
+    in RadioSignals
+    in Activation
+    in VolumeLevel
+    ctrl Radio
+    out RadioSound
+  </idef0>
+  <description brief="Manage radio">Capture radio settings, decode radio waves, manage radio modes, and broadcast radio sound to the user.</description>
+  <function id="fnc-4.1" status="initial">
+    <description brief="Set radio">The user-facing radio setting function provides tuning and volume input.</description>
+    <satisfies ref="sys-6" />
+  </function>
+  <function id="fnc-4.2" status="initial">
+    <description brief="Listen to radio">The user consumes radio sound and controls radio mode selection.</description>
+    <satisfies ref="sys-6" />
+    <satisfies ref="sys-9" />
+  </function>
+  <function id="fnc-4.3" status="initial">
+    <description brief="Provide radio settings">The HMI derives activation, current frequency, and volume level for the radio path.</description>
+    <satisfies ref="sys-6" />
+    <satisfies ref="sys-9" />
+  </function>
+  <function id="fnc-4.4" status="initial">
+    <description brief="Decode radio waves">The radio MMI decodes incoming radio waves into radio signals.</description>
+    <satisfies ref="sys-7" />
+  </function>
+  <function id="fnc-4.5" status="initial">
+    <description brief="Broadcast radio">The radio component combines alarm, activation, radio signal, and volume inputs into radio sound.</description>
+    <satisfies ref="sys-8" />
+  </function>
+</behavior>
+<behavior id="fnc-1" status="initial">
+  <idef0>
+<this ref="fnc-2" />
+    in CurrentTime
+    ctrl User
+    out Timestamp
+    out TimestampDisplay
+
+<this ref="fnc-3" />
+    in AlarmTime
+    in AlarmOnOff
+    in Timestamp
+    ctrl User
+    ctrl RadioAuto
+    out Alarm
+
+<this ref="fnc-4" />
+    in Frequency
+    in Volume
+    in RadioOnOff
+    in RadioWaves
+    in Alarm
+    ctrl User
+    ctrl RadioTransmitter
+    out RadioSound
+  </idef0>
+  <description brief="Operate clock radio">Operate the clock, alarm, and radio functions needed by the clock radio, using the logical functions identified in the Capella source model.</description>
+  <function id="fnc-1.0" status="initial">
+    <description brief="Clock radio functional flow">Coordinate the clock, alarm, and radio sub-behaviors for end-to-end clock radio operation.</description>
+  </function>
+</behavior>
+<verification id="ver-3" status="initial">
+  <categories method="test" owner="SQA" allocation="clock_radio" discipline="sw ee" />
+  <description brief="Verify automatic alarm behavior">
+1. Enable the alarm, set an alarm time, and place the radio in `Radio AUTO` mode.
+1. Operate the clock until current time equals alarm time.
+1. Confirm the alarm is triggered at that moment.
+1. Continue operating the device and confirm the ringing state returns to silent after 59 minutes.
+</description>
+  <satisfies ref="sys-5" />
+  <satisfies ref="sys-3" />
+  <satisfies ref="sys-4" />
+</verification>
+<verification id="ver-2" status="initial">
+  <categories method="test" owner="SQA" allocation="clock_radio" discipline="sw ee" />
+  <description brief="Verify current time maintenance and display">
+1. Set the current time through the user interface.
+1. Confirm the maintained timestamp updates to the requested time.
+1. Confirm the displayed timestamp presented to the user matches the maintained timestamp.
+  </description>
+  <satisfies ref="sys-2" />
+</verification>
+<verification id="ver-5" status="initial">
+  <categories method="test" owner="SQA" allocation="clock_radio" discipline="sw ee" />
+  <description brief="Verify radio operating modes">
+1. Initialize the device and confirm the default radio mode is `Radio OFF`.
+1. Trigger `radio on` and confirm the system enters `Radio ON`.
+1. Trigger `radio auto` and confirm the system enters `Radio AUTO`.
+1. Trigger `radio off` from `Radio ON` and `Radio AUTO` and confirm the system returns to `Radio OFF`.
+  </description>
+  <satisfies ref="sys-9" />
+</verification>
+<verification id="ver-4" status="initial">
+  <categories method="test" owner="SQA" allocation="clock_radio" discipline="sw ee" />
+  <description brief="Verify radio setting, decode, and playback path">
+1. Set radio frequency, volume, and radio on or off selection through the user interface.
+1. Provide a usable radio transmission to the device.
+1. Confirm the device derives current frequency, activation, and volume level from the user settings.
+1. Confirm the radio subsystem decodes radio waves into radio signals and broadcasts radio sound to the user.
+  </description>
+  <satisfies ref="sys-6" />
+  <satisfies ref="sys-7" />
+  <satisfies ref="sys-8" />
+</verification>
+<verification id="ver-1" status="initial">
+  <categories method="test" owner="SQA" allocation="clock_radio" discipline="sw ee" />
+  <description brief="Verify timestamp representation">
+1. Review the maintained timestamp data structure in the implementation.
+1. Confirm the timestamp contains hour and minute fields.
+1. Confirm hour is constrained to 0 through 23 and minute is constrained to 0 through 59.
+  </description>
+  <satisfies ref="sys-1" />
+</verification>
+<architecture id="lad-1" status="initial" is_logical="true">
+  <uml>
+left to right direction
+actor User
+node "Clock Radio"
+actor "Radio Transmitter" as TX
+
+User -- <this ref="int-1" />
+"Clock Radio" -- <this ref="int-1" />
+
+User -- <this ref="int-2" />
+"Clock Radio" -- <this ref="int-2" />
+
+TX -- <this ref="int-3" />
+"Clock Radio" -- <this ref="int-3" />
+  </uml>
+  <description brief="Clock radio logical context">Top-level logical context for a radio receiver alarm clock.</description>
+  <interface id="int-1" external="true">
+    <description brief="Alarm time input">The user enters the alarm time and enables or disables the alarm.</description>
+    <software>The interface SHALL accept alarm time and alarm enable input from the user.</software>
+    <satisfies ref="sys-3" />
+  </interface>
+  <interface id="int-2" external="true">
+    <description brief="Audio output">The clock radio provides audible output to the user.</description>
+    <software>The interface SHALL provide audible radio or alarm output perceived by the user.</software>
+    <satisfies ref="sys-8" />
+  </interface>
+  <interface id="int-3" external="true">
+    <description brief="Radio channel input">The external transmitter provides a radio channel to the clock radio receiver.</description>
+    <software>The interface SHALL convey received radio-frequency signal from the external transmitter into the receiver path.</software>
+    <satisfies ref="sys-7" />
+  </interface>
+</architecture>
+<architecture id="lad-2" status="initial" is_logical="true">
+  <uml>
+left to right direction
+node Clock
+node "Alarm Controller"
+node "Radio Demodulator"
+node Speaker
+
+Clock -- <this ref="int-4" />
+"Alarm Controller" -- <this ref="int-4" />
+
+"Alarm Controller" -- <this ref="int-5" />
+Speaker -- <this ref="int-5" />
+
+"Radio Demodulator" -- <this ref="int-6" />
+Speaker -- <this ref="int-6" />
+  </uml>
+  <description brief="Clock radio logical internals">Simplified logical architecture for the receiver alarm clock.</description>
+  <interface id="int-4">
+    <description brief="Clock signal">The clock provides timing information to the alarm controller.</description>
+    <software>The interface SHALL communicate current time needed to compare against the configured alarm time.</software>
+    <satisfies ref="sys-4" />
+  </interface>
+  <interface id="int-5">
+    <description brief="Alarm signal">The alarm controller provides an alarm trigger to the speaker path.</description>
+    <software>The interface SHALL communicate alarm activation to the audio output path when alarm conditions are met.</software>
+    <satisfies ref="sys-4" />
+    <satisfies ref="sys-5" />
+    <satisfies ref="sys-8" />
+  </interface>
+  <interface id="int-6">
+    <description brief="Audio signal">The radio demodulator provides decoded audio to the speaker path.</description>
+    <software>The interface SHALL communicate decoded radio audio from the radio demodulator to the speaker path.</software>
+    <satisfies ref="sys-7" />
+    <satisfies ref="sys-8" />
+  </interface>
+</architecture>
+<architecture id="pad-1" status="initial" is_logical="false">
+  <uml>
+left to right direction
+node "Alarm Controller"
+node "Radio Demodulator"
+node "Audio Amplifier"
+node Speaker
+
+"Alarm Controller" -- <this ref="phy-4" />
+"Audio Amplifier" -- <this ref="phy-4" />
+
+"Radio Demodulator" -- <this ref="phy-6" />
+"Audio Amplifier" -- <this ref="phy-6" />
+
+"Audio Amplifier" -- <this ref="phy-7" />
+Speaker -- <this ref="phy-7" />
+  </uml>
+  <description brief="Audio physical view">Physical audio path showing how alarm and radio audio drive the speaker.</description>
+  <interface id="phy-4">
+    <description brief="Alarm wire">A wire carries alarm trigger output from the alarm controller to the audio path.</description>
+    <electrical>The alarm wire SHALL enable the audio path when alarm conditions are met.</electrical>
+    <implements ref="int-5" />
+  </interface>
+  <interface id="phy-6">
+    <description brief="Audio wire">A wire carries decoded audio signal from the radio demodulator to the audio amplifier.</description>
+    <electrical>The analog audio wire SHALL carry demodulated audio from the receiver stage to the amplifier stage.</electrical>
+    <implements ref="int-6" />
+  </interface>
+  <interface id="phy-7">
+    <description brief="Speaker wire">A wire carries amplified audio from the audio amplifier to the speaker.</description>
+    <mechanical>The speaker SHALL be mounted to radiate audible sound from the enclosure.</mechanical>
+    <electrical>The speaker wire SHALL carry amplified audio current from the amplifier to the speaker.</electrical>
+    <implements ref="int-2" />
+  </interface>
+</architecture>
+<architecture id="pad-2" status="initial" is_logical="false">
+  <uml>
+left to right direction
+actor "Radio Transmitter" as TX
+node Antenna
+node "Radio Demodulator"
+
+TX -- <this ref="phy-2" />
+Antenna -- <this ref="phy-2" />
+
+Antenna -- <this ref="phy-5" />
+"Radio Demodulator" -- <this ref="phy-5" />
+  </uml>
+  <description brief="RF physical view">Physical RF path showing broadcast reception from the external transmitter into the receiver hardware.</description>
+  <interface id="phy-2" external="true">
+    <description brief="Antenna">The antenna receives the external radio broadcast.</description>
+    <electrical>The RF path SHALL convey received broadcast energy from the antenna into the receiver circuit.</electrical>
+    <implements ref="int-3" />
+  </interface>
+  <interface id="phy-5">
+    <description brief="RF wire">The antenna feeds RF signal into the radio demodulator.</description>
+    <electrical>The RF path SHALL couple the received broadcast signal from the antenna into the demodulator circuitry.</electrical>
+    <implements ref="int-3" />
+  </interface>
+</architecture>
+<architecture id="pad-3" status="initial" is_logical="false">
+  <uml>
+left to right direction
+actor User
+node "Alarm Buttons"
+node "Real-Time Clock"
+node "Alarm Controller"
+
+User -- <this ref="phy-1" />
+"Alarm Buttons" -- <this ref="phy-1" />
+
+"Real-Time Clock" -- <this ref="phy-3" />
+"Alarm Controller" -- <this ref="phy-3" />
+  </uml>
+  <description brief="Timing physical view">Physical timing path showing alarm entry and time comparison hardware.</description>
+  <interface id="phy-1" external="true">
+    <description brief="Alarm buttons">The user presses physical buttons to set or enable the alarm.</description>
+    <mechanical>The alarm buttons SHALL be accessible from the front panel.</mechanical>
+    <electrical>The button contacts SHALL convey alarm-setting input into the control electronics.</electrical>
+    <implements ref="int-1" />
+  </interface>
+  <interface id="phy-3">
+    <description brief="Clock wire">A wire carries timing data from the real-time clock to the alarm controller.</description>
+    <electrical>The timing wire SHALL carry current time data from the clock circuit to the alarm controller.</electrical>
+    <implements ref="int-4" />
+  </interface>
+</architecture>
+</mbse>

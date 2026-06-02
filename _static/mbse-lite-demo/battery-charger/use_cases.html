@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>Use cases</title>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = '/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 2 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>Use cases (this document)</li>
+        <li>
+          <a href="product_requirements_specifications.html">Product requirements specification</a>
+        </li>
+        <li>
+          <a href="logical_and_physical_architecture.html">Logical and physical architecture</a>
+        </li>
+      </ol>
+      <p>The document captures the high-level use cases requested by the stakeholders.
+  To contribute more contents, review and trace each item back to the Originating requirements.
+  Then, elaborate further in the system-level specifications.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>The document captures missing stakeholder requirements,
+adds additional detail, and as a precursor to capturing engineering level requirements.
+Well thought out use cases allow engineering level specifications,
+especially functional behavior of the syste, to be created more efficiently.
+The document also help identify various requirements categories that need to be detailed.</p>
+      <p>This document is shared with the stakeholders to gain alignment prior to further requirements definition
+and analysis.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+Use cases helps capture missing high-level requirements.</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2 id="ucd-1">ucd-1: Charging</h2>
+      <div data-format="markdown">The device battery is re-charged.</div>
+      <figure id="ucd-1-uml">
+        <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="186px" preserveAspectRatio="none" style="width:182px;height:186px;background:#FFFFFF;" version="1.1" viewBox="0 0 182 186" width="182px" zoomAndPan="magnify"><defs><filter height="300%" id="f9z7qg2azue6z" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="User" data-source-line="3" id="ent0002"><ellipse cx="29.4551" cy="14" fill="#FEFECE" filter="url(#f9z7qg2azue6z)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M29.4551,22 L29.4551,49 M16.4551,30 L42.4551,30 M29.4551,49 L16.4551,64 M29.4551,49 L42.4551,64" fill="none" filter="url(#f9z7qg2azue6z)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="13.5" y="83.9951">User</text></g><g class="entity" data-qualified-name="ucd-1. Charging" data-source-line="3" id="ent0003"><ellipse cx="78.2941" cy="163.8588" fill="#FEFECE" rx="72.2941" ry="16.8588" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112.1025" x="22.2428" y="168.5073">ucd-1: Charging</text></g><g class="entity" data-qualified-name="Power Supply" data-source-line="4" id="ent0005"><ellipse cx="128.4927" cy="14" fill="#FEFECE" filter="url(#f9z7qg2azue6z)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M128.4927,22 L128.4927,49 M115.4927,30 L141.4927,30 M128.4927,49 L115.4927,64 M128.4927,49 L141.4927,64" fill="none" filter="url(#f9z7qg2azue6z)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94.9854" x="81" y="83.9951">Power Supply</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" data-link-type="association" data-source-line="3" id="lnk4"><path d="M45.54,84.65 C54.42,105.75 64.98,130.86 71.71,146.87" fill="none" id="User-ucd-1: Charging" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0003" data-link-type="association" data-source-line="4" id="lnk6"><path d="M111.01,87.25 C102.17,107.85 91.94,131.67 85.36,147.02" fill="none" id="Power Supply-ucd-1: Charging" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Use case diagram "ucd-1: Charging"</figcaption>
+      </figure>
+      <section>
+        <h2 id="ucd-1-pre-conditions">Pre-conditions</h2>
+        <ul>
+          <li>Device has a partially depleted battery</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-main-event-flow">Main event flow</h2>
+        <ol>
+          <li>User connects device</li>
+          <li>The device charge indicator blinks to indicate charging</li>
+          <li>The device charges</li>
+        </ol>
+      </section>
+      <section>
+        <h2 id="ucd-1-post-conditions">Post-conditions</h2>
+        <ul>
+          <li>Device has a charged battery</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-alternate-flow">Alternate flow</h2>
+        <ul>
+          <li>The user disconnects the device from the charger before charging is complete</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-trace">Linked requirements</h2>
+        <ul>
+          <li><b>[<a href="./originating_requirements.html#org-1">org-1</a>] Charging:</b>
+    A user should be able to quickly charge the device with a cell phone charger.
+  </li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-2">sys-2</a>] Charge indicator location:</b>The charge indicator shall be located 1.0 +/- 0.2 cm from the charging port.</li>
+        </ul>
+      </section>
+    </section>
+  </body>
+</html>

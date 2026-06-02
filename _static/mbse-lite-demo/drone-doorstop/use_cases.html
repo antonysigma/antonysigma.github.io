@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Use cases</title>
+    <style>
+.secno {
+  color: #ccc;
+}
+.secno-highlight {
+  color: black;
+}
+ 
+body {
+  background: white;
+}
+  </style>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+    <script src="../static/respec-main.js"></script>
+    <script class="remove">
+window.plantuml_host = 'http://localhost:8080/plantuml/svg/';
+window.idef0svg_host = 'http://localhost:5000/svg/';
+
+const localBiblio = {
+
+};
+
+const respecConfig = getRespecConfig('', localBiblio);
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is part 2 of the following series:</p>
+      <ol>
+        <li>
+          <a href="originating_requirements.html">Originating requirements</a>
+        </li>
+        <li>Use cases (this document)</li>
+        <li>
+          <a href="product_requirements_specifications.html">Product requirements specification</a>
+        </li>
+        <li>
+          <a href="logical_and_physical_architecture.html">Logical and physical architecture</a>
+        </li>
+      </ol>
+      <p>The document captures the high-level use cases requested by the stakeholders.
+  To contribute more contents, review and trace each item back to the Originating requirements.
+  Then, elaborate further in the system-level specifications.</p>
+    </section>
+    <section class="introductory">
+      <h2>How to use this document</h2>
+      <p>The document captures missing stakeholder requirements,
+adds additional detail, and as a precursor to capturing engineering level requirements.
+Well thought out use cases allow engineering level specifications,
+especially functional behavior of the syste, to be created more efficiently.
+The document also help identify various requirements categories that need to be detailed.</p>
+      <p>This document is shared with the stakeholders to gain alignment prior to further requirements definition
+and analysis.</p>
+      <figure>
+        <img src="../static/v-model.png">
+        <figcaption>System engineering V-model.
+Use cases helps capture missing high-level requirements.</figcaption>
+      </figure>
+    </section>
+    <section id="tof"></section>
+    <section>
+      <h2 id="ucd-1">ucd-1: Autonomous operation</h2>
+      <div data-format="markdown">The autonomy stack supports continuous automated vehicle motion.</div>
+      <figure id="ucd-1-uml">
+        <svg contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="203px" preserveAspectRatio="none" style="width:277px;height:203px;background:#FFFFFF;" version="1.1" viewBox="0 0 277 203" width="277px" zoomAndPan="magnify"><defs><filter height="300%" id="f1vf7qdfgeslje" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4" dy="4" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><g class="entity" data-qualified-name="Vehicle operator" data-source-line="3" id="ent0002"><ellipse cx="63.9072" cy="14" fill="#FEFECE" filter="url(#f1vf7qdfgeslje)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M63.9072,22 L63.9072,49 M50.9072,30 L76.9072,30 M63.9072,49 L50.9072,64 M63.9072,49 L76.9072,64" fill="none" filter="url(#f1vf7qdfgeslje)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115.8145" x="6" y="83.9951">Vehicle operator</text></g><g class="entity" data-qualified-name="ucd-1. Autonomous operation" data-source-line="3" id="ent0003"><ellipse cx="138.9585" cy="172.3917" fill="#FEFECE" rx="114.9585" ry="25.3917" style="stroke:#A80036;stroke-width:1;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="208.5645" x="34.6763" y="177.0401">ucd-1: Autonomous operation</text></g><g class="entity" data-qualified-name="Autonomy stack" data-source-line="4" id="ent0005"><ellipse cx="214.2417" cy="14" fill="#FEFECE" filter="url(#f1vf7qdfgeslje)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2;"></ellipse><path d="M214.2417,22 L214.2417,49 M201.2417,30 L227.2417,30 M214.2417,49 L201.2417,64 M214.2417,49 L227.2417,64" fill="none" filter="url(#f1vf7qdfgeslje)" style="stroke:#A80036;stroke-width:2;"></path><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113.4834" x="157.5" y="83.9951">Autonomy stack</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" data-link-type="association" data-source-line="3" id="lnk4"><path d="M88.35,87.08 C100.24,106.9 114.15,130.09 124.38,147.14" fill="none" id="Vehicle operator-ucd-1: Autonomous operation" style="stroke:#A80036;stroke-width:1;"></path></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0003" data-link-type="association" data-source-line="4" id="lnk6"><path d="M189.65,87.08 C177.76,106.9 163.85,130.09 153.62,147.14" fill="none" id="Autonomy stack-ucd-1: Autonomous operation" style="stroke:#A80036;stroke-width:1;"></path></g></g></svg><figcaption>Use case diagram "ucd-1: Autonomous operation"</figcaption>
+      </figure>
+      <section>
+        <h2 id="ucd-1-pre-conditions">Pre-conditions</h2>
+        <ul>
+          <li>The vehicle is in autonomous mode and the required sensors are available.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-main-event-flow">Main event flow</h2>
+        <ol>
+          <li>The localization system computes a valid pose estimate.</li>
+          <li>The localization system publishes the most recent pose estimate for downstream consumers.</li>
+          <li>The planning system generates a trajectory from the current pose.</li>
+          <li>The control system computes a control command from the selected trajectory.</li>
+          <li>The vehicle actuators receive the control command.</li>
+        </ol>
+      </section>
+      <section>
+        <h2 id="ucd-1-post-conditions">Post-conditions</h2>
+        <ul>
+          <li>The autonomy stack continues automated motion with current pose and command information.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-alternate-flow">Alternate flow</h2>
+        <ul>
+          <li>If localization data is invalid or stale, the autonomy stack cannot continue nominal automated motion.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="ucd-1-trace">Linked requirements</h2>
+        <ul>
+          <li><b>[<a href="./originating_requirements.html#org-1">org-1</a>] Autonomous motion support:</b>
+    The autonomous driving stack shall support automated vehicle motion by providing localization, planning, and control capabilities that exchange usable state and command information.
+  </li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-1">sys-1</a>] Valid pose computation:</b>The localization system shall compute a valid pose.
+    </li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-2">sys-2</a>] Pose publication rate:</b>The localization system shall make the most recent pose estimate available at x Hz.</li>
+          <li><b>[<a href="./product_requirements_specifications.html#sys-3">sys-3</a>] Control computation:</b>The control system shall compute an accurate control command.
+    </li>
+        </ul>
+      </section>
+    </section>
+  </body>
+</html>
